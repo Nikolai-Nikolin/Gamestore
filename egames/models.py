@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db.models import CASCADE
 from django.db.models.functions import datetime
 from django.utils import timezone
@@ -31,14 +31,15 @@ class Genre(models.Model):
     game = models.ManyToManyField(Game)
 
 
-class Gamer(User):
+class Gamer(models.Model):
     def __str__(self):
-        return self.gamer_first_name
+        return self.first_name
 
-    gamer_first_name = models.CharField(max_length=50, blank=True)
-    gamer_last_name = models.CharField(max_length=150, blank=True)
-    gamer_email = models.EmailField(blank=True)
-    gamer_password = models.CharField(max_length=100)
+    username = models.CharField(max_length=50, unique=True)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=150, blank=True)
+    email = models.EmailField(blank=True)
+    password = models.CharField(max_length=100)
     birth_date = models.DateField(blank=True)
 
 
@@ -77,13 +78,16 @@ class Role(models.Model):
         return self.role_name
 
     role_name = models.CharField(max_length=20, null=False, unique=True)
+    is_deleted = models.BooleanField(default=False)
 
 
-class Staff(User):
+class Staff(models.Model):
     def __str__(self):
-        return self.staff_username
+        return self.username
 
-    staff_username = models.CharField(max_length=50, null=False, unique=True)
+    username = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(blank=True)
+    password = models.CharField(max_length=100)
     role = models.ForeignKey(Role, on_delete=CASCADE)
     is_deleted = models.BooleanField(default=False)
 
