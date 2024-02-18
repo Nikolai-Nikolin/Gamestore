@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import CASCADE
 from django.db.models.functions import datetime
+from django.utils import timezone
 
 
 class Game(models.Model):
@@ -13,10 +14,8 @@ class Game(models.Model):
     price = models.FloatField(null=False)
     discount_percent = models.FloatField(default=0)
     discount_price = models.FloatField(default=0)
-    end_of_discount = models.DateField(default=datetime.datetime.today)
-    genre = models.TextField(max_length=50)
+    end_of_discount = models.DateField(auto_now_add=True)
     description = models.TextField(max_length=70)
-    amount = models.IntegerField()
     is_deleted = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
@@ -24,14 +23,53 @@ class Game(models.Model):
         super(Game, self).save(*args, **kwargs)
 
 
-class Customer(User):
+class Genre(models.Model):
     def __str__(self):
-        return self.customer_first_name
+        return self.title_genre
 
-    customer_first_name = models.CharField(max_length=50, blank=True)
-    customer_last_name = models.CharField(max_length=150, blank=True)
-    customer_email = models.EmailField(blank=True)
+    title_genre = models.CharField(max_length=50)
+    game = models.ManyToManyField(Game)
+
+
+class Gamer(User):
+    def __str__(self):
+        return self.gamer_first_name
+
+    gamer_first_name = models.CharField(max_length=50, blank=True)
+    gamer_last_name = models.CharField(max_length=150, blank=True)
+    gamer_email = models.EmailField(blank=True)
+    gamer_password = models.CharField(max_length=100)
     birth_date = models.DateField(blank=True)
+
+
+class Purchase(models.Model):
+    gamer = models.ForeignKey(Gamer, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    purchase_date = models.DateTimeField(auto_now_add=True)
+
+
+class Library(models.Model):
+    gamer = models.ForeignKey(Gamer, on_delete=models.CASCADE, default=timezone.now)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    added_date = models.DateTimeField(auto_now_add=True)
+
+
+class Review(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    gamer = models.ForeignKey(Gamer, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    comment = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+
+class Friend(models.Model):
+    gamer = models.ForeignKey(Gamer, related_name='gamer', on_delete=models.CASCADE, default=None)
+    friend = models.ForeignKey(Gamer, related_name='friend', on_delete=models.CASCADE)
+
+
+class Wishlist(models.Model):
+    gamer = models.ForeignKey(Gamer, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
 
 
 class Role(models.Model):
@@ -49,25 +87,3 @@ class Staff(User):
     role = models.ForeignKey(Role, on_delete=CASCADE)
     is_deleted = models.BooleanField(default=False)
 
-
-class Order(models.Model):
-    def __str__(self):
-        return str(self.id)
-
-    customer = models.ForeignKey(Customer, on_delete=CASCADE)
-    order_date = models.DateField(auto_now_add=True)
-    status = models.TextField(max_length=50, blank=True)
-
-
-class OrderItem(models.Model):
-    def __str__(self):
-        return str(self.id)
-
-    order = models.ForeignKey(Order, on_delete=CASCADE)
-    game = models.ForeignKey(Game, on_delete=CASCADE)
-    quantity = models.IntegerField(null=False)
-
-
-class CustomerGame(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=CASCADE)
-    game = models.ForeignKey(Game, on_delete=CASCADE)
