@@ -22,8 +22,8 @@ from egames.api.views import create_staff, create_gamer
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('egames/', include('egames.urls')),
-    path('auth/sign-up/', create_staff, name='sign-up'),
-    path('auth/sign-in/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/sign-up/staff/', create_staff, name='sign-up'),
+    path('auth/sign-in/staff/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/sign-up/gamer/', create_gamer, name='sign-up-gamer'),
     path('auth/sign-in/gamer/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

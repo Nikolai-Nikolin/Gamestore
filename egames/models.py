@@ -16,7 +16,7 @@ class Game(models.Model):
     discount_percent = models.FloatField(default=0)
     discount_price = models.FloatField(default=0)
     end_of_discount = models.DateField(auto_now_add=True)
-    description = models.TextField(max_length=70)
+    description = models.TextField(max_length=200)
     is_deleted = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
@@ -29,6 +29,7 @@ class Genre(models.Model):
         return self.title_genre
 
     title_genre = models.CharField(max_length=50)
+    description = models.TextField(max_length=200)
     game = models.ManyToManyField(Game)
     is_deleted = models.BooleanField(default=False)
 

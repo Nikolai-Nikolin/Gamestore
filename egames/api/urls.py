@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (GameList, GameDetail, GameDetailWithDetails,
                     RoleList, RoleDetail, RoleDetailWithDetails,
                     StaffList, StaffDetail, StaffDetailWithDetails,
-                    GamerList, GamerDetail, GamerDetailWithDetails)
+                    GamerList, GamerDetail, GamerDetailWithDetails,
+                    GenreList, GenreDetail, GenreDetailWithDetails)
 
 urlpatterns = [
     path('games/', GameList.as_view(), name='games-list'),
@@ -20,4 +21,8 @@ urlpatterns = [
     path('gamer/', GamerList.as_view(), name='gamer-list'),
     path('gamer/<int:id>/', GamerDetail.as_view(), name='gamer-detail'),
     path('gamer/<int:id>/details/', GamerDetailWithDetails.as_view(), name='gamer-detail-with-details'),
+
+    path('genre/', GenreList.as_view(), name='genre-list'),
+    path('genre/<int:id>/', GenreDetail.as_view(), name='genre-detail'),
+    path('genre/<int:id>/details/', GenreDetailWithDetails.as_view(), name='genre-detail-with-details'),
 ]
