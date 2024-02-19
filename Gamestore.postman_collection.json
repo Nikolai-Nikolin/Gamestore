@@ -58,13 +58,34 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"The Division 2\",\r\n    \"price\": 49.99,\r\n    \"description\": \"Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019\",\r\n    \"discount_percent\": 10,\r\n    \"end_of_discount\": \"2024-10-03\",\r\n    \"genre\": \"TPS, online\",\r\n    \"amount\": 10\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover_image",
+									"type": "file",
+									"src": "postman-cloud:///1eecd48b-6871-46f0-977c-db3fcd26fd09"
+								},
+								{
+									"key": "title",
+									"value": "The Division 2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "49.99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019",
+									"type": "text"
+								},
+								{
+									"key": "discount_percent",
+									"value": "20",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "http://localhost:8000/egames/api/games/",
@@ -89,16 +110,37 @@
 						"method": "PUT",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Testnew\",\r\n    \"price\": 15,\r\n    \"description\": \"test\",\r\n    \"discount_percent\": 10,\r\n    \"end_of_discount\": \"2024-10-12\",\r\n    \"genre\": \"testnew\",\r\n    \"amount\": 5\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover_image",
+									"type": "file",
+									"src": "postman-cloud:///1eecd48b-6871-46f0-977c-db3fcd26fd09"
+								},
+								{
+									"key": "title",
+									"value": "The Division 2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "49.99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019",
+									"type": "text"
+								},
+								{
+									"key": "discount_percent",
+									"value": "10",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://localhost:8000/egames/api/games/2/",
+							"raw": "http://localhost:8000/egames/api/games/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -108,7 +150,7 @@
 								"egames",
 								"api",
 								"games",
-								"2",
+								"1",
 								""
 							]
 						}
@@ -139,6 +181,628 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "get_all_roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_role_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_name\": \"viewer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_role",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_name\": \"test2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Staff",
+			"item": [
+				{
+					"name": "get_all_staff",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_staff_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_staff",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"testupdate\",\r\n    \"password\": \"testupdate\",\r\n    \"email\": \"testupdate@gmail.com\",\r\n    \"role_id\": 89\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/5/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_staff",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/6/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "РЕГИСТРАЦИЯ СОТРУДНИКА",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Nikolai\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"nik@gmail.com\",\r\n    \"role_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/sign-up/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"sign-up",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "АВТОРИЗАЦИЯ СОТРУДНИКА",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Nikolai\",\r\n    \"password\": \"qwerty\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/auth/sign-in/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"sign-in",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gamer",
+			"item": [
+				{
+					"name": "get_all_gamers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_gamer_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_gamer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Somebody\",\r\n    \"first_name\": \"Somebody\",\r\n    \"last_name\": \"Nobody\",\r\n    \"birth_date\": \"2001-02-18\",\r\n    \"password\": \"parol\",\r\n    \"email\": \"somebodyupdate@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_gamer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/7/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "РЕГИСТРАЦИЯ ГЕЙМЕРА",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Somebody\",\r\n    \"first_name\": \"Somebody\",\r\n    \"last_name\": \"Nobody\",\r\n    \"birth_date\": \"2001-02-18\",\r\n    \"password\": \"parol\",\r\n    \"email\": \"somebody@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/sign-up/gamer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"sign-up",
+						"gamer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "АВТОРИЗАЦИЯ ГЕЙМЕРА",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": [
+						{
+							"key": "algorithm",
+							"value": "HS256",
+							"type": "string"
+						},
+						{
+							"key": "isSecretBase64Encoded",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "payload",
+							"value": "{}",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "queryParamKey",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "header",
+							"value": "{}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Somebody\",\r\n    \"password\": \"parol\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/auth/sign-in/gamer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"sign-in",
+						"gamer",
+						""
+					]
+				}
+			},
+			"response": []
 		},
 		{
 			"name": "up_server",
