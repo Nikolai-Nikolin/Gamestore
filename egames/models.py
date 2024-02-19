@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, AbstractUser
 from django.db.models import CASCADE
 from django.db.models.functions import datetime
 from django.utils import timezone
+from rest_framework_simplejwt.tokens import Token
 
 
 class Game(models.Model):
@@ -29,6 +30,7 @@ class Genre(models.Model):
 
     title_genre = models.CharField(max_length=50)
     game = models.ManyToManyField(Game)
+    is_deleted = models.BooleanField(default=False)
 
 
 class Gamer(models.Model):
@@ -40,7 +42,8 @@ class Gamer(models.Model):
     last_name = models.CharField(max_length=150, blank=True)
     email = models.EmailField(blank=True)
     password = models.CharField(max_length=100)
-    birth_date = models.DateField(blank=True)
+    birth_date = models.DateField(blank=False, default=None, null=True)
+    is_deleted = models.BooleanField(default=False)
 
 
 class Purchase(models.Model):
@@ -61,6 +64,7 @@ class Review(models.Model):
     rating = models.IntegerField()
     comment = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    is_deleted = models.BooleanField(default=False)
 
 
 class Friend(models.Model):
@@ -90,4 +94,6 @@ class Staff(models.Model):
     password = models.CharField(max_length=100)
     role = models.ForeignKey(Role, on_delete=CASCADE)
     is_deleted = models.BooleanField(default=False)
+
+
 

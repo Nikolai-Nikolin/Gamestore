@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
-from egames.api.views import create_staff
+from egames.api.views import create_staff, create_gamer
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('egames/', include('egames.urls')),
     path('auth/sign-up/', create_staff, name='sign-up'),
+    path('auth/sign-up/gamer/', create_gamer, name='sign-up-gamer'),
+    path('auth/sign-in/gamer/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/sign-in/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/token/verify/', TokenVerifyView.as_view(), name='verify_refresh'),

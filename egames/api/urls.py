@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import (GameList, GameDetail, GameDetailWithDetails,
                     RoleList, RoleDetail, RoleDetailWithDetails,
-                    StaffList, StaffDetail, StaffDetailWithDetails)
+                    StaffList, StaffDetail, StaffDetailWithDetails,
+                    GamerList, GamerDetail, GamerDetailWithDetails)
 
 urlpatterns = [
     path('games/', GameList.as_view(), name='games-list'),
@@ -15,4 +16,8 @@ urlpatterns = [
     path('staff/', StaffList.as_view(), name='staff-list'),
     path('staff/<int:id>/', StaffDetail.as_view(), name='staff-detail'),
     path('staff/<int:id>/details/', StaffDetailWithDetails.as_view(), name='staff-detail-with-details'),
+
+    path('gamer/', GamerList.as_view(), name='gamer-list'),
+    path('gamer/<int:id>/', GamerDetail.as_view(), name='gamer-detail'),
+    path('gamer/<int:id>/details/', GamerDetailWithDetails.as_view(), name='gamer-detail-with-details'),
 ]

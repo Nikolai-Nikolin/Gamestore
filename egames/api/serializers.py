@@ -1,7 +1,7 @@
+from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError, ErrorDetail
-
-from egames.models import Game, Staff, Role
+from egames.models import Game, Staff, Role, Gamer
 
 
 class GameSerializer(serializers.ModelSerializer):
@@ -43,5 +43,32 @@ class StaffSerializer(serializers.ModelSerializer):
                                        'Пожалуйста, выберите другой логин.']
             raise serializers.ValidationError('Сотрудник с таким логином уже существует. '
                                               'Пожалуйста, выберите другой логин.')
+
+        password = validated_data.get('password', None)
+        hashed_password = make_password(password)
+        validated_data['password'] = hashed_password
+
         staff = Staff.objects.create(role=role, **validated_data)
         return staff
+
+
+class GamerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gamer
+        fields = ['id', 'username', 'email', 'password', 'first_name', 'last_name', 'birth_date']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        username = validated_data.get('username', None)
+        if Gamer.objects.filter(username=username).exists():
+            self.errors['username'] = ['Пользователь с таким логином уже существует. '
+                                       'Пожалуйста, выберите другой логин.']
+            raise serializers.ValidationError('Пользователь с таким логином уже существует. '
+                                              'Пожалуйста, выберите другой логин.')
+
+        password = validated_data.get('password', None)
+        hashed_password = make_password(password)
+        validated_data['password'] = hashed_password
+
+        gamer = Gamer.objects.create(**validated_data)
+        return gamer

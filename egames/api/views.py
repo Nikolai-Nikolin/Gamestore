@@ -9,8 +9,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import AccessToken
 
-from egames.models import Game, Role, Staff
-from .serializers import GameSerializer, StaffSerializer, RoleSerializer
+from egames.models import Game, Role, Staff, Gamer
+from .serializers import GameSerializer, StaffSerializer, RoleSerializer, GamerSerializer
 
 
 # ================================== ИГРЫ ==================================
@@ -129,9 +129,10 @@ def get_staff_id_from_token(request):
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         staff_id = access_token['staff_id']
-        return staff_id
+        role_id = access_token['role_id']
+        return staff_id, role_id
     except (AuthenticationFailed, IndexError):
-        return None
+        return None, None
 
 
 @api_view(["POST"])
@@ -191,4 +192,69 @@ class StaffDetailWithDetails(APIView):
     def get(self, request, id):
         staff = self.get_object(id)
         serializer = StaffSerializer(staff)
+        return Response(serializer.data)
+
+
+# ================================== ГЕЙМЕРЫ ==================================
+def get_gamer_id_from_token(request):
+    try:
+        authorization_header = request.headers.get('Authorization')
+        access_token = AccessToken(authorization_header.split()[1])
+        gamer_id = access_token['gamer_id']
+        return gamer_id
+    except (AuthenticationFailed, IndexError):
+        return None
+
+
+@api_view(["POST"])
+def create_gamer(request):
+    serializer = GamerSerializer(data=request.data)
+    if serializer.is_valid():
+        gamers = serializer.save()
+        serializer = GamerSerializer(gamers)
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GamerList(APIView):
+    def get(self, request):
+        gamers = Gamer.objects.all()
+        serializer = GamerSerializer(gamers, many=True)
+        return Response(serializer.data)
+
+
+class GamerDetail(APIView):
+    def get_object(self, id):
+        return get_object_or_404(Gamer, id=id)
+
+    def get(self, request, id):
+        gamer = self.get_object(id)
+        serializer = GamerSerializer(gamer)
+        return Response(serializer.data)
+
+    def put(self, request, id):
+        gamer = self.get_object(id)
+        serializer = GamerSerializer(gamer, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, id):
+        try:
+            gamer = Gamer.objects.get(id=id)
+        except Gamer.DoesNotExist:
+            return Response('Такого пользователя нет!', status=status.HTTP_404_NOT_FOUND)
+        gamer.is_deleted = True
+        gamer.save()
+        return Response('Пользователь успешно удален.', status=status.HTTP_204_NO_CONTENT)
+
+
+class GamerDetailWithDetails(APIView):
+    def get_object(self, id):
+        return get_object_or_404(Staff, id=id)
+
+    def get(self, request, id):
+        gamer = self.get_object(id)
+        serializer = GamerSerializer(gamer)
         return Response(serializer.data)
