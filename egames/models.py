@@ -33,15 +33,10 @@ class Genre(models.Model):
     is_deleted = models.BooleanField(default=False)
 
 
-class Gamer(models.Model):
+class Gamer(User):
     def __str__(self):
-        return self.first_name
+        return self.username
 
-    username = models.CharField(max_length=50, unique=True)
-    first_name = models.CharField(max_length=50, blank=True)
-    last_name = models.CharField(max_length=150, blank=True)
-    email = models.EmailField(blank=True)
-    password = models.CharField(max_length=100)
     birth_date = models.DateField(blank=False, default=None, null=True)
     is_deleted = models.BooleanField(default=False)
 
@@ -85,13 +80,10 @@ class Role(models.Model):
     is_deleted = models.BooleanField(default=False)
 
 
-class Staff(models.Model):
+class Staff(User):
     def __str__(self):
         return self.username
 
-    username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(blank=True)
-    password = models.CharField(max_length=100)
     role = models.ForeignKey(Role, on_delete=CASCADE)
     is_deleted = models.BooleanField(default=False)
 
