@@ -23,6 +23,6 @@ urlpatterns = [
     path('gamer/<int:id>/details/', GamerDetailWithDetails.as_view(), name='gamer-detail-with-details'),
 
     path('genre/', GenreList.as_view(), name='genre-list'),
-    path('genre/<int:id>/', GenreDetail.as_view(), name='genre-detail'),
-    path('genre/<int:id>/details/', GenreDetailWithDetails.as_view(), name='genre-detail-with-details'),
+    path('genre/<str:title_genre>/', GenreDetail.as_view(), name='genre-detail'),
+    path('genre/<str:title_genre>/details/', GenreDetailWithDetails.as_view(), name='genre-detail-with-details'),
 ]

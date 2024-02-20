@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import status, serializers
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, BasePermission
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
@@ -12,16 +12,41 @@ from egames.models import Game, Role, Staff, Gamer, Genre
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
                           GenreSerializer)
+from rest_framework_simplejwt.settings import api_settings
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.exceptions import TokenError
+
+
+def custom_payload_handler(token, user=None, request=None):
+    if user:
+        role_name = user.staff.role.role_name if hasattr(user, 'staff') else None
+        custom_claims = {'role_name': role_name}
+        token['user_id'] = user.id
+        token['token_type'] = 'access'
+        token['exp'] = api_settings.ACCESS_TOKEN_LIFETIME.total_seconds()
+        token.update(custom_claims)
+    return token
+
+
+class IsStaffAdmin(BasePermission):
+    def has_permission(self, request, view):
+        return getattr(request.user, 'role_name', None) == 'admin'
 
 
 # ================================== ИГРЫ ==================================
 class GameList(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         games = Game.objects.all()
         serializer = GameSerializer(games, many=True)
         return Response(serializer.data)
 
     def post(self, request):
+        if not IsStaffAdmin().has_permission(request, self):
+            return Response('Доступ запрещен', status=status.HTTP_403_FORBIDDEN)
+
         serializer = GameSerializer(data=request.data)
         if serializer.is_valid():
             title = serializer.validated_data.get('title')
@@ -129,7 +154,7 @@ def get_staff_id_from_token(request):
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
-        staff_id = access_token['staff_id']
+        staff_id = access_token['user_id']
         role_name = access_token['role_name']
         return staff_id, role_name
     except (AuthenticationFailed, IndexError):
@@ -201,7 +226,7 @@ def get_gamer_id_from_token(request):
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
-        gamer_id = access_token['gamer_id']
+        gamer_id = access_token['user_id']
         return gamer_id
     except (AuthenticationFailed, IndexError):
         return None
@@ -280,25 +305,25 @@ class GenreList(APIView):
 
 
 class GenreDetail(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Genre, id=id)
+    def get_object(self, title_genre):
+        return get_object_or_404(Genre, title_genre=title_genre)
 
-    def get(self, request, id):
-        genre = self.get_object(id)
+    def get(self, request, title_genre):
+        genre = self.get_object(title_genre)
         serializer = GenreSerializer(genre)
         return Response(serializer.data)
 
-    def put(self, request, id):
-        genre = self.get_object(id)
+    def put(self, request, title_genre):
+        genre = self.get_object(title_genre)
         serializer = GenreSerializer(genre, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, id):
+    def delete(self, request, title_genre):
         try:
-            genre = Genre.objects.get(id=id)
+            genre = Genre.objects.get(title_genre=title_genre)
         except Genre.DoesNotExist:
             return Response('Такого жанра нет!', status=status.HTTP_404_NOT_FOUND)
         genre.is_deleted = True
@@ -307,10 +332,10 @@ class GenreDetail(APIView):
 
 
 class GenreDetailWithDetails(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Genre, id=id)
+    def get_object(self, title_genre):
+        return get_object_or_404(Genre, title_genre=title_genre)
 
-    def get(self, request, id):
-        genre = self.get_object(id)
+    def get(self, request, title_genre):
+        genre = self.get_object(title_genre)
         serializer = GenreSerializer(genre)
         return Response(serializer.data)

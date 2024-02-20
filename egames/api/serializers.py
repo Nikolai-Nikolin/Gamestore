@@ -48,11 +48,8 @@ class StaffSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Сотрудник с таким логином уже существует. '
                                               'Пожалуйста, выберите другой логин.')
 
-        password = validated_data.get('password', None)
-        hashed_password = make_password(password)
-        validated_data['password'] = hashed_password
-
-        staff = Staff.objects.create(role=role, **validated_data)
+        staff = Staff.objects.create_user(role=role, **validated_data)
+        staff.is_active = True
         return staff
 
 
@@ -71,15 +68,12 @@ class GamerSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Пользователь с таким логином уже существует. '
                                               'Пожалуйста, выберите другой логин.')
 
-        password = validated_data.get('password', None)
-        hashed_password = make_password(password)
-        validated_data['password'] = hashed_password
-
         birth_date = validated_data.get('birth_date', None)
         if birth_date and (date.today() - birth_date).days < 14 * 365:
             raise serializers.ValidationError('Регистрация доступна только для пользователей старше 14 лет.')
 
-        gamer = Gamer.objects.create(**validated_data)
+        gamer = Gamer.objects.create_user(**validated_data)
+        gamer.is_active = True
         return gamer
 
 
