@@ -22,23 +22,23 @@ class RoleSerializer(serializers.ModelSerializer):
 # ================================== СОТРУДНИКИ ==================================
 class StaffSerializer(serializers.ModelSerializer):
     role = RoleSerializer(read_only=True)
-    role_id = serializers.IntegerField(write_only=True)
+    role_name = serializers.CharField(write_only=True)
 
     class Meta:
         model = Staff
-        fields = ['id', 'username', 'email', 'password', 'role_id', 'role', 'is_deleted']
+        fields = ['id', 'username', 'email', 'password', 'role_name', 'role', 'is_deleted']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        role_id = validated_data.pop('role_id')
+        role_name = validated_data.pop('role_name')
         try:
-            role = Role.objects.get(id=role_id)
+            role = Role.objects.get(role_name=role_name)
         except Role.DoesNotExist:
-            self.errors['role_id'] = ['Такой роли не существует.']
+            self.errors['role_name'] = ['Такой роли не существует.']
             raise serializers.ValidationError('Такой роли не существует.')
 
         if role.is_deleted:
-            self.errors['role_id'] = ['Указанная роль удалена из базы данных.']
+            self.errors['role_name'] = ['Указанная роль удалена из базы данных.']
             raise serializers.ValidationError('Указанная роль удалена из базы данных.')
 
         username = validated_data.get('username', None)

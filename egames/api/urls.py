@@ -11,8 +11,8 @@ urlpatterns = [
     path('games/<int:id>/details/', GameDetailWithDetails.as_view(), name='game-detail-with-details'),
 
     path('roles/', RoleList.as_view(), name='roles-list'),
-    path('roles/<int:id>/', RoleDetail.as_view(), name='role-detail'),
-    path('roles/<int:id>/details/', RoleDetailWithDetails.as_view(), name='role-detail-with-details'),
+    path('roles/<str:role_name>/', RoleDetail.as_view(), name='role-detail'),
+    path('roles/<str:role_name>/details/', RoleDetailWithDetails.as_view(), name='role-detail-with-details'),
 
     path('staff/', StaffList.as_view(), name='staff-list'),
     path('staff/<int:id>/', StaffDetail.as_view(), name='staff-detail'),

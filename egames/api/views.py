@@ -88,25 +88,25 @@ class RoleList(APIView):
 
 
 class RoleDetail(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Role, id=id)
+    def get_object(self, role_name):
+        return get_object_or_404(Role, role_name=role_name)
 
-    def get(self, request, id):
-        role = self.get_object(id)
+    def get(self, request, role_name):
+        role = self.get_object(role_name)
         serializer = RoleSerializer(role)
         return Response(serializer.data)
 
-    def put(self, request, id):
-        role = self.get_object(id)
+    def put(self, request, role_name):
+        role = self.get_object(role_name)
         serializer = RoleSerializer(role, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, id):
+    def delete(self, request, role_name):
         try:
-            role = Role.objects.get(id=id)
+            role = Role.objects.get(role_name=role_name)
         except Role.DoesNotExist:
             return Response('Такой роли нет!', status=status.HTTP_404_NOT_FOUND)
         role.is_deleted = True
@@ -115,11 +115,11 @@ class RoleDetail(APIView):
 
 
 class RoleDetailWithDetails(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Role, id=id)
+    def get_object(self, role_name):
+        return get_object_or_404(Role, role_name=role_name)
 
-    def get(self, request, id):
-        role = self.get_object(id)
+    def get(self, request, role_name):
+        role = self.get_object(role_name)
         serializer = RoleSerializer(role)
         return Response(serializer.data)
 
@@ -130,8 +130,8 @@ def get_staff_id_from_token(request):
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         staff_id = access_token['staff_id']
-        role_id = access_token['role_id']
-        return staff_id, role_id
+        role_name = access_token['role_name']
+        return staff_id, role_name
     except (AuthenticationFailed, IndexError):
         return None, None
 
