@@ -3,7 +3,8 @@ from .views import (GameList, GameDetail, GameDetailWithDetails,
                     RoleList, RoleDetail, RoleDetailWithDetails,
                     StaffList, StaffDetail, StaffDetailWithDetails,
                     GamerList, GamerDetail, GamerDetailWithDetails,
-                    GenreList, GenreDetail, GenreDetailWithDetails)
+                    GenreList, GenreDetail, GenreDetailWithDetails,
+                    buy_and_add_to_library, gamer_purchases, gamer_library, )
 
 urlpatterns = [
     path('games/', GameList.as_view(), name='games-list'),
@@ -25,4 +26,8 @@ urlpatterns = [
     path('genre/', GenreList.as_view(), name='genre-list'),
     path('genre/<str:title_genre>/', GenreDetail.as_view(), name='genre-detail'),
     path('genre/<str:title_genre>/details/', GenreDetailWithDetails.as_view(), name='genre-detail-with-details'),
+
+    path('buy-add-to-library/', buy_and_add_to_library, name='buy_and_add_to_library'),
+    path('get-purchases/', gamer_purchases, name='get-purchases'),
+    path('get-library/', gamer_library, name='gamer_library'),
 ]

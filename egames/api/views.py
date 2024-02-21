@@ -1,25 +1,30 @@
+import sys
+from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework import status, serializers
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, BasePermission
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import AccessToken
-from egames.models import Game, Role, Staff, Gamer, Genre
+from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
-                          GenreSerializer)
+                          GenreSerializer, PurchaseSerializer, LibrarySerializer)
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
 
 
 def custom_payload_handler(token, user=None, request=None):
+    print('Функция вызывается')
     if user:
         role_name = user.staff.role.role_name if hasattr(user, 'staff') else None
+        print(f"Роль из этой функции: {role_name}")
         custom_claims = {'role_name': role_name}
         token['user_id'] = user.id
         token['token_type'] = 'access'
@@ -44,6 +49,7 @@ class GameList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
+        print('Метод вызван')
         if not IsStaffAdmin().has_permission(request, self):
             return Response('Доступ запрещен', status=status.HTTP_403_FORBIDDEN)
 
@@ -150,12 +156,27 @@ class RoleDetailWithDetails(APIView):
 
 
 # ================================== СОТРУДНИКИ ==================================
+# def get_staff_id_from_token(request):
+#     print('Получение токена работает')
+#     try:
+#         authorization_header = request.headers.get('Authorization')
+#         access_token = AccessToken(authorization_header.split()[1])
+#         staff_id = access_token['user_id']
+#         role_name = access_token.payload.get('role_name')
+#         print(f"staff_id: {staff_id}, role_name: {role_name}")
+#         return staff_id, role_name
+#     except (AuthenticationFailed, IndexError, KeyError):
+#         return None, None
+
+
 def get_staff_id_from_token(request):
+    print('Получение токена работает')
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         staff_id = access_token['user_id']
         role_name = access_token['role_name']
+        print(f"staff_id: {staff_id}, role_name: {role_name}")
         return staff_id, role_name
     except (AuthenticationFailed, IndexError):
         return None, None
@@ -163,6 +184,7 @@ def get_staff_id_from_token(request):
 
 @api_view(["POST"])
 def create_staff(request):
+    print('Регистрация работает')
     serializer = StaffSerializer(data=request.data)
     if serializer.is_valid():
         staff = serializer.save()
@@ -223,10 +245,12 @@ class StaffDetailWithDetails(APIView):
 
 # ================================== ГЕЙМЕРЫ ==================================
 def get_gamer_id_from_token(request):
+    print('Получение токена работает')
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         gamer_id = access_token['user_id']
+        print(f"gamer_id: {gamer_id}")
         return gamer_id
     except (AuthenticationFailed, IndexError):
         return None
@@ -234,6 +258,7 @@ def get_gamer_id_from_token(request):
 
 @api_view(["POST"])
 def create_gamer(request):
+    print('Регистрация работает')
     serializer = GamerSerializer(data=request.data)
     if serializer.is_valid():
         gamers = serializer.save()
@@ -339,3 +364,49 @@ class GenreDetailWithDetails(APIView):
         genre = self.get_object(title_genre)
         serializer = GenreSerializer(genre)
         return Response(serializer.data)
+
+
+# ================================== ПОКУПКА ИГРЫ И ДОБАВЛЕНИЕ В БИБЛИОТЕКУ  ==================================
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def buy_and_add_to_library(request):
+    gamer = request.user.gamer
+    game_title = request.data.get('game_title')
+
+    if not game_title:
+        return Response({'message': 'Вы не выбрали игру для покупки!'}, status=400)
+
+    try:
+        game = Game.objects.get(title=game_title)
+    except Game.DoesNotExist:
+        return Response({'message': 'Игра не найдена!'}, status=404)
+
+    existing_game = Library.objects.filter(gamer=gamer, game=game).exists()
+    if existing_game:
+        return Response({'message': 'У вас уже есть такая игра в библиотеке'}, status=400)
+
+    purchase = Purchase.objects.create(gamer=gamer, game=game)
+    purchase_serializer = PurchaseSerializer(purchase)
+
+    library_entry = Library.objects.create(gamer=gamer, game=game)
+    library_serializer = LibrarySerializer(library_entry)
+
+    return Response({'purchase': purchase_serializer.data, 'library_entry': library_serializer.data})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def gamer_purchases(request):
+    gamer = request.user.gamer
+    purchases = Purchase.objects.filter(gamer=gamer)
+    purchase_serializer = PurchaseSerializer(purchases, many=True)
+    return Response({'purchases': purchase_serializer.data})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def gamer_library(request):
+    gamer = request.user.gamer
+    library_entries = Library.objects.filter(gamer=gamer)
+    library_serializer = LibrarySerializer(library_entries, many=True)
+    return Response({'library': library_serializer.data})

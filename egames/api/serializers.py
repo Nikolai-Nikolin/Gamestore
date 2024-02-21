@@ -2,7 +2,7 @@ from datetime import date
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError, ErrorDetail
-from egames.models import Game, Staff, Role, Gamer, Genre
+from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library
 
 
 # ================================== ИГРЫ ==================================
@@ -10,6 +10,34 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = '__all__'
+
+
+# ================================== ПОКУПКИ ==================================
+class PurchaseSerializer(serializers.ModelSerializer):
+    game_title = serializers.SerializerMethodField()
+    game_cover_image = serializers.ImageField(source='game.cover_image')
+    game_description = serializers.CharField(source='game.description')
+
+    def get_game_title(self, obj):
+        return obj.game.title
+
+    class Meta:
+        model = Purchase
+        fields = ('id', 'gamer', 'game', 'game_title', 'game_cover_image', 'game_description', 'timestamp')
+
+
+# ================================== БИБЛИОТЕКА ==================================
+class LibrarySerializer(serializers.ModelSerializer):
+    game_title = serializers.SerializerMethodField()
+    game_cover_image = serializers.ImageField(source='game.cover_image')
+    game_description = serializers.CharField(source='game.description')
+
+    def get_game_title(self, obj):
+        return obj.game.title
+
+    class Meta:
+        model = Library
+        fields = ('id', 'gamer', 'game', 'game_title', 'game_cover_image', 'game_description')
 
 
 # ================================== РОЛИ ==================================
