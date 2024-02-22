@@ -410,3 +410,24 @@ def gamer_library(request):
     library_entries = Library.objects.filter(gamer=gamer)
     library_serializer = LibrarySerializer(library_entries, many=True)
     return Response({'library': library_serializer.data})
+
+
+# ================================== ДОБАВЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
+@api_view(['POST'])
+def add_genre_to_game(request):
+    game_title = request.data.get('game_title')
+    title_genre = request.data.get('title_genre')
+
+    try:
+        game = Game.objects.get(title=game_title)
+    except Game.DoesNotExist:
+        return Response({'message': 'Игра не найдена!'}, status=404)
+
+    try:
+        genre = Genre.objects.get(title_genre=title_genre)
+    except Genre.DoesNotExist:
+        return Response({'message': 'Жанр не найден!'}, status=404)
+
+    genre.game.add(game)
+
+    return Response({'message': 'Жанр успешно добавлен к игре!'})

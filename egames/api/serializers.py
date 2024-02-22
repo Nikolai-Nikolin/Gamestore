@@ -5,39 +5,38 @@ from rest_framework.exceptions import ValidationError, ErrorDetail
 from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library
 
 
+# ================================== ЖАНРЫ ИГР ==================================
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['id', 'title_genre', 'description', 'is_deleted']
+
+
 # ================================== ИГРЫ ==================================
 class GameSerializer(serializers.ModelSerializer):
+    genres = GenreSerializer(many=True, read_only=True, source='genre_set')
+
     class Meta:
         model = Game
-        fields = '__all__'
+        fields = ('id', 'title', 'cover_image', 'price', 'discount_percent', 'description', 'genres')
 
 
 # ================================== ПОКУПКИ ==================================
 class PurchaseSerializer(serializers.ModelSerializer):
-    game_title = serializers.SerializerMethodField()
-    game_cover_image = serializers.ImageField(source='game.cover_image')
-    game_description = serializers.CharField(source='game.description')
-
-    def get_game_title(self, obj):
-        return obj.game.title
+    game = GameSerializer()
 
     class Meta:
         model = Purchase
-        fields = ('id', 'gamer', 'game', 'game_title', 'game_cover_image', 'game_description', 'timestamp')
+        fields = ('id', 'gamer', 'game', 'timestamp')
 
 
 # ================================== БИБЛИОТЕКА ==================================
 class LibrarySerializer(serializers.ModelSerializer):
-    game_title = serializers.SerializerMethodField()
-    game_cover_image = serializers.ImageField(source='game.cover_image')
-    game_description = serializers.CharField(source='game.description')
-
-    def get_game_title(self, obj):
-        return obj.game.title
+    game = GameSerializer()
 
     class Meta:
         model = Library
-        fields = ('id', 'gamer', 'game', 'game_title', 'game_cover_image', 'game_description')
+        fields = ('id', 'gamer', 'game')
 
 
 # ================================== РОЛИ ==================================
@@ -103,10 +102,3 @@ class GamerSerializer(serializers.ModelSerializer):
         gamer = Gamer.objects.create_user(**validated_data)
         gamer.is_active = True
         return gamer
-
-
-# ================================== ЖАНРЫ ИГР ==================================
-class GenreSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        fields = ['id', 'title_genre', 'description', 'is_deleted']

@@ -44,10 +44,19 @@ class Gamer(User):
     is_deleted = models.BooleanField(default=False)
 
 
+# class Purchase(models.Model):
+#     gamer = models.ForeignKey(Gamer, on_delete=models.CASCADE)
+#     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+#     purchase_date = models.DateTimeField(auto_now_add=True)
+
+
 class Purchase(models.Model):
+    def __str__(self):
+        return f'{self.game.title} - {self.timestamp}'
+
     gamer = models.ForeignKey(Gamer, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    purchase_date = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
 
 class Library(models.Model):
