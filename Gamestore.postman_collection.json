@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTIwNjAxLCJpYXQiOjE3MDg1MjAzMDEsImp0aSI6IjE1MmI0NWJjNTBhODQ1NDdhNjQ1ZjNkODFlMjQ3N2QxIiwidXNlcl9pZCI6Mjd9.9pj7bWfDYWCEK1hLQ903U3bPYzBrlctPe2_pTq5chk8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
 									"type": "string"
 								}
 							]
@@ -65,6 +65,16 @@
 				{
 					"name": "create_game",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTkxNjUyLCJpYXQiOjE3MDg1ODg5NTIsImp0aSI6IjYwY2Q2NDZiZGQxOTRmZWM5NTg4ZWU0ZmMzMTdiYTFiIiwidXNlcl9pZCI6MX0.tensljZ4KAfaAja0ysOKmdPBa5caRZF9AEGbhN3u7QM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -184,6 +194,37 @@
 								"api",
 								"games",
 								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_ganre_to_game",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"game_title\": \"The Division 2\",\r\n    \"title_genre\": \"MMO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre-game/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre-game",
 								""
 							]
 						}
@@ -618,6 +659,84 @@
 					"response": []
 				},
 				{
+					"name": "gamer_profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NzA4NzQyLCJpYXQiOjE3MDg3MDYwNDIsImp0aSI6IjI0N2FjMjRhZDQwNTRiMTc5MzE4NTcwOWUyMmM4MGQxIiwidXNlcl9pZCI6Mn0.zASOTWJa-8M_pcIQj89le5yasomLLIOEgV-aerpw2ck",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/profile/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gamer_search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NzA4NzQyLCJpYXQiOjE3MDg3MDYwNDIsImp0aSI6IjI0N2FjMjRhZDQwNTRiMTc5MzE4NTcwOWUyMmM4MGQxIiwidXNlcl9pZCI6Mn0.zASOTWJa-8M_pcIQj89le5yasomLLIOEgV-aerpw2ck",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"gamer2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update_gamer",
 					"request": {
 						"method": "PUT",
@@ -719,7 +838,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer6\",\r\n    \"first_name\": \"dhdhdhdh\",\r\n    \"last_name\": \"dfdbfd\",\r\n    \"birth_date\": \"2005-02-01\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"nobody@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"gamer1\",\r\n    \"first_name\": \"gamer1\",\r\n    \"last_name\": \"gamer1\",\r\n    \"birth_date\": \"2008-02-01\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"gamer1@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -790,7 +909,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer5\",\r\n    \"password\": \"qwerty\"\r\n}",
+							"raw": "{\r\n    \"username\": \"gamer1\",\r\n    \"password\": \"qwerty\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -961,7 +1080,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTIwMDE3LCJpYXQiOjE3MDg1MTk3MTcsImp0aSI6ImMyM2E1ODc0MTY4NDRhYTI5YWE1NWE4ZTQwYTUwNmQxIiwidXNlcl9pZCI6Mjd9.Zpv8PlGd-o2wXTDZfOgNuicoSY8KRLi7XVRi2bE_D44",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
 									"type": "string"
 								}
 							]
@@ -970,7 +1089,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"game_id\": 4\r\n}",
+							"raw": "{\r\n  \"game_title\": \"The Division 2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1002,7 +1121,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTI2ODY4LCJpYXQiOjE3MDg1MjQxNjgsImp0aSI6IjExNzU4YzRhMGQ2MTQ5ODg5YmExNmZmN2JkOWQ1ZmIxIiwidXNlcl9pZCI6MjZ9.EBWwmQ0gBFC8Av1IR8cxUDeh6_bAg_g4-757QOKtGiM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
 									"type": "string"
 								}
 							]
@@ -1033,7 +1152,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTI3MDIzLCJpYXQiOjE3MDg1MjQzMjMsImp0aSI6ImUyMmYzMTE1NjE5NTQzZmFhYzRhMDk3NDczNzU2NjljIiwidXNlcl9pZCI6Mjh9.UXU59HrFRF8H2xpRfazv1_MmsS_FzFXbZHhfoS5ONTQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
 									"type": "string"
 								}
 							]
