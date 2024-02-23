@@ -18,7 +18,8 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ('id', 'title', 'cover_image', 'price', 'discount_percent', 'description', 'genres')
+        fields = ('id', 'title', 'cover_image', 'price', 'discount_percent',
+                  'discount_price', 'description', 'genres')
 
 
 # ================================== ПОКУПКИ ==================================
@@ -84,7 +85,7 @@ class StaffSerializer(serializers.ModelSerializer):
 class GamerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gamer
-        fields = ['id', 'username', 'email', 'password', 'first_name', 'last_name', 'birth_date']
+        fields = ['id', 'username', 'email', 'password', 'first_name', 'last_name', 'birth_date', 'wallet']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -102,3 +103,18 @@ class GamerSerializer(serializers.ModelSerializer):
         gamer = Gamer.objects.create_user(**validated_data)
         gamer.is_active = True
         return gamer
+
+
+class GamerSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gamer
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet']
+        extra_kwargs = {
+            'wallet': {'write_only': True}
+        }
+
+
+class SelfGamerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gamer
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet']

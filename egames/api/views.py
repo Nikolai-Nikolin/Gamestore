@@ -14,7 +14,8 @@ from rest_framework_simplejwt.tokens import AccessToken
 from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
-                          GenreSerializer, PurchaseSerializer, LibrarySerializer)
+                          GenreSerializer, PurchaseSerializer, LibrarySerializer,
+                          GamerSearchSerializer, SelfGamerSerializer)
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
@@ -311,6 +312,29 @@ class GamerDetailWithDetails(APIView):
         return Response(serializer.data)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def gamer_profile(request):
+    gamer = request.user.gamer
+    serializer = SelfGamerSerializer(gamer)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search_gamer(request):
+    username = request.data.get('username', None)
+    if username is not None:
+        try:
+            gamer = Gamer.objects.get(username=username)
+            serializer = GamerSearchSerializer(gamer)
+            return Response(serializer.data)
+        except Gamer.DoesNotExist:
+            return Response('Пользователь с таким никнеймом не найден', status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не ввели никнейм пользователя', status=status.HTTP_400_BAD_REQUEST)
+
+
 # ================================== ЖАНРЫ ИГР ==================================
 class GenreList(APIView):
     def get(self, request):
@@ -374,16 +398,16 @@ def buy_and_add_to_library(request):
     game_title = request.data.get('game_title')
 
     if not game_title:
-        return Response({'message': 'Вы не выбрали игру для покупки!'}, status=400)
+        return Response('Вы не выбрали игру для покупки!', status=400)
 
     try:
         game = Game.objects.get(title=game_title)
     except Game.DoesNotExist:
-        return Response({'message': 'Игра не найдена!'}, status=404)
+        return Response('Игра не найдена!', status=404)
 
     existing_game = Library.objects.filter(gamer=gamer, game=game).exists()
     if existing_game:
-        return Response({'message': 'У вас уже есть такая игра в библиотеке'}, status=400)
+        return Response('У вас уже есть такая игра в библиотеке', status=400)
 
     purchase = Purchase.objects.create(gamer=gamer, game=game)
     purchase_serializer = PurchaseSerializer(purchase)
@@ -421,13 +445,13 @@ def add_genre_to_game(request):
     try:
         game = Game.objects.get(title=game_title)
     except Game.DoesNotExist:
-        return Response({'message': 'Игра не найдена!'}, status=404)
+        return Response('Игра не найдена!', status=404)
 
     try:
         genre = Genre.objects.get(title_genre=title_genre)
     except Genre.DoesNotExist:
-        return Response({'message': 'Жанр не найден!'}, status=404)
+        return Response('Жанр не найден!', status=404)
 
     genre.game.add(game)
 
-    return Response({'message': 'Жанр успешно добавлен к игре!'})
+    return Response('Жанр успешно добавлен к игре!')
