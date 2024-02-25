@@ -41,8 +41,8 @@ class IsStaffAdmin(BasePermission):
 
 # ================================== ИГРЫ ==================================
 class GameList(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         games = Game.objects.all()
@@ -51,8 +51,8 @@ class GameList(APIView):
 
     def post(self, request):
         print('Метод вызван')
-        if not IsStaffAdmin().has_permission(request, self):
-            return Response('Доступ запрещен', status=status.HTTP_403_FORBIDDEN)
+        # if not IsStaffAdmin().has_permission(request, self):
+        #     return Response('Доступ запрещен', status=status.HTTP_403_FORBIDDEN)
 
         serializer = GameSerializer(data=request.data)
         if serializer.is_valid():
@@ -335,6 +335,29 @@ def search_gamer(request):
         return Response('Вы не ввели никнейм пользователя', status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def wallet_deposit(request):
+    gamer = request.user.gamer
+    amount = request.data.get('amount')
+
+    if not amount:
+        return Response('Введите сумму пополнения', status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        amount = float(amount)
+    except ValueError:
+        return Response('Вводить нужно цифры', status=status.HTTP_400_BAD_REQUEST)
+
+    if amount < 0:
+        return Response('Пополнение баланса возможно только на положительное значение')
+
+    gamer.wallet += amount
+    gamer.save()
+
+    return Response(f'Баланс вашего кошелька пополнен на {amount} ecoins и теперь равен {gamer.wallet} ecoins')
+
+
 # ================================== ЖАНРЫ ИГР ==================================
 class GenreList(APIView):
     def get(self, request):
@@ -409,13 +432,22 @@ def buy_and_add_to_library(request):
     if existing_game:
         return Response('У вас уже есть такая игра в библиотеке', status=400)
 
+    if gamer.wallet < game.final_price:
+        return Response('Недостаточно средств на счете для покупки игры. '
+                        'Пожалуйста, пополните баланс вашего кошелька', status=400)
+
+    gamer.wallet -= game.final_price
+    gamer.save()
+
     purchase = Purchase.objects.create(gamer=gamer, game=game)
     purchase_serializer = PurchaseSerializer(purchase)
 
     library_entry = Library.objects.create(gamer=gamer, game=game)
     library_serializer = LibrarySerializer(library_entry)
 
-    return Response({'purchase': purchase_serializer.data, 'library_entry': library_serializer.data})
+    return Response(f'Поздравляем с приобритением игры {game_title}! '
+                    f'Мы уже добавили ее в вашу библиотеку игр. '
+                    f'Посмотреть подробную информацию у покупке можно, перейдя в раздел Purchase')
 
 
 @api_view(['GET'])

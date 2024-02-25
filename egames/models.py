@@ -16,13 +16,12 @@ class Game(models.Model):
     cover_image = models.ImageField(default=None, blank=True)
     price = models.FloatField(null=False)
     discount_percent = models.FloatField(default=0)
-    discount_price = models.FloatField(default=0)
-    end_of_discount = models.DateField(auto_now_add=True)
+    final_price = models.FloatField(default=0)
     description = models.TextField(max_length=200)
     is_deleted = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        self.discount_price = self.price - (self.price * self.discount_percent // 100)
+        self.final_price = self.price - (self.price * self.discount_percent // 100)
         super(Game, self).save(*args, **kwargs)
 
 

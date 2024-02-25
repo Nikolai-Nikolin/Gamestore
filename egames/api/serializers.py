@@ -19,7 +19,7 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'title', 'cover_image', 'price', 'discount_percent',
-                  'discount_price', 'description', 'genres')
+                  'final_price', 'description', 'genres')
 
 
 # ================================== ПОКУПКИ ==================================
@@ -110,7 +110,8 @@ class GamerSearchSerializer(serializers.ModelSerializer):
         model = Gamer
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet']
         extra_kwargs = {
-            'wallet': {'write_only': True}
+            'wallet': {'write_only': True},
+            'email': {'write_only': True}
         }
 
 
