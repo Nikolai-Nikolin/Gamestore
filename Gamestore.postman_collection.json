@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMTI3LCJpYXQiOjE3MDg4NDg0MjcsImp0aSI6Ijc1MjQxZTlkMzJlYjQzYWViNTE5ZmE3ODE3NzA0NWVkIiwidXNlcl9pZCI6MX0.muif6cdzc4ALvHPsKVrkYENErmjYWogk60p4hKCIlfc",
 									"type": "string"
 								}
 							]
@@ -666,7 +666,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NzA4NzQyLCJpYXQiOjE3MDg3MDYwNDIsImp0aSI6IjI0N2FjMjRhZDQwNTRiMTc5MzE4NTcwOWUyMmM4MGQxIiwidXNlcl9pZCI6Mn0.zASOTWJa-8M_pcIQj89le5yasomLLIOEgV-aerpw2ck",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMjM5LCJpYXQiOjE3MDg4NDg1MzksImp0aSI6IjMxMDc3MWNjYmMxNzQzYzdiYTE2ZmNmNzI0ODIyNmZkIiwidXNlcl9pZCI6MX0.MbcuwCnbcC2Qkq-rhY7GsCaG6RHsrQXUHDYbdwyq8tM",
 									"type": "string"
 								}
 							]
@@ -702,7 +702,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NzA4NzQyLCJpYXQiOjE3MDg3MDYwNDIsImp0aSI6IjI0N2FjMjRhZDQwNTRiMTc5MzE4NTcwOWUyMmM4MGQxIiwidXNlcl9pZCI6Mn0.zASOTWJa-8M_pcIQj89le5yasomLLIOEgV-aerpw2ck",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMjM5LCJpYXQiOjE3MDg4NDg1MzksImp0aSI6IjMxMDc3MWNjYmMxNzQzYzdiYTE2ZmNmNzI0ODIyNmZkIiwidXNlcl9pZCI6MX0.MbcuwCnbcC2Qkq-rhY7GsCaG6RHsrQXUHDYbdwyq8tM",
 									"type": "string"
 								}
 							]
@@ -711,7 +711,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer2\"\r\n}",
+							"raw": "{\r\n    \"username\": \"gamer1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -785,6 +785,48 @@
 								"api",
 								"gamer",
 								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gamer_wallet_deposit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMjM5LCJpYXQiOjE3MDg4NDg1MzksImp0aSI6IjMxMDc3MWNjYmMxNzQzYzdiYTE2ZmNmNzI0ODIyNmZkIiwidXNlcl9pZCI6MX0.MbcuwCnbcC2Qkq-rhY7GsCaG6RHsrQXUHDYbdwyq8tM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/wallet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"wallet",
 								""
 							]
 						}
@@ -1080,7 +1122,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMTI3LCJpYXQiOjE3MDg4NDg0MjcsImp0aSI6Ijc1MjQxZTlkMzJlYjQzYWViNTE5ZmE3ODE3NzA0NWVkIiwidXNlcl9pZCI6MX0.muif6cdzc4ALvHPsKVrkYENErmjYWogk60p4hKCIlfc",
 									"type": "string"
 								}
 							]
@@ -1089,7 +1131,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"game_title\": \"The Division 2\"\r\n}",
+							"raw": "{\r\n  \"game_title\": \"The Game\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1121,7 +1163,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUwNjkxLCJpYXQiOjE3MDg4NDc5OTEsImp0aSI6ImVkMzZmOGMwNTUxOTRiYmRhYzI5N2ZmMjZjOTQ3OWY5IiwidXNlcl9pZCI6MX0.eXUJXtOV--GXnqfsUCRBLWekyAgSE_vqKzLRRbOH0Xc",
 									"type": "string"
 								}
 							]
@@ -1152,7 +1194,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjE0NjgyLCJpYXQiOjE3MDg2MTE5ODIsImp0aSI6Ijg3MDAyODRkNmVjYzQzMjI5MjY0NDAwYzY3MmUyNWMwIiwidXNlcl9pZCI6MX0.xlXHrXFB92Cq2u-rvQXgWxec4lx61Nm9HtDnQECOKXE",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUwNjkxLCJpYXQiOjE3MDg4NDc5OTEsImp0aSI6ImVkMzZmOGMwNTUxOTRiYmRhYzI5N2ZmMjZjOTQ3OWY5IiwidXNlcl9pZCI6MX0.eXUJXtOV--GXnqfsUCRBLWekyAgSE_vqKzLRRbOH0Xc",
 									"type": "string"
 								}
 							]
