@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import AccessToken
-from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library
+from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Friend
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
                           GenreSerializer, PurchaseSerializer, LibrarySerializer,
@@ -358,6 +358,36 @@ def wallet_deposit(request):
     return Response(f'Баланс вашего кошелька пополнен на {amount} ecoins и теперь равен {gamer.wallet} ecoins')
 
 
+# ================================== ДОБАВЛЕНИЕ ГЕЙМЕРА В СПИСОК ДРУЗЕЙ ==================================
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_friend(request):
+    username = request.data.get('username', None)
+    if username is not None:
+        try:
+            current_gamer = request.user.gamer
+            friend = Gamer.objects.get(username=username)
+
+            if Friend.objects.filter(gamer=current_gamer, friend=friend).exists():
+                return Response(f'Геймер {friend.username} уже у вас в друзьях',
+                                status=status.HTTP_400_BAD_REQUEST)
+
+            if friend != current_gamer:
+                Friend.objects.create(gamer=current_gamer, friend=friend)
+                return Response(f'Геймер {friend.username} успешно добавлен в ваш список друзей',
+                                status=status.HTTP_200_OK)
+            else:
+                return Response('Вы не можете добавить самого себя в список друзей',
+                                status=status.HTTP_400_BAD_REQUEST)
+
+        except Gamer.DoesNotExist:
+            return Response('Пользователь с таким никнеймом не найден',
+                            status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не ввели никнейм пользователя',
+                        status=status.HTTP_400_BAD_REQUEST)
+
+
 # ================================== ЖАНРЫ ИГР ==================================
 class GenreList(APIView):
     def get(self, request):
@@ -413,6 +443,27 @@ class GenreDetailWithDetails(APIView):
         return Response(serializer.data)
 
 
+# ================================== ДОБАВЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
+@api_view(['POST'])
+def add_genre_to_game(request):
+    game_title = request.data.get('game_title')
+    title_genre = request.data.get('title_genre')
+
+    try:
+        game = Game.objects.get(title=game_title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена!', status=404)
+
+    try:
+        genre = Genre.objects.get(title_genre=title_genre)
+    except Genre.DoesNotExist:
+        return Response('Жанр не найден!', status=404)
+
+    genre.game.add(game)
+
+    return Response('Жанр успешно добавлен к игре!')
+
+
 # ================================== ПОКУПКА ИГРЫ И ДОБАВЛЕНИЕ В БИБЛИОТЕКУ  ==================================
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -466,24 +517,3 @@ def gamer_library(request):
     library_entries = Library.objects.filter(gamer=gamer)
     library_serializer = LibrarySerializer(library_entries, many=True)
     return Response({'library': library_serializer.data})
-
-
-# ================================== ДОБАВЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
-@api_view(['POST'])
-def add_genre_to_game(request):
-    game_title = request.data.get('game_title')
-    title_genre = request.data.get('title_genre')
-
-    try:
-        game = Game.objects.get(title=game_title)
-    except Game.DoesNotExist:
-        return Response('Игра не найдена!', status=404)
-
-    try:
-        genre = Genre.objects.get(title_genre=title_genre)
-    except Genre.DoesNotExist:
-        return Response('Жанр не найден!', status=404)
-
-    genre.game.add(game)
-
-    return Response('Жанр успешно добавлен к игре!')

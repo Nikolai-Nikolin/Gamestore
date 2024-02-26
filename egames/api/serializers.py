@@ -2,7 +2,7 @@ from datetime import date
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError, ErrorDetail
-from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library
+from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library, Friend
 
 
 # ================================== ЖАНРЫ ИГР ==================================
@@ -82,10 +82,30 @@ class StaffSerializer(serializers.ModelSerializer):
 
 
 # ================================== ГЕЙМЕРЫ ==================================
-class GamerSerializer(serializers.ModelSerializer):
+class GamerFriendSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gamer
-        fields = ['id', 'username', 'email', 'password', 'first_name', 'last_name', 'birth_date', 'wallet']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet']
+        extra_kwargs = {
+            'wallet': {'write_only': True},
+            'email': {'write_only': True}
+        }
+
+
+class FriendSerializer(serializers.ModelSerializer):
+    friend = GamerFriendSerializer(read_only=True)
+
+    class Meta:
+        model = Friend
+        fields = ['friend']
+
+
+class GamerSerializer(serializers.ModelSerializer):
+    friends = FriendSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Gamer
+        fields = ['id', 'username', 'email', 'password', 'first_name', 'last_name', 'birth_date', 'wallet', 'friends']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -106,9 +126,11 @@ class GamerSerializer(serializers.ModelSerializer):
 
 
 class GamerSearchSerializer(serializers.ModelSerializer):
+    friends = FriendSerializer(many=True, read_only=True)
+
     class Meta:
         model = Gamer
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet', 'friends']
         extra_kwargs = {
             'wallet': {'write_only': True},
             'email': {'write_only': True}
@@ -116,6 +138,8 @@ class GamerSearchSerializer(serializers.ModelSerializer):
 
 
 class SelfGamerSerializer(serializers.ModelSerializer):
+    friends = FriendSerializer(many=True, read_only=True)
+
     class Meta:
         model = Gamer
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet', 'friends']

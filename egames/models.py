@@ -69,8 +69,8 @@ class Review(models.Model):
 
 
 class Friend(models.Model):
-    gamer = models.ForeignKey(Gamer, related_name='gamer', on_delete=models.CASCADE, default=None)
-    friend = models.ForeignKey(Gamer, related_name='friend', on_delete=models.CASCADE)
+    gamer = models.ForeignKey(Gamer, related_name='friends', on_delete=models.CASCADE)
+    friend = models.ForeignKey(Gamer, on_delete=models.CASCADE)
 
 
 class Wishlist(models.Model):
