@@ -666,7 +666,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMjM5LCJpYXQiOjE3MDg4NDg1MzksImp0aSI6IjMxMDc3MWNjYmMxNzQzYzdiYTE2ZmNmNzI0ODIyNmZkIiwidXNlcl9pZCI6MX0.MbcuwCnbcC2Qkq-rhY7GsCaG6RHsrQXUHDYbdwyq8tM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTI3NzA4LCJpYXQiOjE3MDg5MjUwMDgsImp0aSI6Ijg3MTliMzI1YWExMDQ5MGJiNDI3Yzk0ZWE2ODc3NmI2IiwidXNlcl9pZCI6MX0.gNyUv7XNCN9INaOBD3Zg46LduzGSzEosBd31eSYFIH0",
 									"type": "string"
 								}
 							]
@@ -792,6 +792,48 @@
 					"response": []
 				},
 				{
+					"name": "add_freind",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTI3NzA4LCJpYXQiOjE3MDg5MjUwMDgsImp0aSI6Ijg3MTliMzI1YWExMDQ5MGJiNDI3Yzk0ZWE2ODc3NmI2IiwidXNlcl9pZCI6MX0.gNyUv7XNCN9INaOBD3Zg46LduzGSzEosBd31eSYFIH0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"gamer1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/friends/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"friends",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "gamer_wallet_deposit",
 					"request": {
 						"auth": {
@@ -880,7 +922,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer1\",\r\n    \"first_name\": \"gamer1\",\r\n    \"last_name\": \"gamer1\",\r\n    \"birth_date\": \"2008-02-01\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"gamer1@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"gamer3\",\r\n    \"first_name\": \"gamer3\",\r\n    \"last_name\": \"gamer3\",\r\n    \"birth_date\": \"2001-02-01\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"gamer3@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
