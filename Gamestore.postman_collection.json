@@ -7,397 +7,25 @@
 	},
 	"item": [
 		{
-			"name": "Games",
-			"item": [
-				{
-					"name": "get_all_games",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMTI3LCJpYXQiOjE3MDg4NDg0MjcsImp0aSI6Ijc1MjQxZTlkMzJlYjQzYWViNTE5ZmE3ODE3NzA0NWVkIiwidXNlcl9pZCI6MX0.muif6cdzc4ALvHPsKVrkYENErmjYWogk60p4hKCIlfc",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/games",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"games"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_game_by_id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/games/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"games",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create_game",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTkxNjUyLCJpYXQiOjE3MDg1ODg5NTIsImp0aSI6IjYwY2Q2NDZiZGQxOTRmZWM5NTg4ZWU0ZmMzMTdiYTFiIiwidXNlcl9pZCI6MX0.tensljZ4KAfaAja0ysOKmdPBa5caRZF9AEGbhN3u7QM",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "cover_image",
-									"type": "file",
-									"src": "postman-cloud:///1eecd48b-6871-46f0-977c-db3fcd26fd09"
-								},
-								{
-									"key": "title",
-									"value": "The Division 2",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "49.99",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019",
-									"type": "text"
-								},
-								{
-									"key": "discount_percent",
-									"value": "20",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/games/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"games",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update_game",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "cover_image",
-									"type": "file",
-									"src": "postman-cloud:///1eecd48b-6871-46f0-977c-db3fcd26fd09"
-								},
-								{
-									"key": "title",
-									"value": "The Division 2",
-									"type": "text"
-								},
-								{
-									"key": "price",
-									"value": "49.99",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019",
-									"type": "text"
-								},
-								{
-									"key": "discount_percent",
-									"value": "10",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/games/1/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"games",
-								"1",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_game",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/games/2/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"games",
-								"2",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add_ganre_to_game",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"game_title\": \"The Division 2\",\r\n    \"title_genre\": \"MMO\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/genre-game/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"genre-game",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Roles",
-			"item": [
-				{
-					"name": "get_all_roles",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/roles",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"roles"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_role_by_title",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/roles/test",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"roles",
-								"test"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create_role",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"role_name\": \"viewer\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/roles/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"roles",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update_role",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"role_name\": \"test2\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/roles/test/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"roles",
-								"test",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_role",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/roles/test2/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"roles",
-								"test2",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Staff",
 			"item": [
 				{
 					"name": "get_all_staff",
 					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/staff",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"staff"
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"type": "string"
+								}
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_staff_by_id",
-					"request": {
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/egames/api/staff/3",
+							"raw": "http://localhost:8000/egames/api/staff/getall/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -407,20 +35,34 @@
 								"egames",
 								"api",
 								"staff",
-								"3"
+								"getall",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "update_staff",
+					"name": "staff_profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "PUT",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testupdate\",\r\n    \"password\": \"testupdate\",\r\n    \"email\": \"testupdate@gmail.com\",\r\n    \"role_id\": 89\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -428,7 +70,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/egames/api/staff/5/",
+							"raw": "http://localhost:8000/egames/api/staff/profile/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -438,7 +80,95 @@
 								"egames",
 								"api",
 								"staff",
-								"5",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_staff_profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"testupdate\",\r\n    \"email\": \"testupdate@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/profile/edit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"profile",
+								"edit",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staff_search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"testuser\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"search",
 								""
 							]
 						}
@@ -448,10 +178,29 @@
 				{
 					"name": "delete_staff",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8000/egames/api/staff/6/",
+							"raw": "http://localhost:8000/egames/api/staff/delete/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -461,7 +210,7 @@
 								"egames",
 								"api",
 								"staff",
-								"6",
+								"delete",
 								""
 							]
 						}
@@ -515,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"user6\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"somebody@gmail.com\",\r\n    \"role_name\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"testuser@gmail.com\",\r\n    \"role_name\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -586,7 +335,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"user5\",\r\n    \"password\": \"12345\"\r\n}",
+							"raw": "{\r\n    \"username\": \"testupdate\",\r\n    \"password\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -613,15 +362,25 @@
 			]
 		},
 		{
-			"name": "Gamers",
+			"name": "Roles",
 			"item": [
 				{
-					"name": "get_all_gamers",
+					"name": "get_all_roles",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY0Mjg5LCJpYXQiOjE3MDg5NjE1ODksImp0aSI6IjU2ZWQyNmYzMjJkMzQ3YmY5ZjE2YTdmN2M5M2MwNGRiIiwidXNlcl9pZCI6MX0.DiRKAbcyyYvpAcabzrKqK1EqP3JATPii_9P0qLAiyeo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/egames/api/gamer",
+							"raw": "http://localhost:8000/egames/api/roles",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -630,19 +389,695 @@
 							"path": [
 								"egames",
 								"api",
-								"gamer"
+								"roles"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get_gamer_by_id",
+					"name": "role_search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY0Mjg5LCJpYXQiOjE3MDg5NjE1ODksImp0aSI6IjU2ZWQyNmYzMjJkMzQ3YmY5ZjE2YTdmN2M5M2MwNGRiIiwidXNlcl9pZCI6MX0.DiRKAbcyyYvpAcabzrKqK1EqP3JATPii_9P0qLAiyeo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_name\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY0Mjg5LCJpYXQiOjE3MDg5NjE1ODksImp0aSI6IjU2ZWQyNmYzMjJkMzQ3YmY5ZjE2YTdmN2M5M2MwNGRiIiwidXNlcl9pZCI6MX0.DiRKAbcyyYvpAcabzrKqK1EqP3JATPii_9P0qLAiyeo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_name\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/create/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY0OTg3LCJpYXQiOjE3MDg5NjIyODcsImp0aSI6IjQ5NGFiZjczMTU3NTQzYmNhYmI1M2Q1NjkzNjJiNzk4IiwidXNlcl9pZCI6MX0.YyWcG1uPixVjtQVM3B9svcJud4e8YwIwDz4NNvB_0SQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role_name\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/roles/delete/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"roles",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "get_all_games",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTQyMTY3LCJpYXQiOjE3MDg5Mzk0NjcsImp0aSI6IjVjOGEwMzdjZjVlMDRmOWZiODAwZmNjNDY1N2E2NjBhIiwidXNlcl9pZCI6MX0.wlvZifnb0uxBtJCj3_C8PyB7DxFzmwsU-Fq8EuVIcyU",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/egames/api/gamer/3",
+							"raw": "http://localhost:8000/egames/api/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "game_search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Division 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NTkxNjUyLCJpYXQiOjE3MDg1ODg5NTIsImp0aSI6IjYwY2Q2NDZiZGQxOTRmZWM5NTg4ZWU0ZmMzMTdiYTFiIiwidXNlcl9pZCI6MX0.tensljZ4KAfaAja0ysOKmdPBa5caRZF9AEGbhN3u7QM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover_image",
+									"type": "file",
+									"src": "postman-cloud:///1eecd48b-6871-46f0-977c-db3fcd26fd09"
+								},
+								{
+									"key": "title",
+									"value": "The Division 2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "49.99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019",
+									"type": "text"
+								},
+								{
+									"key": "discount_percent",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/create/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIzNjIyLCJpYXQiOjE3MDkwMjA5MjIsImp0aSI6IjFlZWVlZjE1YzBiYjQxMTJhYzYzNDM1ZDE4ZmYwOWI1IiwidXNlcl9pZCI6NX0.Ze-uQVUWF1VnKDh5qhgUVtKTC66wxPCttEy2Pgs1nqs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover_image",
+									"type": "file",
+									"src": "postman-cloud:///1eecd48b-6871-46f0-977c-db3fcd26fd09"
+								},
+								{
+									"key": "title",
+									"value": "The Division 2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "59.99",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Компьютерная игра в жанре TPS. Выход игры состоялся 15 марта 2019",
+									"type": "text"
+								},
+								{
+									"key": "discount_percent",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/update/The Division 2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"update",
+								"The Division 2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTQyMTY3LCJpYXQiOjE3MDg5Mzk0NjcsImp0aSI6IjVjOGEwMzdjZjVlMDRmOWZiODAwZmNjNDY1N2E2NjBhIiwidXNlcl9pZCI6MX0.wlvZifnb0uxBtJCj3_C8PyB7DxFzmwsU-Fq8EuVIcyU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/delete/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_ganre_to_game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY3NzA2LCJpYXQiOjE3MDg5NjUwMDYsImp0aSI6IjM4ZjU4MTk5YWZmNzQ4ZTQ5ZGIwNDdjMDEyNTFmY2NiIiwidXNlcl9pZCI6MX0.1W-T8_Rw5p8Ddv2JkKMYF86NvueH6Er9yhly-pZDDxo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"game_title\": \"Test2\",\r\n    \"title_genre\": \"MMO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre-game/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre-game",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_ganre_from_game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY3NzA2LCJpYXQiOjE3MDg5NjUwMDYsImp0aSI6IjM4ZjU4MTk5YWZmNzQ4ZTQ5ZGIwNDdjMDEyNTFmY2NiIiwidXNlcl9pZCI6MX0.1W-T8_Rw5p8Ddv2JkKMYF86NvueH6Er9yhly-pZDDxo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"game_title\": \"Test2\",\r\n    \"title_genre\": \"MMO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre-game/delete/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre-game",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "get_all_genres",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIyODQ4LCJpYXQiOjE3MDkwMjAxNDgsImp0aSI6ImU5NTQxNmU5MDBlNzQ4MDRhNDhlZGRiYTBiZjA1OGZjIiwidXNlcl9pZCI6NX0.1eRT1J6ZrfoHzwI5M_yGkbAiszjRc78sGNVLFUO3f4Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "genre_search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title_genre\": \"MMO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_genre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIyODQ4LCJpYXQiOjE3MDkwMjAxNDgsImp0aSI6ImU5NTQxNmU5MDBlNzQ4MDRhNDhlZGRiYTBiZjA1OGZjIiwidXNlcl9pZCI6NX0.1eRT1J6ZrfoHzwI5M_yGkbAiszjRc78sGNVLFUO3f4Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title_genre\": \"test\",\r\n    \"description\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre/create/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_genre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIyODQ4LCJpYXQiOjE3MDkwMjAxNDgsImp0aSI6ImU5NTQxNmU5MDBlNzQ4MDRhNDhlZGRiYTBiZjA1OGZjIiwidXNlcl9pZCI6NX0.1eRT1J6ZrfoHzwI5M_yGkbAiszjRc78sGNVLFUO3f4Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title_genre\": \"Testupdate\",\r\n    \"description\": \"testupdate\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre/update/test/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre",
+								"update",
+								"test",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_genre",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIyODQ4LCJpYXQiOjE3MDkwMjAxNDgsImp0aSI6ImU5NTQxNmU5MDBlNzQ4MDRhNDhlZGRiYTBiZjA1OGZjIiwidXNlcl9pZCI6NX0.1eRT1J6ZrfoHzwI5M_yGkbAiszjRc78sGNVLFUO3f4Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title_genre\": \"Testupdate\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/genre/delete/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"genre",
+								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gamers",
+			"item": [
+				{
+					"name": "get_all_gamers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDE3MzY4LCJpYXQiOjE3MDkwMTQ2NjgsImp0aSI6ImIxYWZlYTU1MWM4YzQyYjg4OGFhNzZjYzY5NzJmZjdlIiwidXNlcl9pZCI6MX0.quzct_OjW9o54j3WUt5AGG5RqrETALuNI1m4BaelgGo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/getall/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -652,7 +1087,8 @@
 								"egames",
 								"api",
 								"gamer",
-								"3"
+								"getall",
+								""
 							]
 						}
 					},
@@ -666,7 +1102,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTI3NzA4LCJpYXQiOjE3MDg5MjUwMDgsImp0aSI6Ijg3MTliMzI1YWExMDQ5MGJiNDI3Yzk0ZWE2ODc3NmI2IiwidXNlcl9pZCI6MX0.gNyUv7XNCN9INaOBD3Zg46LduzGSzEosBd31eSYFIH0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIzOTIwLCJpYXQiOjE3MDkwMjEyMjAsImp0aSI6IjMyNTJhMGE4NDc3MjQyN2RiMzQ2M2I2MTEzZTE1YzA2IiwidXNlcl9pZCI6MX0.K4yrkpPqL1mmZi2cKEj8PgOpaNTdKcvLs7s1-4HFw_8",
 									"type": "string"
 								}
 							]
@@ -685,6 +1121,49 @@
 								"api",
 								"gamer",
 								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_gamer_profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDE4NDA5LCJpYXQiOjE3MDkwMTU3MDksImp0aSI6ImU4ODg4NDBmNzY2YjQ5MTM5OTU4MzAwNDA5YzFmMWM0IiwidXNlcl9pZCI6MX0.RJmFi-sVNTRm3mON8cJPuY1XUsd12wLE8fWNiwCk0Ls",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Nikolai\",\r\n    \"first_name\": \"Nikolai\",\r\n    \"last_name\": \"Nikolin\",\r\n    \"email\": \"nikolai@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/profile/edit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"profile",
+								"edit",
 								""
 							]
 						}
@@ -737,13 +1216,23 @@
 					"response": []
 				},
 				{
-					"name": "update_gamer",
+					"name": "delete_gamer",
 					"request": {
-						"method": "PUT",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDE3NjA0LCJpYXQiOjE3MDkwMTQ5MDQsImp0aSI6IjQ1NDY0OTcwMWMxMDQ2OGI4NWQ4MGFiZDc2OWRkMDc3IiwidXNlcl9pZCI6MX0.K1zeMMFmFoF0_4_qvx8jR2BT9cdytNoNHQIJZwgKjvE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Somebody\",\r\n    \"first_name\": \"Somebody\",\r\n    \"last_name\": \"Nobody\",\r\n    \"birth_date\": \"2001-02-18\",\r\n    \"password\": \"parol\",\r\n    \"email\": \"somebodyupdate@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"test\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -751,7 +1240,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/egames/api/gamer/1/",
+							"raw": "http://localhost:8000/egames/api/gamer/delete/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -761,30 +1250,7 @@
 								"egames",
 								"api",
 								"gamer",
-								"1",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_gamer",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/gamer/7/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"gamer",
-								"7",
+								"delete",
 								""
 							]
 						}
@@ -827,6 +1293,49 @@
 								"api",
 								"gamer",
 								"friends",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_freind",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTM3OTQ3LCJpYXQiOjE3MDg5MzUyNDcsImp0aSI6ImRhNTM1OTcyNGI3ZDQ1OGQ5OWI1NzdjODJhMzc4NzAyIiwidXNlcl9pZCI6MX0.PIxtlkhYBq-9YoZfonoABwHWmW6GBHK8L5YRthk-nvY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"gamer1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/gamer/friends/delete/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"gamer",
+								"friends",
+								"delete",
 								""
 							]
 						}
@@ -922,7 +1431,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer3\",\r\n    \"first_name\": \"gamer3\",\r\n    \"last_name\": \"gamer3\",\r\n    \"birth_date\": \"2001-02-01\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"gamer3@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"test\",\r\n    \"first_name\": \"test3\",\r\n    \"last_name\": \"test3\",\r\n    \"birth_date\": \"2001-02-01\",\r\n    \"password\": \"qwerty\",\r\n    \"email\": \"test3@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -993,7 +1502,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer1\",\r\n    \"password\": \"qwerty\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Nikolai\",\r\n    \"password\": \"qwerty\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1011,140 +1520,6 @@
 								"auth",
 								"sign-in",
 								"gamer",
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Genres",
-			"item": [
-				{
-					"name": "get_all_genres",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/genre",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"genre"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get_genre_by_title",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/genre/FPS",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"genre",
-								"FPS"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create_genre",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title_genre\": \"TPS\",\r\n    \"description\": \"(Third-Person Shooter) Шутер от третьего лица\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/genre/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"genre",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update_genre",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title_genre\": \"Testupdate\",\r\n    \"description\": \"testupdate\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/genre/Test/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"genre",
-								"Test",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_genre",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/egames/api/genre/Testupdate/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"genre",
-								"Testupdate",
 								""
 							]
 						}
@@ -1236,7 +1611,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUwNjkxLCJpYXQiOjE3MDg4NDc5OTEsImp0aSI6ImVkMzZmOGMwNTUxOTRiYmRhYzI5N2ZmMjZjOTQ3OWY5IiwidXNlcl9pZCI6MX0.eXUJXtOV--GXnqfsUCRBLWekyAgSE_vqKzLRRbOH0Xc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIzOTIwLCJpYXQiOjE3MDkwMjEyMjAsImp0aSI6IjMyNTJhMGE4NDc3MjQyN2RiMzQ2M2I2MTEzZTE1YzA2IiwidXNlcl9pZCI6MX0.K4yrkpPqL1mmZi2cKEj8PgOpaNTdKcvLs7s1-4HFw_8",
 									"type": "string"
 								}
 							]
