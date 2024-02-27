@@ -11,12 +11,12 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import AccessToken
-from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Friend
+from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Friend, Wishlist
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
                           GenreSerializer, PurchaseSerializer, LibrarySerializer,
                           GamerSearchSerializer, SelfGamerSerializer, EditGamerProfileSerializer, SelfStaffSerializer,
-                          EditStaffProfileSerializer)
+                          EditStaffProfileSerializer, WishlistSerializer)
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
@@ -560,3 +560,53 @@ def gamer_library(request):
     library_entries = Library.objects.filter(gamer=gamer)
     library_serializer = LibrarySerializer(library_entries, many=True)
     return Response({'library': library_serializer.data})
+
+
+# ================================== ДОБАВЛЕНИЕ ИГРЫ В WISHLIST  ==================================
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_game_to_wishlist(request):
+    gamer = request.user.gamer
+    game_title = request.data.get('game_title')
+    if not game_title:
+        return Response('Вы не выбрали игру для добавления в wishlist!', status=400)
+    try:
+        game = Game.objects.get(title=game_title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена!', status=404)
+    existing_game_wish = Wishlist.objects.filter(gamer=gamer, game=game).exists()
+    if existing_game_wish:
+        return Response('У вас уже есть такая игра в wishlist', status=400)
+    existing_game_lib = Library.objects.filter(gamer=gamer, game=game).exists()
+    if existing_game_lib:
+        return Response('У вас уже есть такая игра в библиотеке', status=400)
+    wishlist = Wishlist.objects.create(gamer=gamer, game=game)
+    wishlist_serializer = WishlistSerializer(wishlist)
+    return Response(f'Вы добавили игру {game_title} в ваш wishlist! '
+                    f'Не откладывайте покупку надолго!')
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_from_wishlist(request):
+    gamer = request.user.gamer
+    game_title = request.data.get('game_title')
+    try:
+        game = Game.objects.get(title=game_title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена', status=404)
+    try:
+        wishlist_item = Wishlist.objects.get(gamer=gamer, game=game)
+        wishlist_item.delete()
+        return Response(f'Игра {game_title} успешно удалена из вашего wishlist!')
+    except Wishlist.DoesNotExist:
+        return Response(f'Игры {game_title} нет в вашем wishlist', status=404)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def gamer_wishlist(request):
+    gamer = request.user.gamer
+    wishlist = Wishlist.objects.filter(gamer=gamer)
+    wishlist_serializer = WishlistSerializer(wishlist, many=True)
+    return Response({'Wishlist': wishlist_serializer.data})

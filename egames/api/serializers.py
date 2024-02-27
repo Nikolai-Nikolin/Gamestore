@@ -2,7 +2,7 @@ from datetime import date
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError, ErrorDetail
-from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library, Friend
+from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library, Friend, Wishlist
 
 
 # ================================== ЖАНРЫ ИГР ==================================
@@ -37,6 +37,15 @@ class LibrarySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Library
+        fields = ('id', 'gamer', 'game')
+
+
+# ================================== ПОКУПКИ ==================================
+class WishlistSerializer(serializers.ModelSerializer):
+    game = GameSerializer()
+
+    class Meta:
+        model = Wishlist
         fields = ('id', 'gamer', 'game')
 
 
