@@ -81,6 +81,25 @@ class StaffSerializer(serializers.ModelSerializer):
         return staff
 
 
+class SelfStaffSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Staff
+        fields = ['id', 'username', 'email']
+
+
+class EditStaffProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Staff
+        fields = ['id', 'username', 'email', 'is_deleted']
+        extra_kwargs = {'username': {'required': False}}
+
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.save()
+        return instance
+
+
 # ================================== ГЕЙМЕРЫ ==================================
 class GamerFriendSerializer(serializers.ModelSerializer):
     class Meta:
@@ -143,3 +162,18 @@ class SelfGamerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gamer
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'birth_date', 'wallet', 'friends']
+
+
+class EditGamerProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gamer
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'birth_date', 'wallet', 'is_deleted']
+        extra_kwargs = {'username': {'required': False}}
+
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get('username', instance.username)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.email = validated_data.get('email', instance.email)
+        instance.save()
+        return instance

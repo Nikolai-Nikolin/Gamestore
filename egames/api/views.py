@@ -15,7 +15,8 @@ from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Fr
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
                           GenreSerializer, PurchaseSerializer, LibrarySerializer,
-                          GamerSearchSerializer, SelfGamerSerializer)
+                          GamerSearchSerializer, SelfGamerSerializer, EditGamerProfileSerializer, SelfStaffSerializer,
+                          EditStaffProfileSerializer)
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
@@ -40,120 +41,131 @@ class IsStaffAdmin(BasePermission):
 
 
 # ================================== ИГРЫ ==================================
-class GameList(APIView):
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        games = Game.objects.all()
-        serializer = GameSerializer(games, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        print('Метод вызван')
-        # if not IsStaffAdmin().has_permission(request, self):
-        #     return Response('Доступ запрещен', status=status.HTTP_403_FORBIDDEN)
-
-        serializer = GameSerializer(data=request.data)
-        if serializer.is_valid():
-            title = serializer.validated_data.get('title')
-            if Game.objects.filter(title=title).exists():
-                return Response('Такая игра уже есть в вашей базе данных', status=status.HTTP_400_BAD_REQUEST)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_all_games(request):
+    games = Game.objects.all()
+    serializer = GameSerializer(games, many=True)
+    return Response(serializer.data)
 
 
-class GameDetail(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Game, id=id)
-
-    def get(self, request, id):
-        game = self.get_object(id)
-        serializer = GameSerializer(game)
-        return Response(serializer.data)
-
-    def put(self, request, id):
-        game = self.get_object(id)
-        serializer = GameSerializer(game, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, id):
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def search_game(request):
+    title = request.data.get('title', None)
+    if title is not None:
         try:
-            game = Game.objects.get(id=id)
+            game = Game.objects.get(title=title)
+            serializer = GameSerializer(game)
+            return Response(serializer.data)
         except Game.DoesNotExist:
-            return Response('Такой игры нет!', status=status.HTTP_404_NOT_FOUND)
-        game.is_deleted = True
-        game.save()
-        return Response('Игра успешно удалена.', status=status.HTTP_204_NO_CONTENT)
+            return Response('Игра с таким названием не найдена', status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не указали название игры', status=status.HTTP_400_BAD_REQUEST)
 
 
-class GameDetailWithDetails(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Game, id=id)
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def create_game(request):
+    serializer = GameSerializer(data=request.data)
+    if serializer.is_valid():
+        title = serializer.validated_data.get('title')
+        if Game.objects.filter(title=title).exists():
+            return Response('Такая игра уже есть в вашей базе данных',
+                            status=status.HTTP_400_BAD_REQUEST)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def get(self, request, id):
-        game = self.get_object(id)
-        serializer = GameSerializer(game)
+
+# @api_view(["PUT"])
+# @permission_classes([IsAuthenticated])
+# def update_game(request):
+#     title = request.data.get('title', None)
+#     game = Game.objects.get(title=title)
+#     serializer = GameSerializer(game, data=request.data)
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(serializer.data)
+#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["PUT"])
+@permission_classes([IsAuthenticated])
+def update_game(request, title):
+    try:
+        game = Game.objects.get(title=title)
+    except Game.DoesNotExist:
+        return Response('Игра с таким названием не найдена', status=status.HTTP_404_NOT_FOUND)
+
+    serializer = GameSerializer(game, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
         return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_game(request):
+    try:
+        title = request.data.get('title', None)
+        game = Game.objects.get(title=title)
+    except Game.DoesNotExist:
+        return Response('Такой игры нет!', status=status.HTTP_404_NOT_FOUND)
+    game.is_deleted = True
+    game.save()
+    return Response('Игра успешно удалена.', status=status.HTTP_204_NO_CONTENT)
 
 
 # ================================== РОЛИ ==================================
-class RoleList(APIView):
-    def get(self, request):
-        roles = Role.objects.all()
-        serializer = RoleSerializer(roles, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = RoleSerializer(data=request.data)
-        if serializer.is_valid():
-            role_name = serializer.validated_data.get('role_name')
-            if Role.objects.filter(role_name=role_name).exists():
-                return Response('Такая роль уже есть в вашей базе данных', status=status.HTTP_400_BAD_REQUEST)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_all_roles(request):
+    roles = Role.objects.all()
+    serializer = RoleSerializer(roles, many=True)
+    return Response(serializer.data)
 
 
-class RoleDetail(APIView):
-    def get_object(self, role_name):
-        return get_object_or_404(Role, role_name=role_name)
-
-    def get(self, request, role_name):
-        role = self.get_object(role_name)
-        serializer = RoleSerializer(role)
-        return Response(serializer.data)
-
-    def put(self, request, role_name):
-        role = self.get_object(role_name)
-        serializer = RoleSerializer(role, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, role_name):
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def search_role(request):
+    role_name = request.data.get('role_name', None)
+    if role_name is not None:
         try:
             role = Role.objects.get(role_name=role_name)
+            serializer = RoleSerializer(role)
+            return Response(serializer.data)
         except Role.DoesNotExist:
-            return Response('Такой роли нет!', status=status.HTTP_404_NOT_FOUND)
+            return Response('Роль с таким названием не найдена', status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не указали название роли', status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def create_role(request):
+    serializer = RoleSerializer(data=request.data)
+    if serializer.is_valid():
+        role_name = serializer.validated_data.get('role_name')
+        if Role.objects.filter(role_name=role_name).exists():
+            return Response('Такая роль уже есть в вашей базе данных',
+                            status=status.HTTP_400_BAD_REQUEST)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_role(request):
+    try:
+        role_name = request.data.get('role_name', None)
+        role = Role.objects.get(role_name=role_name)
         role.is_deleted = True
         role.save()
-        return Response('Роль успешно удалена.', status=status.HTTP_204_NO_CONTENT)
-
-
-class RoleDetailWithDetails(APIView):
-    def get_object(self, role_name):
-        return get_object_or_404(Role, role_name=role_name)
-
-    def get(self, request, role_name):
-        role = self.get_object(role_name)
-        serializer = RoleSerializer(role)
-        return Response(serializer.data)
+    except Role.DoesNotExist:
+        return Response('Такой роли нет!', status=status.HTTP_404_NOT_FOUND)
+    return Response('Роль успешно удалена.', status=status.HTTP_204_NO_CONTENT)
 
 
 # ================================== СОТРУДНИКИ ==================================
@@ -185,7 +197,6 @@ def get_staff_id_from_token(request):
 
 @api_view(["POST"])
 def create_staff(request):
-    print('Регистрация работает')
     serializer = StaffSerializer(data=request.data)
     if serializer.is_valid():
         staff = serializer.save()
@@ -194,64 +205,70 @@ def create_staff(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class StaffList(APIView):
-    def get(self, request):
-        staff = Staff.objects.all()
-        serializer = StaffSerializer(staff, many=True)
-        return Response(serializer.data)
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_all_staff(request):
+    staff = Staff.objects.all()
+    serializer = StaffSerializer(staff, many=True)
+    return Response(serializer.data)
 
 
-class StaffDetail(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Staff, id=id)
-
-    def get(self, request, id):
-        staff = self.get_object(id)
-        serializer = StaffSerializer(staff)
-        return Response(serializer.data)
-
-    def put(self, request, id):
-        staff = self.get_object(id)
-        serializer = StaffSerializer(staff, data=request.data)
-        if serializer.is_valid():
-            role_id = serializer.validated_data.get('role_id', None)
-            if role_id is not None:
-                try:
-                    role = Role.objects.get(id=role_id)
-                except Role.DoesNotExist:
-                    raise serializers.ValidationError('Роль с указанным идентификатором не найдена.')
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, id):
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def search_staff(request):
+    username = request.data.get('username', None)
+    if username is not None:
         try:
-            staff = Staff.objects.get(id=id)
+            staff = Staff.objects.get(username=username)
+            serializer = StaffSerializer(staff)
+            return Response(serializer.data)
         except Staff.DoesNotExist:
-            return Response('Такого сотрудника нет!', status=status.HTTP_404_NOT_FOUND)
-        staff.is_deleted = True
-        staff.save()
-        return Response('Сотрудник успешно удален.', status=status.HTTP_204_NO_CONTENT)
+            return Response('Сотрудник с таким логином не найден', status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не ввели логин сотрудника', status=status.HTTP_400_BAD_REQUEST)
 
 
-class StaffDetailWithDetails(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Staff, id=id)
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_staff(request):
+    try:
+        username = request.data.get('username', None)
+        staff = Staff.objects.get(username=username)
+    except Staff.DoesNotExist:
+        return Response('Такого сотрудника нет!', status=status.HTTP_404_NOT_FOUND)
+    staff.is_deleted = True
+    staff.save()
+    return Response('Сотрудник успешно удален.', status=status.HTTP_204_NO_CONTENT)
 
-    def get(self, request, id):
-        staff = self.get_object(id)
-        serializer = StaffSerializer(staff)
-        return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def staff_profile(request):
+    staff = request.user.staff
+    serializer = SelfStaffSerializer(staff)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def edit_staff_profile(request):
+    staff = request.user.staff
+    serializer = EditStaffProfileSerializer(staff, data=request.data)
+    if serializer.is_valid():
+        new_username = serializer.validated_data.get('username')
+        if new_username and Staff.objects.filter(username=new_username).exclude(id=staff.id).exists():
+            return Response('Сотрудник с таким логином уже существует.', status=400)
+        serializer.save()
+        return Response('Ваш профиль успешно обновлен.')
+    return Response(serializer.errors, status=400)
 
 
 # ================================== ГЕЙМЕРЫ ==================================
 def get_gamer_id_from_token(request):
-    print('Получение токена работает')
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         gamer_id = access_token['user_id']
-        print(f"gamer_id: {gamer_id}")
         return gamer_id
     except (AuthenticationFailed, IndexError):
         return None
@@ -268,48 +285,25 @@ def create_gamer(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class GamerList(APIView):
-    def get(self, request):
-        gamers = Gamer.objects.all()
-        serializer = GamerSerializer(gamers, many=True)
-        return Response(serializer.data)
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_all_gamers(request):
+    gamers = Gamer.objects.all()
+    serializer = GamerSerializer(gamers, many=True)
+    return Response(serializer.data)
 
 
-class GamerDetail(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Gamer, id=id)
-
-    def get(self, request, id):
-        gamer = self.get_object(id)
-        serializer = GamerSerializer(gamer)
-        return Response(serializer.data)
-
-    def put(self, request, id):
-        gamer = self.get_object(id)
-        serializer = GamerSerializer(gamer, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, id):
-        try:
-            gamer = Gamer.objects.get(id=id)
-        except Gamer.DoesNotExist:
-            return Response('Такого пользователя нет!', status=status.HTTP_404_NOT_FOUND)
-        gamer.is_deleted = True
-        gamer.save()
-        return Response('Пользователь успешно удален.', status=status.HTTP_204_NO_CONTENT)
-
-
-class GamerDetailWithDetails(APIView):
-    def get_object(self, id):
-        return get_object_or_404(Gamer, id=id)
-
-    def get(self, request, id):
-        gamer = self.get_object(id)
-        serializer = GamerSerializer(gamer)
-        return Response(serializer.data)
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_gamer(request):
+    try:
+        username = request.data.get('username', None)
+        gamer = Gamer.objects.get(username=username)
+    except Gamer.DoesNotExist:
+        return Response('Геймера с таким никнеймом нет!', status=status.HTTP_404_NOT_FOUND)
+    gamer.is_deleted = True
+    gamer.save()
+    return Response('Геймер успешно удален.', status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET'])
@@ -318,6 +312,20 @@ def gamer_profile(request):
     gamer = request.user.gamer
     serializer = SelfGamerSerializer(gamer)
     return Response(serializer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def edit_gamer_profile(request):
+    gamer = request.user.gamer
+    serializer = EditGamerProfileSerializer(gamer, data=request.data)
+    if serializer.is_valid():
+        new_username = serializer.validated_data.get('username')
+        if new_username and Gamer.objects.filter(username=new_username).exclude(id=gamer.id).exists():
+            return Response('Пользователь с таким логином уже существует.', status=400)
+        serializer.save()
+        return Response('Ваш профиль успешно обновлен.')
+    return Response(serializer.errors, status=400)
 
 
 @api_view(['GET'])
@@ -340,25 +348,20 @@ def search_gamer(request):
 def wallet_deposit(request):
     gamer = request.user.gamer
     amount = request.data.get('amount')
-
     if not amount:
         return Response('Введите сумму пополнения', status=status.HTTP_400_BAD_REQUEST)
-
     try:
         amount = float(amount)
     except ValueError:
         return Response('Вводить нужно цифры', status=status.HTTP_400_BAD_REQUEST)
-
     if amount < 0:
         return Response('Пополнение баланса возможно только на положительное значение')
-
     gamer.wallet += amount
     gamer.save()
-
     return Response(f'Баланс вашего кошелька пополнен на {amount} ecoins и теперь равен {gamer.wallet} ecoins')
 
 
-# ================================== ДОБАВЛЕНИЕ ГЕЙМЕРА В СПИСОК ДРУЗЕЙ ==================================
+# ================================== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ГЕЙМЕРА ИЗ СПИСОК ДРУЗЕЙ ==================================
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_friend(request):
@@ -379,7 +382,30 @@ def add_friend(request):
             else:
                 return Response('Вы не можете добавить самого себя в список друзей',
                                 status=status.HTTP_400_BAD_REQUEST)
+        except Gamer.DoesNotExist:
+            return Response('Пользователь с таким никнеймом не найден',
+                            status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не ввели никнейм пользователя',
+                        status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_friend(request):
+    username = request.data.get('username', None)
+    if username is not None:
+        try:
+            current_gamer = request.user.gamer
+            friend = Gamer.objects.get(username=username)
+
+            if Friend.objects.filter(gamer=current_gamer, friend=friend).exists():
+                Friend.objects.filter(gamer=current_gamer, friend=friend).delete()
+                return Response(f'Геймер {friend.username} успешно удален из вашего списка друзей',
+                                status=status.HTTP_200_OK)
+            else:
+                return Response(f'Геймер {friend.username} не найден в вашем списке друзей',
+                                status=status.HTTP_400_BAD_REQUEST)
         except Gamer.DoesNotExist:
             return Response('Пользователь с таким никнеймом не найден',
                             status=status.HTTP_404_NOT_FOUND)
@@ -389,58 +415,70 @@ def add_friend(request):
 
 
 # ================================== ЖАНРЫ ИГР ==================================
-class GenreList(APIView):
-    def get(self, request):
-        genres = Genre.objects.all()
-        serializer = GenreSerializer(genres, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = GenreSerializer(data=request.data)
-        if serializer.is_valid():
-            title_genre = serializer.validated_data.get('title_genre')
-            if Genre.objects.filter(title_genre=title_genre).exists():
-                return Response('Такой жанр уже есть в вашей базе данных', status=status.HTTP_400_BAD_REQUEST)
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def get_all_genres(request):
+    genres = Genre.objects.all()
+    serializer = GenreSerializer(genres, many=True)
+    return Response(serializer.data)
 
 
-class GenreDetail(APIView):
-    def get_object(self, title_genre):
-        return get_object_or_404(Genre, title_genre=title_genre)
-
-    def get(self, request, title_genre):
-        genre = self.get_object(title_genre)
-        serializer = GenreSerializer(genre)
-        return Response(serializer.data)
-
-    def put(self, request, title_genre):
-        genre = self.get_object(title_genre)
-        serializer = GenreSerializer(genre, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, title_genre):
+@api_view(["GET"])
+@permission_classes([IsAuthenticated])
+def search_genre(request):
+    title_genre = request.data.get('title_genre', None)
+    if title_genre is not None:
         try:
             genre = Genre.objects.get(title_genre=title_genre)
+            serializer = GenreSerializer(genre)
+            return Response(serializer.data)
         except Genre.DoesNotExist:
-            return Response('Такого жанра нет!', status=status.HTTP_404_NOT_FOUND)
-        genre.is_deleted = True
-        genre.save()
-        return Response('Жанр успешно удален.', status=status.HTTP_204_NO_CONTENT)
+            return Response('Игровой жанр с таким названием не найден',
+                            status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response('Вы не указали название игрового жанра',
+                        status=status.HTTP_400_BAD_REQUEST)
 
 
-class GenreDetailWithDetails(APIView):
-    def get_object(self, title_genre):
-        return get_object_or_404(Genre, title_genre=title_genre)
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def create_genre(request):
+    serializer = GenreSerializer(data=request.data)
+    if serializer.is_valid():
+        title_genre = serializer.validated_data.get('title_genre')
+        if Genre.objects.filter(title_genre=title_genre).exists():
+            return Response('Такой игровой жанр уже есть в вашей базе данных',
+                            status=status.HTTP_400_BAD_REQUEST)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def get(self, request, title_genre):
-        genre = self.get_object(title_genre)
-        serializer = GenreSerializer(genre)
+
+@api_view(["PUT"])
+@permission_classes([IsAuthenticated])
+def update_genre(request, title_genre):
+    try:
+        genre = Genre.objects.get(title_genre=title_genre)
+    except Genre.DoesNotExist:
+        return Response('Игровой жанр не найден', status=status.HTTP_404_NOT_FOUND)
+    serializer = GenreSerializer(genre, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
         return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["DELETE"])
+@permission_classes([IsAuthenticated])
+def delete_genre(request):
+    try:
+        title_genre = request.data.get('title_genre', None)
+        genre = Genre.objects.get(title_genre=title_genre)
+    except Genre.DoesNotExist:
+        return Response('Такого игрового жанра нет!', status=status.HTTP_404_NOT_FOUND)
+    genre.is_deleted = True
+    genre.save()
+    return Response('Игровой жанр успешно удален.', status=status.HTTP_204_NO_CONTENT)
 
 
 # ================================== ДОБАВЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
@@ -448,20 +486,32 @@ class GenreDetailWithDetails(APIView):
 def add_genre_to_game(request):
     game_title = request.data.get('game_title')
     title_genre = request.data.get('title_genre')
-
     try:
         game = Game.objects.get(title=game_title)
     except Game.DoesNotExist:
         return Response('Игра не найдена!', status=404)
-
     try:
         genre = Genre.objects.get(title_genre=title_genre)
     except Genre.DoesNotExist:
         return Response('Жанр не найден!', status=404)
-
     genre.game.add(game)
-
     return Response('Жанр успешно добавлен к игре!')
+
+
+@api_view(['DELETE'])
+def delete_genre_from_game(request):
+    game_title = request.data.get('game_title')
+    title_genre = request.data.get('title_genre')
+    try:
+        game = Game.objects.get(title=game_title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена!', status=404)
+    try:
+        genre = Genre.objects.get(title_genre=title_genre)
+    except Genre.DoesNotExist:
+        return Response('Жанр не найден!', status=404)
+    genre.game.remove(game)
+    return Response('Жанр успешно удален из игры!')
 
 
 # ================================== ПОКУПКА ИГРЫ И ДОБАВЛЕНИЕ В БИБЛИОТЕКУ  ==================================
@@ -470,15 +520,12 @@ def add_genre_to_game(request):
 def buy_and_add_to_library(request):
     gamer = request.user.gamer
     game_title = request.data.get('game_title')
-
     if not game_title:
         return Response('Вы не выбрали игру для покупки!', status=400)
-
     try:
         game = Game.objects.get(title=game_title)
     except Game.DoesNotExist:
         return Response('Игра не найдена!', status=404)
-
     existing_game = Library.objects.filter(gamer=gamer, game=game).exists()
     if existing_game:
         return Response('У вас уже есть такая игра в библиотеке', status=400)
@@ -486,16 +533,12 @@ def buy_and_add_to_library(request):
     if gamer.wallet < game.final_price:
         return Response('Недостаточно средств на счете для покупки игры. '
                         'Пожалуйста, пополните баланс вашего кошелька', status=400)
-
     gamer.wallet -= game.final_price
     gamer.save()
-
     purchase = Purchase.objects.create(gamer=gamer, game=game)
     purchase_serializer = PurchaseSerializer(purchase)
-
     library_entry = Library.objects.create(gamer=gamer, game=game)
     library_serializer = LibrarySerializer(library_entry)
-
     return Response(f'Поздравляем с приобритением игры {game_title}! '
                     f'Мы уже добавили ее в вашу библиотеку игр. '
                     f'Посмотреть подробную информацию у покупке можно, перейдя в раздел Purchase')
