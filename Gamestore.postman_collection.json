@@ -537,7 +537,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTQyMTY3LCJpYXQiOjE3MDg5Mzk0NjcsImp0aSI6IjVjOGEwMzdjZjVlMDRmOWZiODAwZmNjNDY1N2E2NjBhIiwidXNlcl9pZCI6MX0.wlvZifnb0uxBtJCj3_C8PyB7DxFzmwsU-Fq8EuVIcyU",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
 									"type": "string"
 								}
 							]
@@ -1588,7 +1588,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/egames/api/get-purchases",
+							"raw": "http://localhost:8000/egames/api/purchases/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1597,7 +1597,8 @@
 							"path": [
 								"egames",
 								"api",
-								"get-purchases"
+								"purchases",
+								""
 							]
 						}
 					},
@@ -1611,7 +1612,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIzOTIwLCJpYXQiOjE3MDkwMjEyMjAsImp0aSI6IjMyNTJhMGE4NDc3MjQyN2RiMzQ2M2I2MTEzZTE1YzA2IiwidXNlcl9pZCI6MX0.K4yrkpPqL1mmZi2cKEj8PgOpaNTdKcvLs7s1-4HFw_8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
 									"type": "string"
 								}
 							]
@@ -1619,7 +1620,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/egames/api/get-library",
+							"raw": "http://localhost:8000/egames/api/library/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1628,7 +1629,122 @@
 							"path": [
 								"egames",
 								"api",
-								"get-library"
+								"library",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/egames/api/wishlist/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"wishlist",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_to_wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"game_title\": \"The GameOver\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/add-to-wishlist/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"add-to-wishlist",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_from_wishlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"game_title\": \"The GameOver\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/delete-from-wishlist/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"delete-from-wishlist",
+								""
 							]
 						}
 					},
