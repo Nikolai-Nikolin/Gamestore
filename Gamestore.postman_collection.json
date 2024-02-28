@@ -537,7 +537,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTEzNjkyLCJpYXQiOjE3MDkxMTA5OTIsImp0aSI6ImNkOGQ5N2E1ZGM5YzRlNTQ5MTY5N2Q3OWM4MTQ5ZWE0IiwidXNlcl9pZCI6MX0.S9-NR_2EAVZ8iF3uwGUhqWykefBWMnFCQ6nmWS-7muY",
 									"type": "string"
 								}
 							]
@@ -841,6 +841,142 @@
 								"api",
 								"genre-game",
 								"delete",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "add_review_to_game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTEzNjkyLCJpYXQiOjE3MDkxMTA5OTIsImp0aSI6ImNkOGQ5N2E1ZGM5YzRlNTQ5MTY5N2Q3OWM4MTQ5ZWE0IiwidXNlcl9pZCI6MX0.S9-NR_2EAVZ8iF3uwGUhqWykefBWMnFCQ6nmWS-7muY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 100,\r\n    \"comment\": \"Отличная игра, все супер!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/review/The Division 2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"review",
+								"The Division 2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTEzNjkyLCJpYXQiOjE3MDkxMTA5OTIsImp0aSI6ImNkOGQ5N2E1ZGM5YzRlNTQ5MTY5N2Q3OWM4MTQ5ZWE0IiwidXNlcl9pZCI6MX0.S9-NR_2EAVZ8iF3uwGUhqWykefBWMnFCQ6nmWS-7muY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\": 100,\r\n    \"comment\": \"Отличная игра, все супер, ваще огонь!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/review/edit/The Division 2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"review",
+								"edit",
+								"The Division 2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTEzNjkyLCJpYXQiOjE3MDkxMTA5OTIsImp0aSI6ImNkOGQ5N2E1ZGM5YzRlNTQ5MTY5N2Q3OWM4MTQ5ZWE0IiwidXNlcl9pZCI6MX0.S9-NR_2EAVZ8iF3uwGUhqWykefBWMnFCQ6nmWS-7muY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/games/review/delete/The Division 2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"games",
+								"review",
+								"delete",
+								"The Division 2",
 								""
 							]
 						}
@@ -1612,7 +1748,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTEwNzM2LCJpYXQiOjE3MDkxMDgwMzYsImp0aSI6ImUzNGIyNDhiZmEzNTQ0ODY5MjA3NDkxNTA1MDZmODJhIiwidXNlcl9pZCI6MX0.67JVd1xsU_esy8weOgFOb8VM9gqUIV8N5mpWzRmXM-4",
 									"type": "string"
 								}
 							]
