@@ -11,12 +11,12 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import AccessToken
-from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Friend, Wishlist
+from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Friend, Wishlist, Review
 from .serializers import (GameSerializer, StaffSerializer,
                           RoleSerializer, GamerSerializer,
                           GenreSerializer, PurchaseSerializer, LibrarySerializer,
                           GamerSearchSerializer, SelfGamerSerializer, EditGamerProfileSerializer, SelfStaffSerializer,
-                          EditStaffProfileSerializer, WishlistSerializer)
+                          EditStaffProfileSerializer, WishlistSerializer, ReviewSerializer)
 from rest_framework_simplejwt.settings import api_settings
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
@@ -78,17 +78,6 @@ def create_game(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view(["PUT"])
-# @permission_classes([IsAuthenticated])
-# def update_game(request):
-#     title = request.data.get('title', None)
-#     game = Game.objects.get(title=title)
-#     serializer = GameSerializer(game, data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(["PUT"])
 @permission_classes([IsAuthenticated])
 def update_game(request, title):
@@ -115,6 +104,71 @@ def delete_game(request):
     game.is_deleted = True
     game.save()
     return Response('Игра успешно удалена.', status=status.HTTP_204_NO_CONTENT)
+
+
+# ================================== ДОБАВЛЕНИЕ ОТЗЫВА К ИГРЕ ==================================
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def add_review_to_game(request, title):
+    gamer = request.user.gamer
+    try:
+        game = Game.objects.get(title=title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена', status=404)
+    existing_review = Review.objects.filter(game=game, gamer=gamer)
+    if existing_review.exists():
+        return Response(f'Отзыв на игру {title} уже был опубликован вами ранее. '
+                        f'Вы можете воспользоваться функцией редактирования отзыва или удаления', status=400)
+    rating = request.data.get('rating')
+    if rating > 100:
+        return Response('Рейтинг не может превышать 100%', status=400)
+    comment = request.data.get('comment')
+    review = Review.objects.create(game=game, gamer=gamer, rating=rating, comment=comment)
+    serializer = ReviewSerializer(review)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def edit_own_review(request, title):
+    gamer = request.user.gamer
+    try:
+        game = Game.objects.get(title=title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена', status=404)
+    try:
+        review = Review.objects.get(game=game, gamer=gamer)
+    except Review.DoesNotExist:
+        return Response(f'Отзыв от геймера {gamer.username} к игре {title} не найден', status=404)
+    if review.gamer != gamer:
+        return Response('У вас нет прав редактировать этот отзыв', status=403)
+    rating = request.data.get('rating')
+    if rating > 100:
+        return Response('Рейтинг не может превышать 100%', status=400)
+    comment = request.data.get('comment')
+    review.rating = rating
+    review.comment = comment
+    review.save()
+    serializer = ReviewSerializer(review)
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_own_review(request, title):
+    gamer = request.user.gamer
+    if title is None:
+        return Response('Не указано название игры для удаления отзыва', status=400)
+    try:
+        game = Game.objects.get(title=title)
+    except Game.DoesNotExist:
+        return Response('Игра не найдена', status=404)
+    try:
+        review = Review.objects.get(game=game, gamer=gamer)
+    except Review.DoesNotExist:
+        return Response(f'Отзыв от геймера {gamer.username} к игре {title} не найден', status=404)
+    review.delete()
+    return Response(f'Ваш отзыв на игру {title} успешно удален')
 
 
 # ================================== РОЛИ ==================================

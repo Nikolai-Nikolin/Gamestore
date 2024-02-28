@@ -2,7 +2,7 @@ from datetime import date
 from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError, ErrorDetail
-from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library, Friend, Wishlist
+from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library, Friend, Wishlist, Review
 
 
 # ================================== ЖАНРЫ ИГР ==================================
@@ -12,14 +12,31 @@ class GenreSerializer(serializers.ModelSerializer):
         fields = ['id', 'title_genre', 'description', 'is_deleted']
 
 
+# ================================== ДОБАВЛЕНИЕ ОТЗЫВА К ИГРЕ ==================================
+class ReviewSerializer(serializers.ModelSerializer):
+    gamer = serializers.ReadOnlyField(source='gamer.username')
+
+    class Meta:
+        model = Review
+        fields = ['gamer', 'rating', 'comment', 'date']
+
+
 # ================================== ИГРЫ ==================================
 class GameSerializer(serializers.ModelSerializer):
     genres = GenreSerializer(many=True, read_only=True, source='genre_set')
+    reviews = ReviewSerializer(many=True, read_only=True)
 
     class Meta:
         model = Game
         fields = ('id', 'title', 'cover_image', 'price', 'discount_percent',
-                  'final_price', 'description', 'genres')
+                  'final_price', 'description', 'genres', 'reviews')
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        reviews = Review.objects.filter(game=instance)
+        review_data = ReviewSerializer(reviews, many=True).data
+        data['reviews'] = review_data
+        return data
 
 
 # ================================== ПОКУПКИ ==================================
