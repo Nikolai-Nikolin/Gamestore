@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MjA0MjQ3LCJpYXQiOjE3MDkyMDE1NDcsImp0aSI6ImFjMTdhYzc1Y2Q0ZTQyZGE5ZDNmODU1M2Q2MTkwNzBmIiwidXNlcl9pZCI6NX0.xHJuRnv8pmHxybY6Q6nG0_MDEH-ALQWSSb_stYgWtDc",
 									"type": "string"
 								}
 							]
@@ -264,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"testuser@gmail.com\",\r\n    \"role_name\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"testuser@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -353,6 +353,48 @@
 								"auth",
 								"sign-in",
 								"staff",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add/edit_role_to_staff",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTk1ODcwLCJpYXQiOjE3MDkxOTMxNzAsImp0aSI6IjAwYjA5ZGIxZDU2YzRkMjFiNWM4NWI1YWQ4MDQyNTY4IiwidXNlcl9pZCI6MTB9.RC0F9IRLqsA-i3Nrcb0HAWPH38KckfB4THKoNX22uA8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user\",\r\n    \"role_name\": \"viewer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/add-role/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"add-role",
 								""
 							]
 						}
@@ -537,7 +579,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTEzNjkyLCJpYXQiOjE3MDkxMTA5OTIsImp0aSI6ImNkOGQ5N2E1ZGM5YzRlNTQ5MTY5N2Q3OWM4MTQ5ZWE0IiwidXNlcl9pZCI6MX0.S9-NR_2EAVZ8iF3uwGUhqWykefBWMnFCQ6nmWS-7muY",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MjA5NDQ3LCJpYXQiOjE3MDkyMDY3NDcsImp0aSI6ImYzMmMwZGNkMjk4OTQ5ODI4OTQ0MzczNWU1NTdhYzgxIiwidXNlcl9pZCI6NX0.lHZ5Ks_6Mw-HXxedcmx81Q30b0fe1bSut8AjcUzLaTs",
 									"type": "string"
 								}
 							]
@@ -566,6 +608,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MjEyNTg2LCJpYXQiOjE3MDkyMDk4ODYsImp0aSI6IjYwNDk3MjI4ZDczMDQwYjZiNWQ2MDkzZDBmMjJjMDZiIiwidXNlcl9pZCI6NX0.lzoZAO2xvy6KMDFgI5qDkFlJtGI1MNbXhyI1zsoQrRs",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
