@@ -237,13 +237,11 @@ def delete_role(request):
 
 
 def get_staff_id_from_token(request):
-    print('Получение токена работает')
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         staff_id = access_token['user_id']
         role_name = access_token['role_name']
-        print(f"staff_id: {staff_id}, role_name: {role_name}")
         return staff_id, role_name
     except (AuthenticationFailed, IndexError):
         return None, None
@@ -315,6 +313,26 @@ def edit_staff_profile(request):
         serializer.save()
         return Response('Ваш профиль успешно обновлен.')
     return Response(serializer.errors, status=400)
+
+
+# ================================== ДОБАВЛЕНИЕ/ИЗМЕНЕНИЕ РОЛИ СОТРУДНИКА ==================================
+@api_view(['POST'])
+def add_role_to_staff(request):
+    staff_name = request.data.get('username')
+    role_name = request.data.get('role_name')
+    try:
+        staff = Staff.objects.get(username=staff_name)
+    except Staff.DoesNotExist:
+        return Response('Сотрудник не найден!', status=404)
+    try:
+        role = Role.objects.get(role_name=role_name)
+    except Role.DoesNotExist:
+        return Response('Роль не найдена!', status=404)
+    if staff.role == role:
+        return Response('Эта роль уже присутствует у сотрудника!', status=400)
+    staff.role = role
+    staff.save()
+    return Response('Роль успешно добавлена к сотруднику!')
 
 
 # ================================== ГЕЙМЕРЫ ==================================
@@ -535,7 +553,7 @@ def delete_genre(request):
     return Response('Игровой жанр успешно удален.', status=status.HTTP_204_NO_CONTENT)
 
 
-# ================================== ДОБАВЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
+# ================================== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
 @api_view(['POST'])
 def add_genre_to_game(request):
     game_title = request.data.get('game_title')

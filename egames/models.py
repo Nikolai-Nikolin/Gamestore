@@ -90,5 +90,5 @@ class Staff(User):
     def __str__(self):
         return self.username
 
-    role = models.ForeignKey(Role, on_delete=CASCADE)
+    role = models.ForeignKey(Role, on_delete=CASCADE, null=True)
     is_deleted = models.BooleanField(default=False)

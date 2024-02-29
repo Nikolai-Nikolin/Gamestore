@@ -76,33 +76,20 @@ class RoleSerializer(serializers.ModelSerializer):
 # ================================== СОТРУДНИКИ ==================================
 class StaffSerializer(serializers.ModelSerializer):
     role = RoleSerializer(read_only=True)
-    role_name = serializers.CharField(write_only=True)
 
     class Meta:
         model = Staff
-        fields = ['id', 'username', 'email', 'password', 'role_name', 'role', 'is_deleted']
+        fields = ['id', 'username', 'email', 'password', 'role', 'is_deleted']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        role_name = validated_data.pop('role_name')
-        try:
-            role = Role.objects.get(role_name=role_name)
-        except Role.DoesNotExist:
-            self.errors['role_name'] = ['Такой роли не существует.']
-            raise serializers.ValidationError('Такой роли не существует.')
-
-        if role.is_deleted:
-            self.errors['role_name'] = ['Указанная роль удалена из базы данных.']
-            raise serializers.ValidationError('Указанная роль удалена из базы данных.')
-
         username = validated_data.get('username', None)
         if Staff.objects.filter(username=username).exists():
-            self.errors['username'] = ['Сотрудник с таким логином уже существует. '
+            self.errors['username'] = ['Пользователь с таким логином уже существует. '
                                        'Пожалуйста, выберите другой логин.']
-            raise serializers.ValidationError('Сотрудник с таким логином уже существует. '
+            raise serializers.ValidationError('Пользователь с таким логином уже существует. '
                                               'Пожалуйста, выберите другой логин.')
-
-        staff = Staff.objects.create_user(role=role, **validated_data)
+        staff = Staff.objects.create_user(**validated_data)
         staff.is_active = True
         return staff
 

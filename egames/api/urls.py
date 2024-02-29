@@ -7,7 +7,7 @@ from .views import (buy_and_add_to_library, gamer_purchases, gamer_library,
                     get_all_gamers, delete_gamer, edit_gamer_profile,
                     get_all_staff, delete_staff, staff_profile, edit_staff_profile, search_staff, get_all_genres,
                     search_genre, create_genre, update_genre, delete_genre, add_game_to_wishlist, gamer_wishlist,
-                    delete_from_wishlist, add_review_to_game, edit_own_review, delete_own_review, )
+                    delete_from_wishlist, add_review_to_game, edit_own_review, delete_own_review, add_role_to_staff, )
 
 urlpatterns = [
     path('games/', get_all_games, name='games-list'),
@@ -31,6 +31,7 @@ urlpatterns = [
     path('staff/profile/edit/', edit_staff_profile, name='edit-staff-profile'),
     path('staff/search/', search_staff, name='staff-search'),
     path('staff/delete/', delete_staff, name='delete-staff'),
+    path('staff/add-role/', add_role_to_staff, name='add-role-to-staff'),
 
     path('gamer/getall/', get_all_gamers, name='get-all-gamers'),
     path('gamer/delete/', delete_gamer, name='delete-gamer'),
