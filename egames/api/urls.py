@@ -1,16 +1,18 @@
 from django.urls import path
+from functools import partial
 from .views import (buy_and_add_to_library, gamer_purchases, gamer_library,
                     add_genre_to_game, delete_genre_from_game, gamer_profile, search_gamer,
                     wallet_deposit, add_friend, delete_friend,
-                    get_all_games, search_game, create_game, update_game, delete_game,
+                    search_game, create_game, update_game, delete_game,
                     get_all_roles, search_role, create_role, delete_role,
                     get_all_gamers, delete_gamer, edit_gamer_profile,
                     get_all_staff, delete_staff, staff_profile, edit_staff_profile, search_staff, get_all_genres,
                     search_genre, create_genre, update_genre, delete_genre, add_game_to_wishlist, gamer_wishlist,
-                    delete_from_wishlist, add_review_to_game, edit_own_review, delete_own_review, add_role_to_staff, )
+                    delete_from_wishlist, add_review_to_game, edit_own_review, delete_own_review, add_role_to_staff,
+                    GetGamesView, )
 
 urlpatterns = [
-    path('games/', get_all_games, name='games-list'),
+    path('games/', GetGamesView.as_view(), name='games-list'),
     path('games/search/', search_game, name='game-search'),
     path('games/create/', create_game, name='create-game'),
     path('games/update/<str:title>/', update_game, name='update-game'),

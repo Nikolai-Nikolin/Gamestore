@@ -1,0 +1,15 @@
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/games/search/
+Игра title не найдена
+Not Found: /egames/api/games/search/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Игра The Division 2ауа не найдена
+Not Found: /egames/api/games/search/
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/genre/create/
+Такой игровой жанр уже есть в вашей базе данных
+Bad Request: /egames/api/genre/create/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Жанр создан пользователем Nikolai
