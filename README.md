@@ -6,4 +6,4 @@
 - Postman
 
 ### Структура базы данных
-![egames_structure.png](image%2Fegames_structure.png)
+![db_structure.png](image%2Fdb_structure.png)

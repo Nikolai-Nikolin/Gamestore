@@ -1,6 +1,4 @@
 .idea
 __pycache__
 settings.py
-notes
-backup_views
-backup_views_1
+app.log

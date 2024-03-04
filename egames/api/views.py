@@ -1,14 +1,7 @@
-import sys
-from django.conf import settings
-from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
-from rest_framework import status, serializers
-from rest_framework.permissions import IsAuthenticated, IsAdminUser, BasePermission
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated, BasePermission
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.views import APIView
-from django.contrib.auth.models import User
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import AccessToken
 from egames.models import Game, Role, Staff, Gamer, Genre, Purchase, Library, Friend, Wishlist, Review
@@ -17,81 +10,39 @@ from .serializers import (GameSerializer, StaffSerializer,
                           GenreSerializer, PurchaseSerializer, LibrarySerializer,
                           GamerSearchSerializer, SelfGamerSerializer, EditGamerProfileSerializer, SelfStaffSerializer,
                           EditStaffProfileSerializer, WishlistSerializer, ReviewSerializer)
-from rest_framework_simplejwt.settings import api_settings
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.exceptions import TokenError
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-# def custom_payload_handler(token, user=None, request=None):
-#     print('Функция вызывается')
-#     if user:
-#         role_name = user.staff.role.role_name if hasattr(user, 'staff') else None
-#         print(f"Роль из этой функции: {role_name}")
-#         custom_claims = {'role_name': role_name}
-#         token['user_id'] = user.id
-#         token['token_type'] = 'access'
-#         token['exp'] = api_settings.ACCESS_TOKEN_LIFETIME.total_seconds()
-#         token.update(custom_claims)
-#     return token
-#
-#
-# class IsStaffAdmin(BasePermission):
-#     def has_permission(self, request, view):
-#         return getattr(request.user, 'role_name', None) == 'admin'
-def check_user_permission(request, name_of_permission):
-    try:
-        access_token = AccessToken(request.headers['Authorization'].split()[1])
-        user_id = access_token.payload['user_id']
-        user = User.objects.get(id=user_id)
-        access_token.payload['role'] = user.role.role_name
-        print(user)
-        if not hasattr(user, 'role'):
-            return False, "Доступ закрыт. Нет указанной роли."
-        if user.role.role_name == 'admin' and user.role.is_deleted == False:
-            if user.has_perm(name_of_permission):
-                return True, None
-            else:
-                return False, "Доступ запрещен. У пользователя нет необходимых прав."
-        else:
-            return False, "Доступ разрешен только для сотрудников с ролью admin."
-    except (KeyError, User.DoesNotExist):
-        return False, "Доступ закрыт."
+# ================================== ПРОВЕРКА РОЛЕЙ СОТРУДНИКОВ ==================================
+def has_specific_role(allowed_roles):
+    class HasSpecificRolePermission(BasePermission):
+        def has_permission(self, request, view):
+            user = request.user
+            return (user.is_authenticated and
+                    user.is_staff and
+                    user.staff.role and
+                    user.staff.role.role_name in allowed_roles)
+
+    return HasSpecificRolePermission
 
 
 # ================================== ИГРЫ ==================================
-# @api_view(["GET"])
-# @permission_classes([IsAuthenticated])
-# def get_all_games(request):
-#     games = Game.objects.all()
-#     serializer = GameSerializer(games, many=True)
-#     return Response(serializer.data)
-
-class GetGamesView(APIView):
-    def get(self, request):
-        access_token = AccessToken(request.headers['Authorization'].split()[1])
-        if access_token.payload.get('role') == 'admin' and access_token.payload.get('is_deleted') == False:
-            permission_result, message = check_user_permission(request, 'add_game_permission')
-            if permission_result:
-                games = Game.objects.all()
-                serializer = GameSerializer(games, many=True)
-                return Response(serializer.data)
-            else:
-                return Response(message, status=status.HTTP_403_FORBIDDEN)
-        else:
-            return Response("Доступ разрешен только для сотрудников с ролью admin.", status=status.HTTP_403_FORBIDDEN)
+@api_view(["GET"])
+def get_all_games(request):
+    games = Game.objects.all()
+    serializer = GameSerializer(games, many=True)
+    return Response(serializer.data)
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
 def search_game(request):
     title = request.data.get('title', None)
     user = request.user
     if title is not None:
         try:
-            game = Game.objects.get(title=title)
+            game = Game.objects.get(title=title, is_deleted=False)
             serializer = GameSerializer(game)
             return Response(serializer.data)
         except Game.DoesNotExist:
@@ -103,7 +54,7 @@ def search_game(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def create_game(request):
     user = request.user
     serializer = GameSerializer(data=request.data)
@@ -121,11 +72,11 @@ def create_game(request):
 
 
 @api_view(["PUT"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor'])])
 def update_game(request, title):
     user = request.user
     try:
-        game = Game.objects.get(title=title)
+        game = Game.objects.get(title=title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра с таким названием не найдена', status=status.HTTP_404_NOT_FOUND)
@@ -140,12 +91,12 @@ def update_game(request, title):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def delete_game(request):
     user = request.user
     try:
         title = request.data.get('title', None)
-        game = Game.objects.get(title=title)
+        game = Game.objects.get(title=title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Такой игры нет!', status=status.HTTP_404_NOT_FOUND)
@@ -163,7 +114,7 @@ def add_review_to_game(request, title):
     user = request.user
     logger.debug(f'Попытка добавления отзыва к игре {title} от геймера {user.username}')
     try:
-        game = Game.objects.get(title=title)
+        game = Game.objects.get(title=title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена', status=404)
@@ -190,7 +141,7 @@ def edit_own_review(request, title):
     user = request.user
     logger.debug(f'Попытка редактирования отзыва для игры {title} от геймера {user.username}')
     try:
-        game = Game.objects.get(title=title)
+        game = Game.objects.get(title=title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена', status=404)
@@ -225,7 +176,7 @@ def delete_own_review(request, title):
         logger.error(f'Пользователь {user.username} не указал название игры для удаления отзыва')
         return Response('Не указано название игры для удаления отзыва', status=400)
     try:
-        game = Game.objects.get(title=title)
+        game = Game.objects.get(title=title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена', status=404)
@@ -241,7 +192,7 @@ def delete_own_review(request, title):
 
 # ================================== РОЛИ ==================================
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor', 'viewer'])])
 def get_all_roles(request):
     roles = Role.objects.all()
     serializer = RoleSerializer(roles, many=True)
@@ -251,13 +202,13 @@ def get_all_roles(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor', 'viewer'])])
 def search_role(request):
     role_name = request.data.get('role_name', None)
     user = request.user
     if role_name is not None:
         try:
-            role = Role.objects.get(role_name=role_name)
+            role = Role.objects.get(role_name=role_name, is_deleted=False)
             serializer = RoleSerializer(role)
             logger.info(f'Роль {role_name} найдена для пользователя {user.username}')
             return Response(serializer.data)
@@ -270,7 +221,7 @@ def search_role(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def create_role(request):
     user = request.user
     serializer = RoleSerializer(data=request.data)
@@ -288,12 +239,12 @@ def create_role(request):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def delete_role(request):
     user = request.user
     try:
         role_name = request.data.get('role_name', None)
-        role = Role.objects.get(role_name=role_name)
+        role = Role.objects.get(role_name=role_name, is_deleted=False)
         role.is_deleted = True
         role.save()
     except Role.DoesNotExist:
@@ -304,28 +255,14 @@ def delete_role(request):
 
 
 # ================================== СОТРУДНИКИ ==================================
-# def get_staff_id_from_token(request):
-#     print('Получение токена работает')
-#     try:
-#         authorization_header = request.headers.get('Authorization')
-#         access_token = AccessToken(authorization_header.split()[1])
-#         staff_id = access_token['user_id']
-#         role_name = access_token.payload.get('role_name')
-#         print(f"staff_id: {staff_id}, role_name: {role_name}")
-#         return staff_id, role_name
-#     except (AuthenticationFailed, IndexError, KeyError):
-#         return None, None
-
-
 def get_staff_id_from_token(request):
     try:
         authorization_header = request.headers.get('Authorization')
         access_token = AccessToken(authorization_header.split()[1])
         staff_id = access_token['user_id']
-        role_name = access_token['role_name']
-        return staff_id, role_name
+        return staff_id
     except (AuthenticationFailed, IndexError):
-        return None, None
+        return None
 
 
 @api_view(["POST"])
@@ -339,7 +276,7 @@ def create_staff(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor', 'viewer'])])
 def get_all_staff(request):
     staff = Staff.objects.all()
     serializer = StaffSerializer(staff, many=True)
@@ -349,13 +286,13 @@ def get_all_staff(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor', 'viewer'])])
 def search_staff(request):
     username = request.data.get('username', None)
     user = request.user
     if username is not None:
         try:
-            staff = Staff.objects.get(username=username)
+            staff = Staff.objects.get(username=username, is_deleted=False)
             serializer = StaffSerializer(staff)
             logger.info(f'Успешный поиск сотрудника для пользователя {user.username}.')
             return Response(serializer.data)
@@ -368,12 +305,12 @@ def search_staff(request):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def delete_staff(request):
     user = request.user
     try:
         username = request.data.get('username', None)
-        staff = Staff.objects.get(username=username)
+        staff = Staff.objects.get(username=username, is_deleted=False)
     except Staff.DoesNotExist:
         logger.error(f'Попытка поиска несуществующего сотрудника пользователем {user.username}')
         return Response('Такого сотрудника нет!', status=status.HTTP_404_NOT_FOUND)
@@ -384,7 +321,7 @@ def delete_staff(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor', 'viewer'])])
 def staff_profile(request):
     staff = request.user.staff
     serializer = SelfStaffSerializer(staff)
@@ -394,7 +331,7 @@ def staff_profile(request):
 
 
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor', 'viewer'])])
 def edit_staff_profile(request):
     staff = request.user.staff
     serializer = EditStaffProfileSerializer(staff, data=request.data)
@@ -418,14 +355,14 @@ def add_role_to_staff(request):
     role_name = request.data.get('role_name')
     user = request.user
     try:
-        staff = Staff.objects.get(username=staff_name)
+        staff = Staff.objects.get(username=staff_name, is_deleted=False)
     except Staff.DoesNotExist:
-        logger.error(f'Попытка поиска несуществующего сотрудника пользователем {user.username}')
+        logger.error(f'Попытка поиска сотрудника пользователем {user.username}')
         return Response('Сотрудник не найден!', status=404)
     try:
-        role = Role.objects.get(role_name=role_name)
+        role = Role.objects.get(role_name=role_name, is_deleted=False)
     except Role.DoesNotExist:
-        logger.error(f'Попытка поиска несуществующей роли пользователем {user.username}')
+        logger.error(f'Попытка поиска роли пользователем {user.username}')
         return Response('Роль не найдена!', status=404)
     if staff.role == role:
         logger.error(f'Попытка добавления к сотруднику уже имеющейся у него роли пользователем {user.username}')
@@ -469,14 +406,14 @@ def get_all_gamers(request):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def delete_gamer(request):
     user = request.user
     try:
         username = request.data.get('username', None)
-        gamer = Gamer.objects.get(username=username)
+        gamer = Gamer.objects.get(username=username, is_deleted=False)
     except Gamer.DoesNotExist:
-        logger.error(f'Попытка поиска несуществующей роли пользователем {user.username}')
+        logger.error(f'Попытка поиска роли пользователем {user.username}')
         return Response('Геймера с таким никнеймом нет!', status=status.HTTP_404_NOT_FOUND)
     gamer.is_deleted = True
     gamer.save()
@@ -502,7 +439,7 @@ def edit_gamer_profile(request):
     user = request.user
     if serializer.is_valid():
         new_username = serializer.validated_data.get('username')
-        if new_username and Gamer.objects.filter(username=new_username).exclude(id=gamer.id).exists():
+        if new_username and Gamer.objects.filter(username=new_username, is_deleted=False).exclude(id=gamer.id).exists():
             logger.error(f'Попытка изменения логина на уже существующий пользователем {user.username}')
             return Response(f'Пользователь с логином {gamer.username} уже существует.', status=400)
         serializer.save()
@@ -519,7 +456,7 @@ def search_gamer(request):
     user = request.user
     if username is not None:
         try:
-            gamer = Gamer.objects.get(username=username)
+            gamer = Gamer.objects.get(username=username, is_deleted=False)
             serializer = GamerSearchSerializer(gamer)
             return Response(serializer.data)
         except Gamer.DoesNotExist:
@@ -553,7 +490,7 @@ def wallet_deposit(request):
     return Response(f'Баланс вашего кошелька пополнен на {amount} ecoins и теперь равен {gamer.wallet} ecoins')
 
 
-# ================================== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ГЕЙМЕРА ИЗ СПИСОК ДРУЗЕЙ ==================================
+# ================================== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ГЕЙМЕРА ИЗ СПИСКА ДРУЗЕЙ ==================================
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_friend(request):
@@ -562,7 +499,7 @@ def add_friend(request):
     if username is not None:
         try:
             current_gamer = request.user.gamer
-            friend = Gamer.objects.get(username=username)
+            friend = Gamer.objects.get(username=username, is_deleted=False)
 
             if Friend.objects.filter(gamer=current_gamer, friend=friend).exists():
                 logger.error(f'Попытка пользователем {user.username} добавления в друзья уже своего друга')
@@ -595,7 +532,7 @@ def delete_friend(request):
     if username is not None:
         try:
             current_gamer = request.user.gamer
-            friend = Gamer.objects.get(username=username)
+            friend = Gamer.objects.get(username=username, is_deleted=False)
 
             if Friend.objects.filter(gamer=current_gamer, friend=friend).exists():
                 Friend.objects.filter(gamer=current_gamer, friend=friend).delete()
@@ -634,7 +571,7 @@ def search_genre(request):
     user = request.user
     if title_genre is not None:
         try:
-            genre = Genre.objects.get(title_genre=title_genre)
+            genre = Genre.objects.get(title_genre=title_genre, is_deleted=False)
             serializer = GenreSerializer(genre)
             user = request.user
             logger.info(f'Поиск жанра для {user.username}')
@@ -650,13 +587,13 @@ def search_genre(request):
 
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def create_genre(request):
     serializer = GenreSerializer(data=request.data)
     user = request.user
     if serializer.is_valid():
         title_genre = serializer.validated_data.get('title_genre')
-        if Genre.objects.filter(title_genre=title_genre).exists():
+        if Genre.objects.filter(title_genre=title_genre, is_deleted=False).exists():
             logger.error(f'Попытка пользователя {user.username} создать уже имеющийся жанр')
             return Response('Такой игровой жанр уже есть в вашей базе данных',
                             status=status.HTTP_400_BAD_REQUEST)
@@ -668,13 +605,13 @@ def create_genre(request):
 
 
 @api_view(["PUT"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin', 'editor'])])
 def update_genre(request, title_genre):
     user = request.user
     try:
-        genre = Genre.objects.get(title_genre=title_genre)
+        genre = Genre.objects.get(title_genre=title_genre, is_deleted=False)
     except Genre.DoesNotExist:
-        logger.error(f'Попытка поиска несуществующего жанра пользователем {user.username}')
+        logger.error(f'Попытка поиска жанра пользователем {user.username}')
         return Response('Игровой жанр не найден', status=status.HTTP_404_NOT_FOUND)
     serializer = GenreSerializer(genre, data=request.data, partial=True)
     if serializer.is_valid():
@@ -686,12 +623,12 @@ def update_genre(request, title_genre):
 
 
 @api_view(["DELETE"])
-@permission_classes([IsAuthenticated])
+@permission_classes([has_specific_role(['admin'])])
 def delete_genre(request):
     user = request.user
     try:
         title_genre = request.data.get('title_genre', None)
-        genre = Genre.objects.get(title_genre=title_genre)
+        genre = Genre.objects.get(title_genre=title_genre, is_deleted=False)
     except Genre.DoesNotExist:
         logger.error(f'Попытка поиска несуществующего жанра пользователем {user.username}')
         return Response('Такого игрового жанра нет!', status=status.HTTP_404_NOT_FOUND)
@@ -703,17 +640,18 @@ def delete_genre(request):
 
 # ================================== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
 @api_view(['POST'])
+@permission_classes([has_specific_role(['admin', 'editor'])])
 def add_genre_to_game(request):
     game_title = request.data.get('game_title')
     title_genre = request.data.get('title_genre')
     user = request.user
     try:
-        game = Game.objects.get(title=game_title)
+        game = Game.objects.get(title=game_title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена!', status=404)
     try:
-        genre = Genre.objects.get(title_genre=title_genre)
+        genre = Genre.objects.get(title_genre=title_genre, is_deleted=False)
     except Genre.DoesNotExist:
         logger.error(f'Попытка поиска несуществующего жанра пользователем {user.username}')
         return Response('Жанр не найден!', status=404)
@@ -723,17 +661,18 @@ def add_genre_to_game(request):
 
 
 @api_view(['DELETE'])
+@permission_classes([has_specific_role(['admin', 'editor'])])
 def delete_genre_from_game(request):
     game_title = request.data.get('game_title')
     title_genre = request.data.get('title_genre')
     user = request.user
     try:
-        game = Game.objects.get(title=game_title)
+        game = Game.objects.get(title=game_title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена!', status=404)
     try:
-        genre = Genre.objects.get(title_genre=title_genre)
+        genre = Genre.objects.get(title_genre=title_genre, is_deleted=False)
     except Genre.DoesNotExist:
         logger.error(f'Попытка поиска несуществующего жанра пользователем {user.username}')
         return Response('Жанр не найден!', status=404)
@@ -753,7 +692,7 @@ def buy_and_add_to_library(request):
         logger.error(f'Попытка выбора игры для покупки пользователем {user.username}')
         return Response('Вы не выбрали игру для покупки!', status=400)
     try:
-        game = Game.objects.get(title=game_title)
+        game = Game.objects.get(title=game_title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена!', status=404)
@@ -811,7 +750,7 @@ def add_game_to_wishlist(request):
         logger.error(f'Попытка выбора игры для добавления в wishlist пользователем {user.username}')
         return Response('Вы не выбрали игру для добавления в wishlist!', status=400)
     try:
-        game = Game.objects.get(title=game_title)
+        game = Game.objects.get(title=game_title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена!', status=404)
@@ -837,7 +776,7 @@ def delete_from_wishlist(request):
     game_title = request.data.get('game_title')
     user = request.user
     try:
-        game = Game.objects.get(title=game_title)
+        game = Game.objects.get(title=game_title, is_deleted=False)
     except Game.DoesNotExist:
         logger.error(f'Попытка поиска несуществующей игры пользователем {user.username}')
         return Response('Игра не найдена', status=404)

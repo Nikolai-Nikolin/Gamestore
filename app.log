@@ -13,3 +13,448 @@ Bad Request: /egames/api/genre/create/
 C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
 Watching for file changes with StatReloader
 ∆анр создан пользователем Nikolai
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+Unauthorized: /egames/api/staff/add-role/
+Forbidden: /egames/api/games/
+Forbidden: /egames/api/games/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\Gamestore\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\Gamestore\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Bad Request: /auth/sign-up/staff/
+Bad Request: /auth/sign-up/staff/
+C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+Internal Server Error: /egames/api/games/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 57, in has_permission
+    return user.is_authenticated and user.is_staff and user.role.role_name == 'admin'
+                                                       ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'role'
+Unauthorized: /egames/api/staff/add-role/
+Unauthorized: /egames/api/staff/getall/
+Internal Server Error: /egames/api/games/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 57, in has_permission
+    return user.is_authenticated and user.is_staff and user.role.role_name == 'admin'
+                                                       ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'role'
+C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /egames/api/games/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 57, in has_permission
+    return user.is_authenticated and user.is_staff and user.role.role_name == 'admin'
+                                                       ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'role'
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+Forbidden: /egames/api/games/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Unauthorized: /auth/sign-in/staff/
+Forbidden: /egames/api/staff/getall/
+Internal Server Error: /egames/api/staff/getall/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
+    if not permission.has_permission(request, self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 31, in has_permission
+    return user.is_authenticated and user.is_staff and user.staff.role.role_name == 'admin'
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'role_name'
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/games/
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/staff/add-role/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /egames/api/staff/getall/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 331, in check_permissions
+    for permission in self.get_permissions():
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 278, in get_permissions
+    return [permission() for permission in self.permission_classes]
+            ^^^^^^^^^^^^
+TypeError: 'HasRolePermission' object is not callable
+Internal Server Error: /egames/api/staff/getall/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 331, in check_permissions
+    for permission in self.get_permissions():
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 278, in get_permissions
+    return [permission() for permission in self.permission_classes]
+            ^^^^^^^^^^^^
+TypeError: 'HasRolePermission' object is not callable
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /egames/api/staff/getall/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
+    self.check_permissions(request)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 331, in check_permissions
+    for permission in self.get_permissions():
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 278, in get_permissions
+    return [permission() for permission in self.permission_classes]
+            ^^^^^^^^^^^^
+TypeError: 'HasSpecificRolePermission' object is not callable
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden: /egames/api/staff/getall/
+Forbidden: /egames/api/staff/getall/
+Watching for file changes with StatReloader
+ѕопытка поиска несуществующей игры пользователем 
+Not Found: /egames/api/games/search/
+Unauthorized: /egames/api/games/create/
+Forbidden: /egames/api/games/create/
+Forbidden: /egames/api/games/create/
+Forbidden: /egames/api/games/create/
+Forbidden: /egames/api/games/update/The Division 2/
+ѕопытка поиска несуществующей игры пользователем user_editor
+Not Found: /egames/api/games/update/Test gameeeee/
+Forbidden: /egames/api/games/delete/
+ѕопытка поиска несуществующей игры пользователем user_admin
+Not Found: /egames/api/games/delete/
+Forbidden: /egames/api/genre-game/
+Forbidden: /egames/api/genre-game/
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/genre-game/delete/
+Forbidden: /egames/api/genre-game/delete/
+Unauthorized: /egames/api/genre/search/
+Unauthorized: /egames/api/staff/profile/
+Forbidden: /egames/api/staff/profile/
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/staff/profile/edit/
+Ќеверные данные, предоставленные дл€ обновлени€ профил€ пользователем user_admin
+Bad Request: /egames/api/staff/profile/edit/
+Ќеверные данные, предоставленные дл€ обновлени€ профил€ пользователем Nikolai
+Bad Request: /egames/api/gamer/profile/edit/
+Ќеверные данные, предоставленные дл€ обновлени€ профил€ пользователем user_admin
+Bad Request: /egames/api/staff/profile/edit/
+Ќеверные данные, предоставленные дл€ обновлени€ профил€ пользователем user_admin
+Bad Request: /egames/api/staff/profile/edit/
+Unauthorized: /egames/api/staff/search/
+Forbidden: /egames/api/staff/search/
+ѕопытка поиска сотрудника пользователем user_admin
+Not Found: /egames/api/staff/search/
+Watching for file changes with StatReloader
+ѕопытка поиска несуществующей игры пользователем 
+Not Found: /egames/api/games/search/
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/roles/
+Internal Server Error: /egames/api/roles/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 206, in get_all_roles
+    roles = Role.objects.all(is_deleted=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BaseManager.all() got an unexpected keyword argument 'is_deleted'
+C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Unauthorized: /egames/api/roles/search/
+–оль test не найдена дл€ пользовател€ user_admin
+Not Found: /egames/api/roles/search/
+Watching for file changes with StatReloader
+ѕопытка поиска несуществующей игры пользователем user_admin
+Not Found: /egames/api/genre-game/
+ѕопытка поиска несуществующего жанра пользователем user_admin
+Not Found: /egames/api/genre-game/
+ѕопытка поиска несуществующей игры пользователем Nikolai
+Not Found: /egames/api/buy-add-to-library/
+ѕопытка поиска несуществующей игры пользователем Nikolai
+Not Found: /egames/api/add-to-wishlist/
+Unauthorized: /egames/api/gamer/getall/
+Unauthorized: /egames/api/gamer/friends/
+Nikolai - попытка добавить в друзь€ самого себ€
+Bad Request: /egames/api/gamer/friends/
+Unauthorized: /egames/api/gamer/friends/delete/
+√еймер gamer1 не найден в списке друзей Nikolai
+Bad Request: /egames/api/gamer/friends/delete/
+ѕопытка пользователем Nikolai поиска геймера
+Not Found: /egames/api/gamer/friends/delete/

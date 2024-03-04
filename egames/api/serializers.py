@@ -1,7 +1,5 @@
 from datetime import date
-from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError, ErrorDetail
 from egames.models import Game, Staff, Role, Gamer, Genre, Purchase, Library, Friend, Wishlist, Review
 
 
@@ -29,7 +27,7 @@ class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = ('id', 'title', 'cover_image', 'price', 'discount_percent',
-                  'final_price', 'description', 'genres', 'reviews')
+                  'final_price', 'is_deleted', 'description', 'genres', 'reviews')
 
     def to_representation(self, instance):
         data = super().to_representation(instance)
@@ -75,11 +73,11 @@ class RoleSerializer(serializers.ModelSerializer):
 
 # ================================== СОТРУДНИКИ ==================================
 class StaffSerializer(serializers.ModelSerializer):
-    role = RoleSerializer(read_only=True)
+    role_name = serializers.StringRelatedField(source='role.role_name', read_only=True)
 
     class Meta:
         model = Staff
-        fields = ['id', 'username', 'email', 'password', 'role', 'is_deleted']
+        fields = ['id', 'username', 'email', 'password', 'role_name', 'is_deleted', 'is_staff']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -89,15 +87,18 @@ class StaffSerializer(serializers.ModelSerializer):
                                        'Пожалуйста, выберите другой логин.']
             raise serializers.ValidationError('Пользователь с таким логином уже существует. '
                                               'Пожалуйста, выберите другой логин.')
+        validated_data['is_staff'] = True
         staff = Staff.objects.create_user(**validated_data)
         staff.is_active = True
         return staff
 
 
 class SelfStaffSerializer(serializers.ModelSerializer):
+    role_name = serializers.StringRelatedField(source='role.role_name', read_only=True)
+
     class Meta:
         model = Staff
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'username', 'email', 'role_name']
 
 
 class EditStaffProfileSerializer(serializers.ModelSerializer):
