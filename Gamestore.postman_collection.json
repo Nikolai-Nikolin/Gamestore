@@ -10,14 +10,14 @@
 			"name": "Staff",
 			"item": [
 				{
-					"name": "get_all_staff",
+					"name": "get_all_staff (ADMIN / EDITOR / VIEWER)",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MjA0MjQ3LCJpYXQiOjE3MDkyMDE1NDcsImp0aSI6ImFjMTdhYzc1Y2Q0ZTQyZGE5ZDNmODU1M2Q2MTkwNzBmIiwidXNlcl9pZCI6NX0.xHJuRnv8pmHxybY6Q6nG0_MDEH-ALQWSSb_stYgWtDc",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTQ5MDYwLCJpYXQiOjE3MDk1NDYzNjAsImp0aSI6ImM2NmNiYmNhM2U4MTQzMmNiODhlNjJjNTQ0MTQ1YzAwIiwidXNlcl9pZCI6MTV9.TkpGHjG0nIKnDAZ4PxK_riYHPUojMmV9hJPRqJ77FqY",
 									"type": "string"
 								}
 							]
@@ -43,7 +43,7 @@
 					"response": []
 				},
 				{
-					"name": "staff_profile",
+					"name": "staff_search (ADMIN / EDITOR / VIEWER)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -53,7 +53,52 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUxMjY1LCJpYXQiOjE3MDk1NDg1NjUsImp0aSI6ImRiNDc2ODY0MmZmMDRiY2JhZjllNjM1ZGIyMTVjMTlmIiwidXNlcl9pZCI6MTN9.THKbN8W0MTT9Pja0xdRoZ3xg62GGrcm1a4_bo-rx_dE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user_editor\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/egames/api/staff/search/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"egames",
+								"api",
+								"staff",
+								"search",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "staff_profile (ADMIN / EDITOR / VIEWER)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUwNzIxLCJpYXQiOjE3MDk1NDgwMjEsImp0aSI6ImRlZTdkMWIzNjcxODQwNzliMDQ5ZTI0ODNjNWVmYjYxIiwidXNlcl9pZCI6MTN9.KE_Woli_jjpiDdmky5rcbLTL6Gdn0x3Jge3JoI69Uhg",
 									"type": "string"
 								}
 							]
@@ -88,14 +133,14 @@
 					"response": []
 				},
 				{
-					"name": "edit_staff_profile",
+					"name": "edit_staff_profile (ADMIN / EDITOR / VIEWER)",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUxMTA1LCJpYXQiOjE3MDk1NDg0MDUsImp0aSI6ImIxMjQzZjBhMTYwZDRkYmM5MTQ4MGI1NzQ2OWQ4NmIxIiwidXNlcl9pZCI6MTN9.XTHUATXEs2KCgCh419Bk0EE8G7fTvFkTY5dF5GoHwqg",
 									"type": "string"
 								}
 							]
@@ -104,7 +149,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testupdate\",\r\n    \"email\": \"testupdate@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"user_admin\",\r\n    \"email\": \"testupdate@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -131,52 +176,7 @@
 					"response": []
 				},
 				{
-					"name": "staff_search",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIwMjUyLCJpYXQiOjE3MDkwMTc1NTIsImp0aSI6IjdjN2VkZDRlOTVmYTRlMTM4MGYyZjUwNjA5NjFhY2MzIiwidXNlcl9pZCI6NX0.uEWa5Vu9QHgIsSJTFOidSF8s18TzvOn_Ewm5n1N-vxg",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testuser\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8000/egames/api/staff/search/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"egames",
-								"api",
-								"staff",
-								"search",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_staff",
+					"name": "delete_staff (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -264,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"testuser@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"username\": \"user_editor\",\r\n    \"password\": \"12345\",\r\n    \"email\": \"user_editor@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -335,7 +335,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"testupdate\",\r\n    \"password\": \"12345\"\r\n}",
+							"raw": "{\r\n    \"username\": \"user_admin\",\r\n    \"password\": \"12345\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -367,7 +367,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MTk1ODcwLCJpYXQiOjE3MDkxOTMxNzAsImp0aSI6IjAwYjA5ZGIxZDU2YzRkMjFiNWM4NWI1YWQ4MDQyNTY4IiwidXNlcl9pZCI6MTB9.RC0F9IRLqsA-i3Nrcb0HAWPH38KckfB4THKoNX22uA8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTQ3MjM5LCJpYXQiOjE3MDk1NDQ1MzksImp0aSI6IjBlNzM1NDUwYmM0NTRmMmNiODU4ZjlhZmIzNjNhYWRjIiwidXNlcl9pZCI6MTN9.u7mGZU4YY6IoQ8TZ-EFvt3ytdA53vLebTqwiqNzw2EQ",
 									"type": "string"
 								}
 							]
@@ -376,7 +376,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"user\",\r\n    \"role_name\": \"viewer\"\r\n}",
+							"raw": "{\r\n    \"username\": \"user_editor\",\r\n    \"role_name\": \"editor\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -407,14 +407,14 @@
 			"name": "Roles",
 			"item": [
 				{
-					"name": "get_all_roles",
+					"name": "get_all_roles (ADMIN / EDITOR / VIEWER)",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY0Mjg5LCJpYXQiOjE3MDg5NjE1ODksImp0aSI6IjU2ZWQyNmYzMjJkMzQ3YmY5ZjE2YTdmN2M5M2MwNGRiIiwidXNlcl9pZCI6MX0.DiRKAbcyyYvpAcabzrKqK1EqP3JATPii_9P0qLAiyeo",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyMTYwLCJpYXQiOjE3MDk1NDk0NjAsImp0aSI6ImUyMDFhM2UzM2U1MTRkNmJhNTljMDhmMWE3YjZlYjlkIiwidXNlcl9pZCI6MTN9.LMyXAv8nDO_X9raG7wRyffp9QwWH23wd4o7LbKcsN6I",
 									"type": "string"
 								}
 							]
@@ -438,7 +438,7 @@
 					"response": []
 				},
 				{
-					"name": "role_search",
+					"name": "role_search (ADMIN / EDITOR / VIEWER)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -448,7 +448,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY0Mjg5LCJpYXQiOjE3MDg5NjE1ODksImp0aSI6IjU2ZWQyNmYzMjJkMzQ3YmY5ZjE2YTdmN2M5M2MwNGRiIiwidXNlcl9pZCI6MX0.DiRKAbcyyYvpAcabzrKqK1EqP3JATPii_9P0qLAiyeo",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyMTYwLCJpYXQiOjE3MDk1NDk0NjAsImp0aSI6ImUyMDFhM2UzM2U1MTRkNmJhNTljMDhmMWE3YjZlYjlkIiwidXNlcl9pZCI6MTN9.LMyXAv8nDO_X9raG7wRyffp9QwWH23wd4o7LbKcsN6I",
 									"type": "string"
 								}
 							]
@@ -457,7 +457,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"role_name\": \"admin\"\r\n}",
+							"raw": "{\r\n    \"role_name\": \"test\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -483,7 +483,7 @@
 					"response": []
 				},
 				{
-					"name": "create_role",
+					"name": "create_role (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -525,7 +525,7 @@
 					"response": []
 				},
 				{
-					"name": "delete_role",
+					"name": "delete_role (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -574,16 +574,6 @@
 				{
 					"name": "get_all_games",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MjA5NDQ3LCJpYXQiOjE3MDkyMDY3NDcsImp0aSI6ImYzMmMwZGNkMjk4OTQ5ODI4OTQ0MzczNWU1NTdhYzgxIiwidXNlcl9pZCI6NX0.lHZ5Ks_6Mw-HXxedcmx81Q30b0fe1bSut8AjcUzLaTs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -608,21 +598,11 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MjEyNTg2LCJpYXQiOjE3MDkyMDk4ODYsImp0aSI6IjYwNDk3MjI4ZDczMDQwYjZiNWQ2MDkzZDBmMjJjMDZiIiwidXNlcl9pZCI6NX0.lzoZAO2xvy6KMDFgI5qDkFlJtGI1MNbXhyI1zsoQrRs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"The Division 2\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Test game update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -648,7 +628,7 @@
 					"response": []
 				},
 				{
-					"name": "create_game",
+					"name": "create_game (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -711,7 +691,7 @@
 					"response": []
 				},
 				{
-					"name": "update_game",
+					"name": "update_game (ADMIN / EDITOR)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -775,7 +755,7 @@
 					"response": []
 				},
 				{
-					"name": "delete_game",
+					"name": "delete_game (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -817,14 +797,14 @@
 					"response": []
 				},
 				{
-					"name": "add_ganre_to_game",
+					"name": "add_ganre_to_game (ADMIN / EDITOR)",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY3NzA2LCJpYXQiOjE3MDg5NjUwMDYsImp0aSI6IjM4ZjU4MTk5YWZmNzQ4ZTQ5ZGIwNDdjMDEyNTFmY2NiIiwidXNlcl9pZCI6MX0.1W-T8_Rw5p8Ddv2JkKMYF86NvueH6Er9yhly-pZDDxo",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyNzY5LCJpYXQiOjE3MDk1NTAwNjksImp0aSI6IjZhN2M5OTNlNjliYzRhYzdhMjI0ZDQyYjUwNzM4OWIwIiwidXNlcl9pZCI6MTN9.DfqHao1hzwy0S7bF23mjxWarnfq-qThUfYnKqBGVpI4",
 									"type": "string"
 								}
 							]
@@ -833,7 +813,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"game_title\": \"Test2\",\r\n    \"title_genre\": \"MMO\"\r\n}",
+							"raw": "{\r\n    \"game_title\": \"The Division 2\",\r\n    \"title_genre\": \"Testupdate\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -858,14 +838,14 @@
 					"response": []
 				},
 				{
-					"name": "delete_ganre_from_game",
+					"name": "delete_ganre_from_game (ADMIN / EDITOR)",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTY3NzA2LCJpYXQiOjE3MDg5NjUwMDYsImp0aSI6IjM4ZjU4MTk5YWZmNzQ4ZTQ5ZGIwNDdjMDEyNTFmY2NiIiwidXNlcl9pZCI6MX0.1W-T8_Rw5p8Ddv2JkKMYF86NvueH6Er9yhly-pZDDxo",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUwNjIyLCJpYXQiOjE3MDk1NDc5MjIsImp0aSI6ImI2ZDM1ZDg4ZmYxYTQ4ZWVhY2FmNzg5NTZhZTBjYzIxIiwidXNlcl9pZCI6MTN9.pdhIufOogxIcQME3tbrJNm_OaPfpvk5kcxJIPMhR9yk",
 									"type": "string"
 								}
 							]
@@ -874,7 +854,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"game_title\": \"Test2\",\r\n    \"title_genre\": \"MMO\"\r\n}",
+							"raw": "{\r\n    \"game_title\": \"Test game update\",\r\n    \"title_genre\": \"Testupdate\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1048,7 +1028,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIyODQ4LCJpYXQiOjE3MDkwMjAxNDgsImp0aSI6ImU5NTQxNmU5MDBlNzQ4MDRhNDhlZGRiYTBiZjA1OGZjIiwidXNlcl9pZCI6NX0.1eRT1J6ZrfoHzwI5M_yGkbAiszjRc78sGNVLFUO3f4Q",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTQ5NzM3LCJpYXQiOjE3MDk1NDcwMzcsImp0aSI6Ijg4YzAwMDc5ZDI1YjQ1YTM4N2IxZGUzNjFhMTRlNjY3IiwidXNlcl9pZCI6MTN9.I1vOzzQeTAJGo-9V0l1WYqTGvDTjxEc1zfD2K8qoXRg",
 									"type": "string"
 								}
 							]
@@ -1118,7 +1098,7 @@
 					"response": []
 				},
 				{
-					"name": "create_genre",
+					"name": "create_genre (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1160,7 +1140,7 @@
 					"response": []
 				},
 				{
-					"name": "update_genre",
+					"name": "update_genre (ADMIN / EDITOR)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1203,7 +1183,7 @@
 					"response": []
 				},
 				{
-					"name": "delete_genre",
+					"name": "delete_genre (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1257,7 +1237,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDE3MzY4LCJpYXQiOjE3MDkwMTQ2NjgsImp0aSI6ImIxYWZlYTU1MWM4YzQyYjg4OGFhNzZjYzY5NzJmZjdlIiwidXNlcl9pZCI6MX0.quzct_OjW9o54j3WUt5AGG5RqrETALuNI1m4BaelgGo",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODgzLCJpYXQiOjE3MDk1NTAxODMsImp0aSI6ImMzNWI1ZjRhN2RmNjQ0ZTI4NTIyZTkzYTU1ZGM3ODNiIiwidXNlcl9pZCI6MX0.34PZOR8cB0uy_FHjhuipaPC2nbOr8LoAM9i6RyCbDRQ",
 									"type": "string"
 								}
 							]
@@ -1290,7 +1270,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDIzOTIwLCJpYXQiOjE3MDkwMjEyMjAsImp0aSI6IjMyNTJhMGE4NDc3MjQyN2RiMzQ2M2I2MTEzZTE1YzA2IiwidXNlcl9pZCI6MX0.K4yrkpPqL1mmZi2cKEj8PgOpaNTdKcvLs7s1-4HFw_8",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODgzLCJpYXQiOjE3MDk1NTAxODMsImp0aSI6ImMzNWI1ZjRhN2RmNjQ0ZTI4NTIyZTkzYTU1ZGM3ODNiIiwidXNlcl9pZCI6MX0.34PZOR8cB0uy_FHjhuipaPC2nbOr8LoAM9i6RyCbDRQ",
 									"type": "string"
 								}
 							]
@@ -1404,7 +1384,7 @@
 					"response": []
 				},
 				{
-					"name": "delete_gamer",
+					"name": "delete_gamer (ADMIN)",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1453,7 +1433,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTI3NzA4LCJpYXQiOjE3MDg5MjUwMDgsImp0aSI6Ijg3MTliMzI1YWExMDQ5MGJiNDI3Yzk0ZWE2ODc3NmI2IiwidXNlcl9pZCI6MX0.gNyUv7XNCN9INaOBD3Zg46LduzGSzEosBd31eSYFIH0",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODgzLCJpYXQiOjE3MDk1NTAxODMsImp0aSI6ImMzNWI1ZjRhN2RmNjQ0ZTI4NTIyZTkzYTU1ZGM3ODNiIiwidXNlcl9pZCI6MX0.34PZOR8cB0uy_FHjhuipaPC2nbOr8LoAM9i6RyCbDRQ",
 									"type": "string"
 								}
 							]
@@ -1462,7 +1442,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer1\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Шпрот\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1495,7 +1475,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4OTM3OTQ3LCJpYXQiOjE3MDg5MzUyNDcsImp0aSI6ImRhNTM1OTcyNGI3ZDQ1OGQ5OWI1NzdjODJhMzc4NzAyIiwidXNlcl9pZCI6MX0.PIxtlkhYBq-9YoZfonoABwHWmW6GBHK8L5YRthk-nvY",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODgzLCJpYXQiOjE3MDk1NTAxODMsImp0aSI6ImMzNWI1ZjRhN2RmNjQ0ZTI4NTIyZTkzYTU1ZGM3ODNiIiwidXNlcl9pZCI6MX0.34PZOR8cB0uy_FHjhuipaPC2nbOr8LoAM9i6RyCbDRQ",
 									"type": "string"
 								}
 							]
@@ -1504,7 +1484,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"gamer1\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Шпрот\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1727,7 +1707,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4ODUxMTI3LCJpYXQiOjE3MDg4NDg0MjcsImp0aSI6Ijc1MjQxZTlkMzJlYjQzYWViNTE5ZmE3ODE3NzA0NWVkIiwidXNlcl9pZCI6MX0.muif6cdzc4ALvHPsKVrkYENErmjYWogk60p4hKCIlfc",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODE2LCJpYXQiOjE3MDk1NTAxMTYsImp0aSI6ImZlYzNhMDg2NWU0MDRiODM4MWJiY2JmOTQ1YjE4NzE1IiwidXNlcl9pZCI6MX0.UTC-Kt9_oMN68PNo1DOA-lGjoXYQB0le8RIFYZCTkdQ",
 									"type": "string"
 								}
 							]
@@ -1736,7 +1716,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"game_title\": \"The Game\"\r\n}",
+							"raw": "{\r\n  \"game_title\": \"Test game update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1832,7 +1812,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODgzLCJpYXQiOjE3MDk1NTAxODMsImp0aSI6ImMzNWI1ZjRhN2RmNjQ0ZTI4NTIyZTkzYTU1ZGM3ODNiIiwidXNlcl9pZCI6MX0.34PZOR8cB0uy_FHjhuipaPC2nbOr8LoAM9i6RyCbDRQ",
 									"type": "string"
 								}
 							]
@@ -1864,7 +1844,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5MDI3Mzc1LCJpYXQiOjE3MDkwMjQ2NzUsImp0aSI6ImJjOTFjYjFjNjM0NTQ3NGE5YTBhYzljZjI0NmQ1NGE4IiwidXNlcl9pZCI6MX0.WV_utC2SVCRTuv2tQB4kvCoSXVEFCjBGS3MPgk_RAhc",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA5NTUyODgzLCJpYXQiOjE3MDk1NTAxODMsImp0aSI6ImMzNWI1ZjRhN2RmNjQ0ZTI4NTIyZTkzYTU1ZGM3ODNiIiwidXNlcl9pZCI6MX0.34PZOR8cB0uy_FHjhuipaPC2nbOr8LoAM9i6RyCbDRQ",
 									"type": "string"
 								}
 							]
@@ -1873,7 +1853,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"game_title\": \"The GameOver\"\r\n}",
+							"raw": "{\r\n  \"game_title\": \"Test game update\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
