@@ -288,11 +288,13 @@ def delete_role(request):
     user = request.user
     role_id = request.data.get('role_id')
     if role_id is None:
+        logger.error(f'Пользователь {user.username} не указал обязательный параметр запроса')
         return Response({'message': 'Необходимо указать role_id для удаления.'},
                         status=status.HTTP_400_BAD_REQUEST)
     try:
         role_id = int(role_id)
     except ValueError:
+        logger.error(f'Пользователь {user.username} попытался ввести в числовое поле запроса иной тип данных')
         return Response({'message': 'Поле role_id должно содержать только числа.'},
                         status=status.HTTP_400_BAD_REQUEST)
     try:
