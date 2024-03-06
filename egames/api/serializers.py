@@ -151,7 +151,7 @@ class GamerSerializer(serializers.ModelSerializer):
 
         birth_date = validated_data.get('birth_date', None)
         if birth_date and (date.today() - birth_date).days < 14 * 365:
-            raise serializers.ValidationError('Регистрация доступна только для пользователей старше 14 лет.')
+            raise serializers.ValidationError({'massage': 'Регистрация доступна только для пользователей старше 14 лет.'})
 
         gamer = Gamer.objects.create_user(**validated_data)
         gamer.is_active = True

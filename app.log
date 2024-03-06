@@ -1,408 +1,29 @@
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/games/search/
-Игра title не найдена
-Not Found: /egames/api/games/search/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Игра The Division 2ауа не найдена
-Not Found: /egames/api/games/search/
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/genre/create/
-Такой игровой жанр уже есть в вашей базе данных
-Bad Request: /egames/api/genre/create/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Жанр создан пользователем Nikolai
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-Unauthorized: /egames/api/staff/add-role/
-Forbidden: /egames/api/games/
-Forbidden: /egames/api/games/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\Gamestore\settings.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\Gamestore\settings.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Bad Request: /auth/sign-up/staff/
-Bad Request: /auth/sign-up/staff/
-C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-Internal Server Error: /egames/api/games/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
-    if not permission.has_permission(request, self):
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\egames\api\views.py", line 57, in has_permission
-    return user.is_authenticated and user.is_staff and user.role.role_name == 'admin'
-                                                       ^^^^^^^^^
-AttributeError: 'User' object has no attribute 'role'
-Unauthorized: /egames/api/staff/add-role/
-Unauthorized: /egames/api/staff/getall/
-Internal Server Error: /egames/api/games/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
-    if not permission.has_permission(request, self):
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\egames\api\views.py", line 57, in has_permission
-    return user.is_authenticated and user.is_staff and user.role.role_name == 'admin'
-                                                       ^^^^^^^^^
-AttributeError: 'User' object has no attribute 'role'
-C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Internal Server Error: /egames/api/games/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
-    if not permission.has_permission(request, self):
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\egames\api\views.py", line 57, in has_permission
-    return user.is_authenticated and user.is_staff and user.role.role_name == 'admin'
-                                                       ^^^^^^^^^
-AttributeError: 'User' object has no attribute 'role'
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-Forbidden: /egames/api/games/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Unauthorized: /auth/sign-in/staff/
-Forbidden: /egames/api/staff/getall/
-Internal Server Error: /egames/api/staff/getall/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 332, in check_permissions
-    if not permission.has_permission(request, self):
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\egames\api\views.py", line 31, in has_permission
-    return user.is_authenticated and user.is_staff and user.staff.role.role_name == 'admin'
-                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'role_name'
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/games/
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/staff/add-role/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Internal Server Error: /egames/api/staff/getall/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 331, in check_permissions
-    for permission in self.get_permissions():
-                      ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 278, in get_permissions
-    return [permission() for permission in self.permission_classes]
-            ^^^^^^^^^^^^
-TypeError: 'HasRolePermission' object is not callable
-Internal Server Error: /egames/api/staff/getall/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 331, in check_permissions
-    for permission in self.get_permissions():
-                      ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 278, in get_permissions
-    return [permission() for permission in self.permission_classes]
-            ^^^^^^^^^^^^
-TypeError: 'HasRolePermission' object is not callable
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Internal Server Error: /egames/api/staff/getall/
-Traceback (most recent call last):
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-               ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
-    return self.dispatch(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
-    response = self.handle_exception(exc)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
-    self.raise_uncaught_exception(exc)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
-    raise exc
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
-    self.initial(request, *args, **kwargs)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 415, in initial
-    self.check_permissions(request)
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 331, in check_permissions
-    for permission in self.get_permissions():
-                      ^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 278, in get_permissions
-    return [permission() for permission in self.permission_classes]
-            ^^^^^^^^^^^^
-TypeError: 'HasSpecificRolePermission' object is not callable
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Forbidden: /egames/api/staff/getall/
-Forbidden: /egames/api/staff/getall/
-Watching for file changes with StatReloader
-Попытка поиска несуществующей игры пользователем 
-Not Found: /egames/api/games/search/
-Unauthorized: /egames/api/games/create/
-Forbidden: /egames/api/games/create/
-Forbidden: /egames/api/games/create/
-Forbidden: /egames/api/games/create/
-Forbidden: /egames/api/games/update/The Division 2/
-Попытка поиска несуществующей игры пользователем user_editor
-Not Found: /egames/api/games/update/Test gameeeee/
-Forbidden: /egames/api/games/delete/
-Попытка поиска несуществующей игры пользователем user_admin
-Not Found: /egames/api/games/delete/
-Forbidden: /egames/api/genre-game/
-Forbidden: /egames/api/genre-game/
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/genre-game/delete/
-Forbidden: /egames/api/genre-game/delete/
-Unauthorized: /egames/api/genre/search/
-Unauthorized: /egames/api/staff/profile/
-Forbidden: /egames/api/staff/profile/
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/staff/profile/edit/
-Неверные данные, предоставленные для обновления профиля пользователем user_admin
-Bad Request: /egames/api/staff/profile/edit/
-Неверные данные, предоставленные для обновления профиля пользователем Nikolai
-Bad Request: /egames/api/gamer/profile/edit/
-Неверные данные, предоставленные для обновления профиля пользователем user_admin
-Bad Request: /egames/api/staff/profile/edit/
-Неверные данные, предоставленные для обновления профиля пользователем user_admin
-Bad Request: /egames/api/staff/profile/edit/
-Unauthorized: /egames/api/staff/search/
-Forbidden: /egames/api/staff/search/
-Попытка поиска сотрудника пользователем user_admin
-Not Found: /egames/api/staff/search/
-Watching for file changes with StatReloader
-Попытка поиска несуществующей игры пользователем 
-Not Found: /egames/api/games/search/
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/roles/
-Internal Server Error: /egames/api/roles/
+2024-03-05 22:53:41,687 - INFO - Watching for file changes with StatReloader
+2024-03-05 22:54:11,601 - ERROR - Попытка поиска геймера пользователем Nikolai
+2024-03-05 22:54:11,601 - WARNING - Not Found: /egames/api/gamer/search/
+2024-03-06 07:54:07,563 - INFO - Watching for file changes with StatReloader
+2024-03-06 07:54:11,401 - WARNING - Bad Request: /auth/token/refresh/
+2024-03-06 07:57:43,721 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 07:57:43,721 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 07:58:29,009 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 07:58:29,699 - INFO - Watching for file changes with StatReloader
+2024-03-06 07:58:34,552 - INFO - Watching for file changes with StatReloader
+2024-03-06 07:58:37,725 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 07:58:37,726 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:00:46,902 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:00:50,002 - ERROR - Пользователем  не предоставлена информация для поиска игры
+2024-03-06 08:00:50,003 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 08:01:07,002 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:01:09,738 - ERROR - Пользователем  не предоставлена информация для поиска игры
+2024-03-06 08:01:09,738 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 08:01:23,276 - ERROR - Пользователем  не предоставлена информация для поиска игры
+2024-03-06 08:01:23,277 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 08:01:30,598 - ERROR - Пользователем  не предоставлена информация для поиска игры
+2024-03-06 08:01:30,599 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 08:02:03,362 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:02:03,362 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:02:21,616 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:02:27,998 - ERROR - Internal Server Error: /egames/api/games/search/
 Traceback (most recent call last):
   File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
@@ -429,32 +50,1474 @@ Traceback (most recent call last):
   File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
     return func(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^
-  File "C:\My code\Python\Gamestore\egames\api\views.py", line 206, in get_all_roles
-    roles = Role.objects.all(is_deleted=False)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: BaseManager.all() got an unexpected keyword argument 'is_deleted'
-C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Watching for file changes with StatReloader
-Unauthorized: /egames/api/roles/search/
-Роль test не найдена для пользователя user_admin
-Not Found: /egames/api/roles/search/
-Watching for file changes with StatReloader
-Попытка поиска несуществующей игры пользователем user_admin
-Not Found: /egames/api/genre-game/
-Попытка поиска несуществующего жанра пользователем user_admin
-Not Found: /egames/api/genre-game/
-Попытка поиска несуществующей игры пользователем Nikolai
-Not Found: /egames/api/buy-add-to-library/
-Попытка поиска несуществующей игры пользователем Nikolai
-Not Found: /egames/api/add-to-wishlist/
-Unauthorized: /egames/api/gamer/getall/
-Unauthorized: /egames/api/gamer/friends/
-Nikolai - попытка добавить в друзья самого себя
-Bad Request: /egames/api/gamer/friends/
-Unauthorized: /egames/api/gamer/friends/delete/
-Геймер gamer1 не найден в списке друзей Nikolai
-Bad Request: /egames/api/gamer/friends/delete/
-Попытка пользователем Nikolai поиска геймера
-Not Found: /egames/api/gamer/friends/delete/
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 44, in search_game
+    game = Game.objects.get(game_id=game_id, is_deleted=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1495, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1307, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'game_id' into field. Choices are: cover_image, description, discount_percent, final_price, genre, id, is_deleted, library, price, purchase, review, title, wishlist
+2024-03-06 08:03:09,802 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:03:13,590 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:03:13,591 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:03:18,127 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 08:03:22,963 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:03:22,964 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:03:28,223 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:03:28,224 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:03:43,179 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:03:43,179 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:03:54,809 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:03:54,809 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:04:14,699 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:04:14,700 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:04:26,783 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:05:14,661 - ERROR - Попытка поиска несуществующей игры пользователем 
+2024-03-06 08:05:14,661 - WARNING - Not Found: /egames/api/games/search/
+2024-03-06 08:08:58,268 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:09:38,151 - WARNING - Unauthorized: /egames/api/games/create/
+2024-03-06 08:09:47,037 - ERROR - Попытка создания игры, которая уже есть в базе пользователем user_admin
+2024-03-06 08:09:47,037 - WARNING - Bad Request: /egames/api/games/create/
+2024-03-06 08:13:36,034 - ERROR - Попытка создания игры, которая уже есть в базе пользователем user_admin
+2024-03-06 08:13:36,034 - WARNING - Bad Request: /egames/api/games/create/
+2024-03-06 08:14:41,775 - INFO - C:\My code\Python\Gamestore\egames\api\urls.py changed, reloading.
+2024-03-06 08:14:42,493 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:16:58,148 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 08:16:58,803 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:18:34,580 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:18:53,973 - ERROR - Internal Server Error: /egames/api/games/update/89/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+TypeError: update_game() got an unexpected keyword argument 'id'
+2024-03-06 08:19:09,097 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:19:25,692 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 08:19:25,693 - WARNING - Not Found: /egames/api/games/update/89/
+2024-03-06 08:23:41,996 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:24:06,917 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:25:32,790 - WARNING - Forbidden: /egames/api/games/delete/
+2024-03-06 08:25:51,684 - WARNING - Forbidden: /egames/api/games/delete/
+2024-03-06 08:26:13,830 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 08:26:13,830 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 08:26:41,846 - ERROR - Internal Server Error: /egames/api/games/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2117, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'Test'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 100, in delete_game
+    game = Game.objects.get(id=game_id, is_deleted=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1559, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1389, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 364, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 88, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2119, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'Test'.
+2024-03-06 08:27:19,775 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 08:27:19,776 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 08:28:14,034 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 08:28:14,035 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 08:43:43,570 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:45:04,694 - WARNING - Unauthorized: /egames/api/games/review/1/
+2024-03-06 08:46:56,719 - ERROR - Попытка поиска несуществующей игры пользователем Nikolai
+2024-03-06 08:46:56,720 - WARNING - Not Found: /egames/api/games/review/edit/2/
+2024-03-06 08:47:02,867 - ERROR - Попытка поиска несуществующей игры пользователем Nikolai
+2024-03-06 08:47:02,867 - WARNING - Not Found: /egames/api/games/review/edit/3/
+2024-03-06 08:47:21,642 - ERROR - Отзыв от геймера Nikolai к игре с ID: 4 не найден
+2024-03-06 08:47:21,643 - WARNING - Not Found: /egames/api/games/review/edit/4/
+2024-03-06 08:47:52,061 - ERROR - Отзыв от геймера Nikolai к игре с ID: 4 не найден
+2024-03-06 08:47:52,061 - WARNING - Not Found: /egames/api/games/review/edit/4/
+2024-03-06 08:48:30,015 - ERROR - Отзыв от геймера Nikolai к игре с ID: 4 не найден
+2024-03-06 08:48:30,016 - WARNING - Not Found: /egames/api/games/review/delete/4/
+2024-03-06 08:49:51,015 - ERROR - Отзыв от геймера Nikolai к игре с ID: 1 не найден
+2024-03-06 08:49:51,015 - WARNING - Not Found: /egames/api/games/review/delete/1/
+2024-03-06 08:50:12,141 - WARNING - Unauthorized: /egames/api/roles/
+2024-03-06 08:53:54,808 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 08:53:55,753 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:53:57,556 - WARNING - Unauthorized: /egames/api/roles/search/
+2024-03-06 08:54:18,069 - ERROR - Пользователем user_admin не предоставлена информация для поиска роли
+2024-03-06 08:54:18,069 - WARNING - Bad Request: /egames/api/roles/search/
+2024-03-06 08:54:46,232 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 08:54:47,128 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:54:50,171 - INFO - Watching for file changes with StatReloader
+2024-03-06 08:54:51,775 - ERROR - Пользователем user_admin не предоставлена информация для поиска роли
+2024-03-06 08:54:51,776 - WARNING - Bad Request: /egames/api/roles/search/
+2024-03-06 08:55:13,241 - ERROR - Роль с ID: 5 не найдена для пользователя user_admin
+2024-03-06 08:55:13,241 - WARNING - Not Found: /egames/api/roles/search/
+2024-03-06 10:07:31,119 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:07:48,818 - WARNING - Unauthorized: /egames/api/roles/create/
+2024-03-06 10:08:01,973 - ERROR - Неверные данные, предоставленные для создания роли пользователем user_admin
+2024-03-06 10:08:01,974 - WARNING - Bad Request: /egames/api/roles/create/
+2024-03-06 10:09:52,481 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:09:57,023 - ERROR - Неверные данные, предоставленные для создания роли пользователем user_admin
+2024-03-06 10:09:57,024 - WARNING - Bad Request: /egames/api/roles/create/
+2024-03-06 10:14:36,393 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:14:39,855 - ERROR - Неверные данные, предоставленные для создания роли пользователем user_admin
+2024-03-06 10:14:39,855 - WARNING - Bad Request: /egames/api/roles/create/
+2024-03-06 10:15:03,928 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:15:04,630 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:15:21,364 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:15:22,026 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:15:40,433 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:15:43,417 - ERROR - Неверные данные, предоставленные для создания роли пользователем user_admin
+2024-03-06 10:15:43,418 - WARNING - Bad Request: /egames/api/roles/create/
+2024-03-06 10:16:05,328 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:16:08,363 - ERROR - Неверные данные, предоставленные для создания роли пользователем user_admin
+2024-03-06 10:16:08,364 - WARNING - Bad Request: /egames/api/roles/create/
+2024-03-06 10:17:13,667 - WARNING - Unauthorized: /egames/api/roles/search/
+2024-03-06 10:17:34,276 - ERROR - Роль с ID: 4 не найдена для пользователя user_admin
+2024-03-06 10:17:34,276 - WARNING - Not Found: /egames/api/roles/search/
+2024-03-06 10:19:41,580 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:19:42,242 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:20:25,174 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:20:31,060 - WARNING - Unauthorized: /egames/api/roles/delete/
+2024-03-06 10:20:41,997 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:20:41,997 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 10:20:58,574 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:21:01,551 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:21:01,552 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 10:21:22,917 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:21:25,756 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:21:25,797 - ERROR - Internal Server Error: /egames/api/roles/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 252, in delete_role
+    role = Role.objects.get(id=role_id, is_deleted=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 649, in get
+    raise self.model.DoesNotExist(
+egames.models.Role.DoesNotExist: Role matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 257, in delete_role
+    return Response({'massage': f'Роль с ID: {role} не найдена'}, status=status.HTTP_404_NOT_FOUND)
+                                              ^^^^
+UnboundLocalError: cannot access local variable 'role' where it is not associated with a value
+2024-03-06 10:21:37,196 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:21:42,568 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:21:42,569 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 10:21:57,320 - ERROR - Internal Server Error: /egames/api/roles/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2117, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'test'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 252, in delete_role
+    role = Role.objects.get(id=role_id, is_deleted=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1559, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1389, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 364, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 88, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2119, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'test'.
+2024-03-06 10:22:12,084 - WARNING - Unauthorized: /egames/api/roles/
+2024-03-06 10:22:33,036 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:22:33,036 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 10:23:12,674 - ERROR - Роль с ID: 5 не найдена для пользователя user_admin
+2024-03-06 10:23:12,674 - WARNING - Not Found: /egames/api/roles/search/
+2024-03-06 10:23:21,164 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:23:21,164 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 10:25:00,663 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:25:01,349 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:25:47,228 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:25:53,567 - WARNING - Bad Request: /egames/api/roles/delete/
+2024-03-06 10:26:04,402 - WARNING - Bad Request: /egames/api/roles/delete/
+2024-03-06 10:26:11,327 - ERROR - Internal Server Error: /egames/api/roles/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 251, in delete_role
+    if not role_id.isdigit():
+           ^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'isdigit'
+2024-03-06 10:26:35,272 - ERROR - Internal Server Error: /egames/api/roles/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 251, in delete_role
+    if not role_id.isdigit():
+           ^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'isdigit'
+2024-03-06 10:26:59,821 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:27:05,547 - ERROR - Internal Server Error: /egames/api/roles/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 252, in delete_role
+    if not role_id.isdigit():
+           ^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'isdigit'
+2024-03-06 10:29:57,604 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:29:58,383 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:30:23,670 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:30:43,377 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 10:30:43,378 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 10:30:47,761 - WARNING - Bad Request: /egames/api/roles/delete/
+2024-03-06 10:30:54,076 - WARNING - Bad Request: /egames/api/roles/delete/
+2024-03-06 10:40:07,651 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:40:08,337 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:42:45,860 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:42:53,496 - WARNING - Unauthorized: /egames/api/staff/search/
+2024-03-06 10:43:06,555 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:43:45,181 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:43:45,882 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:43:50,655 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:43:53,169 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:44:36,484 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:44:37,162 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:44:57,618 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:45:03,157 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:45:36,600 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:45:44,883 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:46:07,571 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:46:13,993 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:46:23,812 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:46:28,631 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:46:31,815 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:46:47,450 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:46:55,957 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:47:17,179 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:47:34,918 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:47:37,703 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:47:42,077 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 10:47:42,077 - WARNING - Not Found: /egames/api/staff/search/
+2024-03-06 10:47:46,029 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 10:47:46,029 - WARNING - Not Found: /egames/api/staff/search/
+2024-03-06 10:47:50,275 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 10:47:50,275 - WARNING - Not Found: /egames/api/staff/search/
+2024-03-06 10:47:59,651 - WARNING - Unauthorized: /egames/api/staff/getall/
+2024-03-06 10:48:54,324 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 10:48:58,720 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 10:48:58,720 - WARNING - Not Found: /egames/api/staff/search/
+2024-03-06 10:50:13,702 - WARNING - Bad Request: /auth/sign-up/staff/
+2024-03-06 10:52:19,220 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:52:19,900 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:52:59,553 - ERROR - Неверные данные, предоставленные для обновления профиля пользователем user_admin
+2024-03-06 10:52:59,553 - WARNING - Bad Request: /egames/api/staff/profile/edit/
+2024-03-06 10:54:44,477 - ERROR - Internal Server Error: /egames/api/staff/search/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 306, in search_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 10:57:42,472 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 10:57:43,295 - INFO - Watching for file changes with StatReloader
+2024-03-06 10:59:59,754 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:00:25,919 - ERROR - Internal Server Error: /egames/api/staff/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 331, in delete_staff
+    staff_id = int(staff_id)
+               ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 11:00:43,470 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:00:47,466 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:00:47,466 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:01:23,318 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:01:26,802 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:01:26,802 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:01:37,285 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:01:37,285 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:01:46,248 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:01:46,248 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:02:01,265 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:02:01,266 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:02:07,797 - ERROR - Internal Server Error: /egames/api/staff/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2117, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'user'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 331, in delete_staff
+    staff = Staff.objects.get(id=staff_id, is_deleted=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1559, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1389, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 364, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 88, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2119, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'user'.
+2024-03-06 11:03:33,842 - ERROR - Internal Server Error: /egames/api/staff/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2117, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'user'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 331, in delete_staff
+    staff = Staff.objects.get(id=staff_id, is_deleted=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1559, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1389, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 364, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 88, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2119, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'user'.
+2024-03-06 11:05:23,303 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:05:27,055 - WARNING - Bad Request: /egames/api/staff/delete/
+2024-03-06 11:05:31,832 - ERROR - Internal Server Error: /egames/api/staff/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 331, in delete_staff
+    staff_id_int = int(staff_id)
+                   ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 11:07:38,214 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:07:42,195 - ERROR - Internal Server Error: /egames/api/staff/delete/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 334, in delete_staff
+    staff_id_int = int(staff_id)
+                   ^^^^^^^^^^^^^
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+2024-03-06 11:07:50,836 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:07:54,722 - WARNING - Bad Request: /egames/api/staff/delete/
+2024-03-06 11:08:02,683 - WARNING - Bad Request: /egames/api/staff/delete/
+2024-03-06 11:08:06,930 - WARNING - Bad Request: /egames/api/staff/delete/
+2024-03-06 11:08:23,166 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:08:23,167 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:09:11,778 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 11:09:12,457 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:09:15,280 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 11:09:39,219 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:09:41,815 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 11:09:41,816 - WARNING - Not Found: /egames/api/staff/search/
+2024-03-06 11:09:47,736 - WARNING - Bad Request: /egames/api/staff/search/
+2024-03-06 11:09:58,081 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-06 11:09:58,081 - WARNING - Not Found: /egames/api/staff/delete/
+2024-03-06 11:10:45,038 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:11:01,705 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 11:11:08,114 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 11:11:14,571 - WARNING - Bad Request: /egames/api/games/search/
+2024-03-06 11:12:27,805 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 11:12:28,488 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:12:45,527 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 11:12:45,528 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 11:14:09,169 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:14:12,518 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 11:14:12,518 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 11:14:16,978 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 11:14:16,978 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 11:14:23,045 - WARNING - Bad Request: /egames/api/games/delete/
+2024-03-06 11:14:31,597 - WARNING - Bad Request: /egames/api/games/delete/
+2024-03-06 11:14:36,623 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 11:14:36,624 - WARNING - Not Found: /egames/api/games/delete/
+2024-03-06 11:14:44,236 - WARNING - Bad Request: /egames/api/games/delete/
+2024-03-06 11:16:26,786 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 11:16:27,466 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:16:48,930 - WARNING - Bad Request: /egames/api/roles/search/
+2024-03-06 11:17:01,323 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 11:17:02,037 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:17:05,518 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:17:08,522 - WARNING - Bad Request: /egames/api/roles/search/
+2024-03-06 11:17:14,345 - WARNING - Bad Request: /egames/api/roles/search/
+2024-03-06 11:19:04,220 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 11:19:04,942 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:19:11,435 - WARNING - Unauthorized: /egames/api/roles/create/
+2024-03-06 11:19:22,526 - ERROR - Неверные данные, предоставленные для создания роли пользователем user_admin
+2024-03-06 11:19:22,526 - WARNING - Bad Request: /egames/api/roles/create/
+2024-03-06 11:20:22,398 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:20:42,159 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 11:20:42,834 - INFO - Watching for file changes with StatReloader
+2024-03-06 11:21:00,338 - WARNING - Bad Request: /egames/api/roles/delete/
+2024-03-06 11:21:08,803 - WARNING - Bad Request: /egames/api/roles/delete/
+2024-03-06 11:21:15,185 - ERROR - Попытка поиска несуществующей роли пользователем user_admin
+2024-03-06 11:21:15,185 - WARNING - Not Found: /egames/api/roles/delete/
+2024-03-06 15:31:33,957 - INFO - Watching for file changes with StatReloader
+2024-03-06 15:46:09,437 - INFO - Watching for file changes with StatReloader
+2024-03-06 15:47:10,699 - INFO - Watching for file changes with StatReloader
+2024-03-06 15:47:14,296 - WARNING - Unauthorized: /egames/api/staff/add-role/
+2024-03-06 15:47:31,061 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:49:35,991 - INFO - Watching for file changes with StatReloader
+2024-03-06 15:49:40,672 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:49:56,566 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:50:16,772 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:50:24,569 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:51:55,987 - ERROR - Попытка добавления к сотруднику уже имеющейся у него роли пользователем user_admin
+2024-03-06 15:51:55,988 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:53:08,574 - ERROR - Попытка добавления к сотруднику уже имеющейся у него роли пользователем user_admin
+2024-03-06 15:53:08,575 - WARNING - Bad Request: /egames/api/staff/add-role/
+2024-03-06 15:53:19,065 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 15:53:19,065 - WARNING - Not Found: /egames/api/staff/add-role/
+2024-03-06 15:53:25,751 - ERROR - Попытка поиска роли пользователем user_admin
+2024-03-06 15:53:25,751 - WARNING - Not Found: /egames/api/staff/add-role/
+2024-03-06 15:53:30,076 - ERROR - Попытка поиска сотрудника пользователем user_admin
+2024-03-06 15:53:30,077 - WARNING - Not Found: /egames/api/staff/add-role/
+2024-03-06 15:57:01,616 - INFO - Watching for file changes with StatReloader
+2024-03-06 15:58:23,141 - WARNING - Bad Request: /egames/api/gamer/delete/
+2024-03-06 15:58:53,031 - WARNING - Bad Request: /egames/api/gamer/delete/
+2024-03-06 15:59:06,799 - WARNING - Bad Request: /egames/api/gamer/delete/
+2024-03-06 15:59:13,839 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-06 15:59:13,839 - WARNING - Not Found: /egames/api/gamer/delete/
+2024-03-06 15:59:28,064 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-06 15:59:28,065 - WARNING - Not Found: /egames/api/gamer/delete/
+2024-03-06 15:59:48,570 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-06 15:59:48,570 - WARNING - Not Found: /egames/api/gamer/delete/
+2024-03-06 16:00:07,926 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:00:13,061 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-06 16:00:13,061 - WARNING - Not Found: /egames/api/gamer/delete/
+2024-03-06 16:00:23,278 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:00:26,130 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-06 16:00:26,130 - WARNING - Not Found: /egames/api/gamer/delete/
+2024-03-06 16:02:28,209 - WARNING - Unauthorized: /egames/api/gamer/profile/
+2024-03-06 16:05:31,546 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:05:32,250 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:07:03,751 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:07:06,778 - WARNING - Unauthorized: /egames/api/gamer/search/
+2024-03-06 16:07:27,988 - WARNING - Bad Request: /egames/api/gamer/search/
+2024-03-06 16:07:36,627 - WARNING - Bad Request: /egames/api/gamer/search/
+2024-03-06 16:08:05,188 - WARNING - Bad Request: /egames/api/gamer/search/
+2024-03-06 16:08:16,064 - ERROR - Попытка поиска геймера пользователем Nikolai
+2024-03-06 16:08:16,064 - WARNING - Not Found: /egames/api/gamer/search/
+2024-03-06 16:09:33,354 - ERROR - Nikolai ввел не цифры для пополнения кошелька
+2024-03-06 16:09:33,354 - WARNING - Bad Request: /egames/api/gamer/wallet/
+2024-03-06 16:10:06,892 - ERROR - Не введена сумма пополнения для пользователем Nikolai
+2024-03-06 16:10:06,893 - WARNING - Bad Request: /egames/api/gamer/wallet/
+2024-03-06 16:11:26,723 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:11:31,332 - ERROR - Nikolai ввел не цифры для пополнения кошелька
+2024-03-06 16:11:31,333 - WARNING - Bad Request: /egames/api/gamer/wallet/
+2024-03-06 16:11:40,565 - ERROR - Nikolai пытался ввести отрицательное число для пополнения баланса кошелька
+2024-03-06 16:19:32,732 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:19:33,646 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:24:35,967 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:24:44,039 - WARNING - Unauthorized: /egames/api/gamer/friends/
+2024-03-06 16:24:55,094 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:25:07,684 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:25:17,480 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:25:21,586 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:25:28,734 - ERROR - Попытка пользователем Nikolai поиска геймера
+2024-03-06 16:25:28,735 - WARNING - Not Found: /egames/api/gamer/friends/
+2024-03-06 16:25:48,590 - WARNING - Nikolai - попытка добавить в друзья самого себя
+2024-03-06 16:25:48,591 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:26:31,598 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:26:38,281 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:26:51,569 - ERROR - Попытка пользователем Nikolai добавления в друзья уже своего друга
+2024-03-06 16:26:51,569 - WARNING - Bad Request: /egames/api/gamer/friends/
+2024-03-06 16:29:04,861 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:29:05,551 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:31:19,391 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:31:20,054 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:31:33,680 - WARNING - Bad Request: /egames/api/gamer/friends/delete/
+2024-03-06 16:33:20,107 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:33:20,790 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:34:55,078 - WARNING - Bad Request: /egames/api/gamer/friends/delete/
+2024-03-06 16:35:01,205 - ERROR - Геймер gamer3 не найден в списке друзей Nikolai
+2024-03-06 16:35:01,206 - WARNING - Bad Request: /egames/api/gamer/friends/delete/
+2024-03-06 16:35:07,941 - ERROR - Геймер Nikolai не найден в списке друзей Nikolai
+2024-03-06 16:35:07,941 - WARNING - Bad Request: /egames/api/gamer/friends/delete/
+2024-03-06 16:35:21,797 - ERROR - Геймер gamer1 не найден в списке друзей Nikolai
+2024-03-06 16:35:21,797 - WARNING - Bad Request: /egames/api/gamer/friends/delete/
+2024-03-06 16:36:03,253 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:37:08,390 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:37:45,654 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:41:08,187 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:41:09,002 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:41:14,349 - WARNING - Unauthorized: /egames/api/genre/
+2024-03-06 16:42:42,864 - WARNING - Unauthorized: /egames/api/genre/search/
+2024-03-06 16:45:20,104 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:45:39,595 - WARNING - Bad Request: /egames/api/genre/search/
+2024-03-06 16:45:50,399 - WARNING - Bad Request: /egames/api/genre/search/
+2024-03-06 16:45:54,051 - WARNING - Bad Request: /egames/api/genre/search/
+2024-03-06 16:46:04,063 - WARNING - Not Found: /egames/api/genre/search/
+2024-03-06 16:46:58,442 - ERROR - Попытка пользователя user_admin создать уже имеющийся жанр
+2024-03-06 16:46:58,443 - WARNING - Bad Request: /egames/api/genre/create/
+2024-03-06 16:47:44,299 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:47:44,986 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:48:19,017 - ERROR - Неверные данные, предоставленные для создания жанра (пользователь - user_admin)
+2024-03-06 16:48:19,018 - WARNING - Bad Request: /egames/api/genre/create/
+2024-03-06 16:50:35,438 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:50:36,207 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:52:05,988 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:52:09,583 - ERROR - Попытка пользователя user_admin создать уже имеющийся жанр
+2024-03-06 16:52:09,583 - WARNING - Bad Request: /egames/api/genre/create/
+2024-03-06 16:53:46,588 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:54:18,593 - WARNING - Not Found: /egames/api/genre/update/test/
+2024-03-06 16:55:31,735 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:55:35,636 - ERROR - Internal Server Error: /egames/api/genre/update/7/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2024-03-06 16:55:49,864 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 16:55:50,620 - INFO - Watching for file changes with StatReloader
+2024-03-06 16:59:57,581 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:00:02,641 - ERROR - Internal Server Error: /egames/api/genre/update/7/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 728, in update_genre
+    existing_genre = Genre.objects.filter(name=new_genre_name, is_deleted=False).exclude(id=id).first()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1495, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg, summarize)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1307, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1772, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'name' into field. Choices are: description, game, id, is_deleted, title_genre
+2024-03-06 17:00:41,412 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:01:30,527 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:01:38,139 - WARNING - Conflict: /egames/api/genre/update/6/
+2024-03-06 17:02:41,572 - WARNING - Conflict: /egames/api/genre/update/6/
+2024-03-06 17:02:57,572 - WARNING - Conflict: /egames/api/genre/update/7/
+2024-03-06 17:06:55,857 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:07:03,178 - WARNING - Unauthorized: /egames/api/games/update/2/
+2024-03-06 17:07:19,282 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 17:07:19,282 - WARNING - Not Found: /egames/api/games/update/2/
+2024-03-06 17:07:25,128 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 17:07:25,129 - WARNING - Not Found: /egames/api/games/update/3/
+2024-03-06 17:07:48,487 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 17:07:48,487 - WARNING - Not Found: /egames/api/games/update/3/
+2024-03-06 17:08:38,374 - WARNING - Conflict: /egames/api/games/update/3/
+2024-03-06 17:10:10,989 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 17:10:11,748 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:14:12,139 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:14:42,546 - WARNING - Bad Request: /egames/api/genre/delete/
+2024-03-06 17:14:50,068 - WARNING - Bad Request: /egames/api/genre/delete/
+2024-03-06 17:15:14,178 - ERROR - Попытка поиска несуществующего жанра пользователем user_admin
+2024-03-06 17:15:14,179 - WARNING - Not Found: /egames/api/genre/delete/
+2024-03-06 17:15:45,553 - WARNING - Forbidden: /egames/api/genre/delete/
+2024-03-06 17:16:13,160 - ERROR - Попытка поиска несуществующего жанра пользователем user_admin
+2024-03-06 17:16:13,160 - WARNING - Not Found: /egames/api/genre/delete/
+2024-03-06 17:16:16,694 - ERROR - Попытка поиска несуществующего жанра пользователем user_admin
+2024-03-06 17:16:16,694 - WARNING - Not Found: /egames/api/genre/delete/
+2024-03-06 17:21:37,045 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 17:21:37,798 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:25:14,344 - INFO - Watching for file changes with StatReloader
+2024-03-06 17:25:29,188 - WARNING - Bad Request: /egames/api/genre-game/
+2024-03-06 17:25:34,699 - WARNING - Bad Request: /egames/api/genre-game/
+2024-03-06 17:25:51,067 - WARNING - Bad Request: /egames/api/genre-game/
+2024-03-06 17:26:06,734 - WARNING - Unauthorized: /egames/api/genre/
+2024-03-06 17:34:33,986 - ERROR - Попытка поиска несуществующего жанра пользователем user_admin
+2024-03-06 17:34:33,987 - WARNING - Not Found: /egames/api/genre-game/
+2024-03-06 17:34:39,374 - ERROR - Попытка поиска несуществующей игры пользователем user_admin
+2024-03-06 17:34:39,375 - WARNING - Not Found: /egames/api/genre-game/
+2024-03-06 17:35:27,122 - WARNING - Bad Request: /egames/api/genre-game/delete/
+2024-03-06 17:35:40,568 - WARNING - Bad Request: /egames/api/genre-game/delete/
+2024-03-06 17:35:57,185 - WARNING - Bad Request: /egames/api/genre-game/delete/
+2024-03-06 19:30:42,877 - INFO - Watching for file changes with StatReloader
+2024-03-06 19:33:33,016 - WARNING - Unauthorized: /egames/api/roles/
+2024-03-06 20:15:55,722 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:16:10,955 - WARNING - Unauthorized: /egames/api/staff/getall/
+2024-03-06 20:16:36,049 - WARNING - Bad Request: /auth/sign-up/staff/
+2024-03-06 20:17:48,701 - INFO - C:\My code\Python\Gamestore\egames\api\serializers.py changed, reloading.
+2024-03-06 20:17:49,370 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:18:11,448 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 20:18:22,592 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 20:18:31,068 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 20:25:34,486 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:27:53,509 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-06 20:27:58,036 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-06 20:28:06,804 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-06 20:28:26,855 - WARNING - Попытка покупки уже имеющейся у пользователя игры пользователем Nikolai
+2024-03-06 20:28:26,855 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-06 20:29:11,808 - ERROR - Попытка покупки игры пользователем Nikolai
+2024-03-06 20:29:11,808 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-06 20:29:50,356 - WARNING - Unauthorized: /egames/api/purchases/
+2024-03-06 20:30:06,955 - WARNING - Unauthorized: /egames/api/purchases/
+2024-03-06 20:34:32,082 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 20:34:32,798 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:39:41,444 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:40:22,613 - WARNING - Unauthorized: /egames/api/add-to-wishlist/
+2024-03-06 20:40:27,489 - ERROR - Попытка выбора игры для добавления в wishlist пользователем Nikolai
+2024-03-06 20:40:27,489 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:41:04,967 - ERROR - Попытка выбора игры для добавления в wishlist пользователем Nikolai
+2024-03-06 20:41:04,968 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:41:12,292 - ERROR - Internal Server Error: /egames/api/add-to-wishlist/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2117, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'Test game update'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 908, in add_game_to_wishlist
+    game = Game.objects.get(id=game_id, is_deleted=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 635, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1613, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1645, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1559, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\sql\query.py", line 1389, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 30, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 364, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\lookups.py", line 88, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2119, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'Test game update'.
+2024-03-06 20:42:22,467 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 20:42:23,162 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:42:27,583 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:42:30,390 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:42:35,900 - ERROR - Попытка выбора игры для добавления в wishlist пользователем Nikolai
+2024-03-06 20:42:35,901 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:42:42,055 - ERROR - Попытка поиска несуществующей игры пользователем Nikolai
+2024-03-06 20:42:42,056 - WARNING - Not Found: /egames/api/add-to-wishlist/
+2024-03-06 20:42:48,086 - WARNING - Попытка покупки уже имеющейся у пользователя игры пользователем Nikolai
+2024-03-06 20:42:48,086 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:42:53,792 - WARNING - Попытка покупки уже имеющейся у пользователя игры пользователем Nikolai
+2024-03-06 20:42:53,792 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:43:11,806 - WARNING - Попытка добавления уже имеющейся у пользователя игры в wishlist пользователем Nikolai
+2024-03-06 20:43:11,806 - WARNING - Bad Request: /egames/api/add-to-wishlist/
+2024-03-06 20:45:30,977 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 20:45:31,635 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:46:33,928 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 20:46:34,621 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:50:03,628 - INFO - Watching for file changes with StatReloader
+2024-03-06 20:50:29,146 - WARNING - Unauthorized: /egames/api/delete-from-wishlist/
+2024-03-06 20:50:41,783 - WARNING - Bad Request: /egames/api/delete-from-wishlist/
+2024-03-06 20:50:48,252 - WARNING - Bad Request: /egames/api/delete-from-wishlist/
+2024-03-06 20:50:58,904 - WARNING - Bad Request: /egames/api/delete-from-wishlist/
+2024-03-06 20:51:06,276 - ERROR - Попытка поиска несуществующей игры пользователем Nikolai
+2024-03-06 20:51:06,277 - WARNING - Not Found: /egames/api/delete-from-wishlist/
+2024-03-06 20:51:16,608 - ERROR - Попытка удаления игры из wishlist пользователем Nikolai
+2024-03-06 20:51:16,608 - WARNING - Not Found: /egames/api/delete-from-wishlist/
+2024-03-06 20:51:24,892 - ERROR - Попытка удаления игры из wishlist пользователем Nikolai
+2024-03-06 20:51:24,892 - WARNING - Not Found: /egames/api/delete-from-wishlist/
+2024-03-06 20:51:48,822 - ERROR - Попытка удаления игры из wishlist пользователем Nikolai
+2024-03-06 20:51:48,823 - WARNING - Not Found: /egames/api/delete-from-wishlist/
+2024-03-06 21:58:31,293 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:02:59,813 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:03:00,481 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:03:40,746 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:03:41,404 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:03:57,004 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:04:13,698 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:04:27,852 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:04:46,303 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:04:53,054 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:04:59,196 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:05:39,542 - ERROR - Ошибка при создании сотрудника: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')]}
+2024-03-06 22:05:39,542 - WARNING - Bad Request: /auth/sign-up/staff/
+2024-03-06 22:06:04,272 - ERROR - Ошибка при создании сотрудника: {'password': [ErrorDetail(string='This field may not be blank.', code='blank')]}
+2024-03-06 22:06:04,272 - WARNING - Bad Request: /auth/sign-up/staff/
+2024-03-06 22:08:27,991 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:08:28,812 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:08:42,499 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:08:43,163 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:08:53,553 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:08:54,209 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:09:04,640 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:09:05,304 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:09:29,248 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:09:29,977 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:10:00,466 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:10:01,126 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:10:21,964 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:10:22,672 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:11:05,890 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-06 22:11:06,533 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:11:17,856 - INFO - Watching for file changes with StatReloader
+2024-03-06 22:11:25,660 - ERROR - Ошибка при создании геймера: {'birth_date': [ErrorDetail(string='Date has wrong format. Use one of these formats instead: YYYY-MM-DD.', code='invalid')]}
+2024-03-06 22:11:25,661 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:11:36,439 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:11:53,214 - ERROR - Ошибка при создании геймера: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')]}
+2024-03-06 22:11:53,215 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-06 22:13:13,133 - WARNING - Unauthorized: /auth/sign-in/gamer/
+2024-03-06 22:13:25,209 - WARNING - Unauthorized: /auth/sign-in/gamer/
+2024-03-06 22:13:36,824 - WARNING - Unauthorized: /auth/sign-in/gamer/
+2024-03-06 22:14:11,997 - WARNING - Unauthorized: /auth/sign-in/staff/
+2024-03-06 22:14:18,329 - WARNING - Unauthorized: /auth/sign-in/staff/
+2024-03-06 22:14:53,507 - WARNING - Unauthorized: /auth/token/refresh/
