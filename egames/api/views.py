@@ -24,6 +24,7 @@ def has_specific_role(allowed_roles):
                     user.is_staff and
                     user.staff.role and
                     user.staff.role.role_name in allowed_roles)
+
     return HasSpecificRolePermission
 
 
@@ -137,13 +138,47 @@ def delete_game(request):
                     status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(["PUT"])
+@permission_classes([has_specific_role(['admin'])])
+def restore_game(request):
+    user = request.user
+    game_id = request.data.get('game_id', None)
+    if game_id is None:
+        logger.error(f'Пользователь {user.username} не указал обязательный параметр запроса')
+        return Response({'message': 'Необходимо указать game_id для восстановления игры.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        game_id = int(game_id)
+    except ValueError:
+        logger.error(f'Пользователь {user.username} попытался ввести в числовое поле запроса иной тип данных')
+        return Response({'message': 'Поле game_id должно содержать только числа.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        game = Game.objects.get(id=game_id, is_deleted=True)
+    except Game.DoesNotExist:
+        logger.error(f'Игра с ID: {game_id} не найдена в списке удаленных игр')
+        return Response({'message': 'Такой игры нет в списке удаленных.'},
+                        status=status.HTTP_404_NOT_FOUND)
+    game.is_deleted = False
+    game.save()
+    logger.info(f'Пользователем {user.username} игра с ID: {game_id} успешно восстановлена из удаленных')
+    return Response({'message': f'Игра с ID: {game_id} успешно восстановлена.'},
+                    status=status.HTTP_200_OK)
+
+
 # ================================== ДОБАВЛЕНИЕ ОТЗЫВА К ИГРЕ ==================================
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_review_to_game(request, id):
     gamer = request.user.gamer
     user = request.user
+    rating = request.data.get('rating')
+    comment = request.data.get('comment')
     logger.debug(f'Попытка добавления отзыва к игре с ID: {id} от геймера {user.username}')
+    if rating is None or comment is None:
+        logger.error(f'Пользователь {user.username} не указал обязательные параметры запроса')
+        return Response({'message': 'Поля rating или comment не должны быть пустыми!'},
+                        status=status.HTTP_400_BAD_REQUEST)
     try:
         game = Game.objects.get(id=id, is_deleted=False)
     except Game.DoesNotExist:
@@ -153,12 +188,11 @@ def add_review_to_game(request, id):
     if existing_review.exists():
         logger.warning(f'Попытка повторной публикации пользователем {user.username} отзыва на игру')
         return Response({'massage': f'Отзыв на игру c ID: {id} уже был опубликован вами ранее. '
-                         f'Вы можете воспользоваться функцией редактирования отзыва или удаления'}, status=400)
-    rating = request.data.get('rating')
-    if rating > 100:
+                                    f'Вы можете воспользоваться функцией редактирования отзыва или удаления'},
+                        status=400)
+    if rating > 100 or rating < 0:
         logger.error(f'Пользователь {user.username} пытался поставить рейтинг выше 100%')
-        return Response({'massage': 'Рейтинг не может превышать 100%'}, status=400)
-    comment = request.data.get('comment')
+        return Response({'massage': 'Рейтинг не может превышать 100% или быть отрицательным!'}, status=400)
     review = Review.objects.create(game=game, gamer=gamer, rating=rating, comment=comment)
     logger.info(f'Отзыв для игры {id} от геймера {user.username} успешно добавлен')
     serializer = ReviewSerializer(review)
@@ -170,7 +204,13 @@ def add_review_to_game(request, id):
 def edit_own_review(request, id):
     gamer = request.user.gamer
     user = request.user
+    rating = request.data.get('rating')
+    comment = request.data.get('comment')
     logger.debug(f'Попытка редактирования отзыва для игры с ID: {id} от геймера {user.username}')
+    if rating is None or comment is None:
+        logger.error(f'Пользователь {user.username} не указал обязательные параметры запроса')
+        return Response({'message': 'Поля rating или comment не должны быть пустыми!'},
+                        status=status.HTTP_400_BAD_REQUEST)
     try:
         game = Game.objects.get(id=id, is_deleted=False)
     except Game.DoesNotExist:
@@ -185,11 +225,9 @@ def edit_own_review(request, id):
     if review.gamer != gamer:
         logger.warning(f'У геймера {user.username} нет прав редактировать этот отзыв')
         return Response({'massage': 'У вас нет прав редактировать этот отзыв'}, status=403)
-    rating = request.data.get('rating')
-    if rating > 100:
+    if rating > 100 or rating < 0:
         logger.error(f'Пользователь {user.username} пытался поставить рейтинг выше 100%')
-        return Response({'massage': 'Рейтинг не может превышать 100%'}, status=400)
-    comment = request.data.get('comment')
+        return Response({'massage': 'Рейтинг не может превышать 100% или быть отрицательным'}, status=400)
     review.rating = rating
     review.comment = comment
     review.save()
@@ -309,6 +347,33 @@ def delete_role(request):
                         status=status.HTTP_404_NOT_FOUND)
 
 
+@api_view(["PUT"])
+@permission_classes([has_specific_role(['admin'])])
+def restore_role(request):
+    user = request.user
+    role_id = request.data.get('role_id')
+    if role_id is None:
+        logger.error(f'Пользователь {user.username} не указал обязательный параметр запроса')
+        return Response({'message': 'Необходимо указать role_id для восстановления роли.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        role_id = int(role_id)
+    except ValueError:
+        logger.error(f'Пользователь {user.username} попытался ввести в числовое поле запроса иной тип данных')
+        return Response({'message': 'Поле role_id должно содержать только числа.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        role = Role.objects.get(id=role_id, is_deleted=True)
+    except Role.DoesNotExist:
+        logger.error(f'Роль с ID: {role_id} не найдена в списке удаленных ролей')
+        return Response({'message': 'Такой роли нет в списке удаленных.'},
+                        status=status.HTTP_404_NOT_FOUND)
+    role.is_deleted = False
+    role.save()
+    logger.info(f'Роль восстановлена пользователем {user.username} успешно')
+    return Response({'message': 'Роль успешно восстановлена.'}, status=status.HTTP_204_NO_CONTENT)
+
+
 # ================================== СОТРУДНИКИ ==================================
 def get_staff_id_from_token(request):
     try:
@@ -398,6 +463,34 @@ def delete_staff(request):
     staff.save()
     logger.info(f'Сотрудник с ID: {staff_id} успешно удален пользователем {user.username}.')
     return Response({'message': f'Сотрудник с ID: {staff_id} успешно удален.'},
+                    status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["PUT"])
+@permission_classes([has_specific_role(['admin'])])
+def restore_staff(request):
+    user = request.user
+    staff_id = request.data.get('staff_id', None)
+    if staff_id is None:
+        logger.error(f'Пользователь {user.username} не указал обязательный параметр запроса')
+        return Response({'message': 'Необходимо указать staff_id для восстановления.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        staff_id = int(staff_id)
+    except ValueError:
+        logger.error(f'Пользователь {user.username} попытался ввести в числовое поле запроса иной тип данных')
+        return Response({'message': 'Поле staff_id должно содержать только числа.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        staff = Staff.objects.get(id=staff_id, is_deleted=True)
+    except Staff.DoesNotExist:
+        logger.error(f'Попытка поиска несуществующего сотрудника пользователем {user.username}')
+        return Response({'message': 'Такого сотрудника нет в списке удаленных'},
+                        status=status.HTTP_404_NOT_FOUND)
+    staff.is_deleted = False
+    staff.save()
+    logger.info(f'Сотрудник с ID: {staff_id} успешно восстановлен пользователем {user.username}.')
+    return Response({'message': f'Сотрудник с ID: {staff_id} успешно восстановлен.'},
                     status=status.HTTP_204_NO_CONTENT)
 
 
@@ -526,6 +619,34 @@ def delete_gamer(request):
     gamer.save()
     logger.info(f'Геймер успешно удален пользователем {user.username}')
     return Response({'massage': 'Геймер успешно удален.'}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["PUT"])
+@permission_classes([has_specific_role(['admin'])])
+def restore_gamer(request):
+    user = request.user
+    gamer_id = request.data.get('gamer_id', None)
+    if gamer_id is None:
+        logger.error(f'Пользователь {user.username} не указал обязательный параметр запроса')
+        return Response({'message': 'Необходимо указать gamer_id для восстановления.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        gamer_id = int(gamer_id)
+    except ValueError:
+        logger.error(f'Пользователь {user.username} попытался ввести в числовое поле запроса иной тип данных')
+        return Response({'message': 'Поле gamer_id должно содержать только числа.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        gamer = Gamer.objects.get(id=gamer_id, is_deleted=True)
+    except Gamer.DoesNotExist:
+        logger.error(f'Попытка поиска геймера пользователем {user.username}')
+        return Response({'massage': 'Такого геймера нет в списке удаленных!'},
+                        status=status.HTTP_404_NOT_FOUND)
+    gamer.is_deleted = False
+    gamer.save()
+    logger.info(f'Геймер успешно восстановлен пользователем {user.username}')
+    return Response({'massage': f'Геймер {gamer.username} успешно восстановлен.'},
+                    status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET'])
@@ -804,6 +925,33 @@ def delete_genre(request):
     return Response({'massage': 'Игровой жанр успешно удален.'}, status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(["PUT"])
+@permission_classes([has_specific_role(['admin'])])
+def restore_genre(request):
+    user = request.user
+    genre_id = request.data.get('genre_id', None)
+    if genre_id is None:
+        logger.error(f'Пользователь {user.username} не указал обязательный параметр запроса')
+        return Response({'message': 'Необходимо указать genre_id для восстановления.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        genre_id = int(genre_id)
+    except ValueError:
+        logger.error(f'Пользователь {user.username} попытался ввести в числовое поле запроса иной тип данных')
+        return Response({'message': 'Поле genre_id должно содержать только числа.'},
+                        status=status.HTTP_400_BAD_REQUEST)
+    try:
+        genre = Genre.objects.get(id=genre_id, is_deleted=True)
+    except Genre.DoesNotExist:
+        logger.error(f'Попытка поиска несуществующего жанра пользователем {user.username}')
+        return Response({'massage': 'Такого игрового жанра нет в списке удаленных!'},
+                        status=status.HTTP_404_NOT_FOUND)
+    genre.is_deleted = False
+    genre.save()
+    logger.info(f'Пользователем {user.username} восстановлен жанр')
+    return Response({'massage': 'Игровой жанр успешно восстановлен.'}, status=status.HTTP_204_NO_CONTENT)
+
+
 # ================================== ДОБАВЛЕНИЕ/УДАЛЕНИЕ ЖАНРА К ИГРЕ  ==================================
 @api_view(['POST'])
 @permission_classes([has_specific_role(['admin', 'editor'])])
@@ -902,7 +1050,7 @@ def buy_and_add_to_library(request):
     if gamer.wallet < game.final_price:
         logger.error(f'Попытка покупки игры пользователем {user.username}')
         return Response({'massage': 'Недостаточно средств на счете для покупки игры. '
-                         'Пожалуйста, пополните баланс вашего кошелька'}, status=400)
+                                    'Пожалуйста, пополните баланс вашего кошелька'}, status=400)
     gamer.wallet -= game.final_price
     gamer.save()
     purchase = Purchase.objects.create(gamer=gamer, game=game)
@@ -911,8 +1059,8 @@ def buy_and_add_to_library(request):
     library_serializer = LibrarySerializer(library_entry)
     logger.info(f'Пользователем {user.username} успешно приобретена игра {game.title}')
     return Response({'massage': f'Поздравляем с приобритением игры {game.title}! '
-                     f'Мы уже добавили ее в вашу библиотеку игр. '
-                     f'Посмотреть подробную информацию у покупке можно, перейдя в раздел Purchase'})
+                                f'Мы уже добавили ее в вашу библиотеку игр. '
+                                f'Посмотреть подробную информацию у покупке можно, перейдя в раздел Purchase'})
 
 
 @api_view(['GET'])
@@ -969,7 +1117,7 @@ def add_game_to_wishlist(request):
     wishlist_serializer = WishlistSerializer(wishlist)
     logger.info(f'Пользователем {user.username} успешно добавлена в wishlist игра {game.title}')
     return Response({'massage': f'Вы добавили игру {game.title} в ваш wishlist! '
-                     f'Не откладывайте покупку надолго!'})
+                                f'Не откладывайте покупку надолго!'})
 
 
 @api_view(['DELETE'])

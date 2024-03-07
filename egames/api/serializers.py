@@ -43,7 +43,7 @@ class PurchaseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Purchase
-        fields = ('id', 'gamer', 'game', 'timestamp')
+        fields = ('game', 'timestamp')
 
 
 # ================================== БИБЛИОТЕКА ==================================
@@ -52,7 +52,7 @@ class LibrarySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Library
-        fields = ('id', 'gamer', 'game')
+        fields = ('id', 'game')
 
 
 # ================================== ПОКУПКИ ==================================

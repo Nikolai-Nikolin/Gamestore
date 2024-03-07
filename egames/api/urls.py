@@ -8,7 +8,7 @@ from .views import (buy_and_add_to_library, gamer_purchases, gamer_library,
                     get_all_staff, delete_staff, staff_profile, edit_staff_profile, search_staff, get_all_genres,
                     search_genre, create_genre, update_genre, delete_genre, add_game_to_wishlist, gamer_wishlist,
                     delete_from_wishlist, add_review_to_game, edit_own_review, delete_own_review, add_role_to_staff,
-                    get_all_games)
+                    get_all_games, restore_game, restore_role, restore_staff, restore_gamer, restore_genre)
 
 urlpatterns = [
     path('games/', get_all_games, name='games-list'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('games/create/', create_game, name='create-game'),
     path('games/update/<int:id>/', update_game, name='update-game'),
     path('games/delete/', delete_game, name='delete-game'),
+    path('games/restore/', restore_game, name='restore-game'),
     path('genre-game/', add_genre_to_game, name='add-genre-to-game'),
     path('genre-game/delete/', delete_genre_from_game, name='delete-genre-from-game'),
     path('games/review/<int:id>/', add_review_to_game, name='add-review-to-game'),
@@ -26,16 +27,19 @@ urlpatterns = [
     path('roles/search/', search_role, name='role-search'),
     path('roles/create/', create_role, name='create-role'),
     path('roles/delete/', delete_role, name='delete-role'),
+    path('roles/restore/', restore_role, name='restore-role'),
 
     path('staff/getall/', get_all_staff, name='get-all-staff'),
     path('staff/profile/', staff_profile, name='staff-profile'),
     path('staff/profile/edit/', edit_staff_profile, name='edit-staff-profile'),
     path('staff/search/', search_staff, name='staff-search'),
     path('staff/delete/', delete_staff, name='delete-staff'),
+    path('staff/restore/', restore_staff, name='restore-staff'),
     path('staff/add-role/', add_role_to_staff, name='add-role-to-staff'),
 
     path('gamer/getall/', get_all_gamers, name='get-all-gamers'),
     path('gamer/delete/', delete_gamer, name='delete-gamer'),
+    path('gamer/restore/', restore_gamer, name='restore-gamer'),
     path('gamer/profile/', gamer_profile, name='gamer-profile'),
     path('gamer/profile/edit/', edit_gamer_profile, name='edit-gamer-profile'),
     path('gamer/search/', search_gamer, name='gamer-search'),
@@ -48,6 +52,7 @@ urlpatterns = [
     path('genre/create/', create_genre, name='create-genre'),
     path('genre/update/<int:id>/', update_genre, name='update-genre'),
     path('genre/delete/', delete_genre, name='delete-genre'),
+    path('genre/restore/', restore_genre, name='restore-genre'),
 
     path('buy-add-to-library/', buy_and_add_to_library, name='buy-and-add-to-library'),
     path('purchases/', gamer_purchases, name='get-purchases'),

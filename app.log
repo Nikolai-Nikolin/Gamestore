@@ -1521,3 +1521,337 @@ ValueError: Field 'id' expected a number but got 'Test game update'.
 2024-03-06 22:14:11,997 - WARNING - Unauthorized: /auth/sign-in/staff/
 2024-03-06 22:14:18,329 - WARNING - Unauthorized: /auth/sign-in/staff/
 2024-03-06 22:14:53,507 - WARNING - Unauthorized: /auth/token/refresh/
+2024-03-07 11:35:48,444 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:36:03,682 - WARNING - Forbidden: /egames/api/games/restore/
+2024-03-07 11:37:03,343 - ERROR - Игра с ID: 3 не найдена в списке удаленных игр
+2024-03-07 11:37:03,344 - WARNING - Not Found: /egames/api/games/restore/
+2024-03-07 11:37:08,319 - ERROR - Пользователь user_admin не указал обязательный параметр запроса
+2024-03-07 11:37:08,320 - WARNING - Bad Request: /egames/api/games/restore/
+2024-03-07 11:37:17,103 - ERROR - Пользователь user_admin попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 11:37:17,103 - WARNING - Bad Request: /egames/api/games/restore/
+2024-03-07 11:37:24,340 - ERROR - Игра с ID: 4 не найдена в списке удаленных игр
+2024-03-07 11:37:24,341 - WARNING - Not Found: /egames/api/games/restore/
+2024-03-07 11:39:15,336 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:39:16,027 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:40:25,398 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:40:26,112 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:40:49,334 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:40:50,027 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:41:05,678 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:41:06,371 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:41:31,411 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:41:32,069 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:42:07,667 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:42:08,354 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:42:24,645 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:42:25,294 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:42:40,371 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:42:41,070 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:43:11,142 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:43:11,801 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:43:26,486 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:43:27,211 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:43:40,684 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:43:41,345 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:44:42,062 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:44:42,720 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:45:50,914 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:46:59,818 - ERROR - Internal Server Error: /egames/api/roles/restore/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 358, in restore_role
+    role = Role.objects.get(id=role_id, is_deleted=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 649, in get
+    raise self.model.DoesNotExist(
+egames.models.Role.DoesNotExist: Role matching query does not exist.
+2024-03-07 11:47:46,687 - ERROR - Игра с ID: 445 не найдена в списке удаленных игр
+2024-03-07 11:47:46,688 - WARNING - Not Found: /egames/api/games/restore/
+2024-03-07 11:47:52,274 - ERROR - Игра с ID: 445 не найдена в списке удаленных игр
+2024-03-07 11:47:52,275 - WARNING - Not Found: /egames/api/games/restore/
+2024-03-07 11:48:00,372 - ERROR - Internal Server Error: /egames/api/roles/restore/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 358, in restore_role
+    role = Role.objects.get(id=role_id, is_deleted=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\db\models\query.py", line 649, in get
+    raise self.model.DoesNotExist(
+egames.models.Role.DoesNotExist: Role matching query does not exist.
+2024-03-07 11:48:28,355 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:48:31,484 - ERROR - Роль с ID: 343 не найдена в списке удаленных ролей
+2024-03-07 11:48:31,484 - WARNING - Not Found: /egames/api/roles/restore/
+2024-03-07 11:48:38,286 - ERROR - Роль с ID: 3 не найдена в списке удаленных ролей
+2024-03-07 11:48:38,287 - WARNING - Not Found: /egames/api/roles/restore/
+2024-03-07 11:48:44,146 - ERROR - Пользователь user_admin попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 11:48:44,146 - WARNING - Bad Request: /egames/api/roles/restore/
+2024-03-07 11:52:11,590 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:52:12,253 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:54:09,243 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 11:54:09,922 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:55:28,933 - WARNING - Method Not Allowed: /egames/api/staff/restore/
+2024-03-07 11:55:48,483 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:56:28,502 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-07 11:56:28,503 - WARNING - Not Found: /egames/api/staff/restore/
+2024-03-07 11:56:36,686 - ERROR - Попытка поиска несуществующего сотрудника пользователем user_admin
+2024-03-07 11:56:36,687 - WARNING - Not Found: /egames/api/staff/restore/
+2024-03-07 11:56:41,225 - ERROR - Пользователь user_admin попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 11:56:41,225 - WARNING - Bad Request: /egames/api/staff/restore/
+2024-03-07 11:56:48,845 - ERROR - Пользователь user_admin не указал обязательный параметр запроса
+2024-03-07 11:56:48,845 - WARNING - Bad Request: /egames/api/staff/restore/
+2024-03-07 11:57:30,313 - INFO - Watching for file changes with StatReloader
+2024-03-07 11:57:33,814 - ERROR - Пользователь user_admin не указал обязательный параметр запроса
+2024-03-07 11:57:33,814 - WARNING - Bad Request: /egames/api/staff/restore/
+2024-03-07 12:03:00,363 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 12:03:01,062 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:05:02,067 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:07:27,696 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:07:41,772 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-07 12:07:41,773 - WARNING - Not Found: /egames/api/gamer/restore/
+2024-03-07 12:07:46,120 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-07 12:07:46,120 - WARNING - Not Found: /egames/api/gamer/restore/
+2024-03-07 12:07:53,595 - ERROR - Пользователь user_admin попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 12:07:53,595 - WARNING - Bad Request: /egames/api/gamer/restore/
+2024-03-07 12:07:57,906 - ERROR - Пользователь user_admin попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 12:07:57,906 - WARNING - Bad Request: /egames/api/gamer/restore/
+2024-03-07 12:08:05,957 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-07 12:08:05,957 - WARNING - Not Found: /egames/api/gamer/restore/
+2024-03-07 12:08:09,730 - ERROR - Пользователь user_admin не указал обязательный параметр запроса
+2024-03-07 12:08:09,730 - WARNING - Bad Request: /egames/api/gamer/restore/
+2024-03-07 12:08:17,157 - ERROR - Попытка поиска геймера пользователем user_admin
+2024-03-07 12:08:17,158 - WARNING - Not Found: /egames/api/gamer/restore/
+2024-03-07 12:13:05,866 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 12:13:06,603 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:13:40,781 - WARNING - Unauthorized: /egames/api/genre/restore/
+2024-03-07 12:13:55,779 - ERROR - Пользователь user_admin не указал обязательный параметр запроса
+2024-03-07 12:13:55,779 - WARNING - Bad Request: /egames/api/genre/restore/
+2024-03-07 12:14:05,575 - ERROR - Попытка поиска несуществующего жанра пользователем user_admin
+2024-03-07 12:14:05,575 - WARNING - Not Found: /egames/api/genre/restore/
+2024-03-07 12:14:12,653 - ERROR - Пользователь user_admin попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 12:14:12,653 - WARNING - Bad Request: /egames/api/genre/restore/
+2024-03-07 12:16:48,271 - WARNING - Bad Request: /auth/sign-up/gamer/
+2024-03-07 12:23:15,300 - ERROR - Попытка поиска несуществующей игры пользователем test25
+2024-03-07 12:23:15,301 - WARNING - Not Found: /egames/api/buy-add-to-library/
+2024-03-07 12:23:19,427 - ERROR - Попытка поиска несуществующей игры пользователем test25
+2024-03-07 12:23:19,427 - WARNING - Not Found: /egames/api/buy-add-to-library/
+2024-03-07 12:23:30,277 - ERROR - Пользователь test25 попытался ввести в числовое поле запроса иной тип данных
+2024-03-07 12:23:30,277 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-07 12:23:35,238 - ERROR - Пользователь test25 не указал обязательный параметр запроса
+2024-03-07 12:23:35,238 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-07 12:23:44,133 - ERROR - Попытка покупки игры пользователем test25
+2024-03-07 12:23:44,133 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-07 12:24:44,631 - ERROR - test25 пытался ввести отрицательное число для пополнения баланса кошелька
+2024-03-07 12:24:52,021 - ERROR - test25 ввел не цифры для пополнения кошелька
+2024-03-07 12:24:52,021 - WARNING - Bad Request: /egames/api/gamer/wallet/
+2024-03-07 12:24:56,142 - ERROR - Не введена сумма пополнения для пользователем test25
+2024-03-07 12:24:56,142 - WARNING - Bad Request: /egames/api/gamer/wallet/
+2024-03-07 12:26:49,443 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:28:10,745 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:28:13,850 - ERROR - Internal Server Error: /egames/api/library/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 1077, in gamer_library
+    return Response({'library': library_serializer.data})
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 507, in to_representation
+    for field in fields:
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 368, in _readable_fields
+    for field in self.fields.values():
+                 ^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\utils\functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\serializers.py", line 1106, in get_field_names
+    raise TypeError(
+TypeError: The `fields` option must be a list or tuple or "__all__". Got str.
+2024-03-07 12:28:39,370 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:29:15,267 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:29:24,390 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:30:18,489 - ERROR - Internal Server Error: /egames/api/games/review/1/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 188, in add_review_to_game
+    if rating > 100:
+       ^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+2024-03-07 12:33:54,372 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 12:33:55,513 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:34:07,499 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:34:13,576 - ERROR - Пользователь test25 не указал обязательные параметры запроса
+2024-03-07 12:34:13,576 - WARNING - Bad Request: /egames/api/games/review/1/
+2024-03-07 12:35:46,287 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:36:39,988 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:37:58,592 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:38:01,686 - WARNING - Попытка повторной публикации пользователем test25 отзыва на игру
+2024-03-07 12:38:01,686 - WARNING - Bad Request: /egames/api/games/review/1/
+2024-03-07 12:38:38,612 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:38:54,635 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:39:02,638 - ERROR - Пользователь test25 пытался поставить рейтинг выше 100%
+2024-03-07 12:39:02,639 - WARNING - Bad Request: /egames/api/games/review/1/
+2024-03-07 12:40:18,168 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 12:40:18,822 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:40:31,677 - WARNING - Попытка покупки уже имеющейся у пользователя игры пользователем test25
+2024-03-07 12:40:31,677 - WARNING - Bad Request: /egames/api/buy-add-to-library/
+2024-03-07 12:42:39,333 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:42:42,510 - ERROR - Пользователь test25 пытался поставить рейтинг выше 100%
+2024-03-07 12:42:42,511 - WARNING - Bad Request: /egames/api/games/review/edit/1/
+2024-03-07 12:43:03,535 - ERROR - Internal Server Error: /egames/api/games/review/edit/1/
+Traceback (most recent call last):
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\My code\Python\Gamestore\egames\api\views.py", line 223, in edit_own_review
+    if rating > 100 or rating < 0:
+       ^^^^^^^^^^^^
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+2024-03-07 12:44:00,171 - INFO - Watching for file changes with StatReloader
+2024-03-07 12:44:04,259 - ERROR - Пользователь test25 не указал обязательные параметры запроса
+2024-03-07 12:44:04,259 - WARNING - Bad Request: /egames/api/games/review/edit/1/
+2024-03-07 12:44:58,346 - ERROR - Попытка поиска несуществующей игры пользователем test25
+2024-03-07 12:44:58,346 - WARNING - Not Found: /egames/api/games/review/delete/34/
+2024-03-07 12:45:04,619 - ERROR - Отзыв от геймера test25 к игре с ID: 3 не найден
+2024-03-07 12:45:04,620 - WARNING - Not Found: /egames/api/games/review/delete/3/
+2024-03-07 12:45:20,684 - ERROR - Отзыв от геймера test25 к игре с ID: 1 не найден
+2024-03-07 12:45:20,684 - WARNING - Not Found: /egames/api/games/review/edit/1/
+2024-03-07 12:45:54,867 - WARNING - Unauthorized: /egames/api/staff/search/
+2024-03-07 12:46:18,244 - ERROR - Пользователь user_admin не указал обязательный параметр запроса
+2024-03-07 12:46:18,245 - WARNING - Bad Request: /egames/api/staff/search/
