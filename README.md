@@ -28,7 +28,6 @@
 - Django
 - RESTapi
 - PostgreSQL
-- SQLite
 - Postman
 
 ##### _____________________________________
