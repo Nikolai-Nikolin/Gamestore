@@ -11,21 +11,9 @@ from .serializers import (GameSerializer, StaffSerializer,
                           GamerSearchSerializer, SelfGamerSerializer, EditGamerProfileSerializer, SelfStaffSerializer,
                           EditStaffProfileSerializer, WishlistSerializer, ReviewSerializer)
 import logging
+from utils import has_specific_role
 
 logger = logging.getLogger(__name__)
-
-
-# ================================== ПРОВЕРКА РОЛЕЙ СОТРУДНИКОВ ==================================
-def has_specific_role(allowed_roles):
-    class HasSpecificRolePermission(BasePermission):
-        def has_permission(self, request, view):
-            user = request.user
-            return (user.is_authenticated and
-                    user.is_staff and
-                    user.staff.role and
-                    user.staff.role.role_name in allowed_roles)
-
-    return HasSpecificRolePermission
 
 
 # ================================== ИГРЫ ==================================
