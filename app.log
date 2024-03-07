@@ -1863,3 +1863,6 @@ TypeError: '>' not supported between instances of 'NoneType' and 'int'
 2024-03-07 18:32:31,147 - ERROR - Ошибка при создании геймера: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')]}
 2024-03-07 18:32:31,148 - WARNING - Bad Request: /auth/sign-up/gamer/
 2024-03-07 18:43:33,195 - INFO - C:\My code\Python\Gamestore\egames\api\views.py changed, reloading.
+2024-03-07 18:43:33,869 - INFO - Watching for file changes with StatReloader
+2024-03-07 18:44:40,649 - INFO - Watching for file changes with StatReloader
+2024-03-07 18:45:20,833 - INFO - Watching for file changes with StatReloader
